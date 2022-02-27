@@ -13,7 +13,13 @@ function AdvertsPage() {
 
                         <div className="col mb-5">
                             <div className="card h-100">
-                                <div class="badge bg-user text-white position-absolute">@duenas</div>
+                                <div class="badge bg-user text-white position-absolute small">@duenas</div>
+                                <div class="badge position-absolute fav-position">
+                                    <div class="fav-container">
+                                        <input type="checkbox" id="estrella1" class="fav" />
+                                        <label for="estrella1"></label>
+                                    </div>
+                                </div>
                                 {/* <div className="card-img-clonepop"> */}
                                 <img className="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
                                 {/* </div> */}
@@ -45,6 +51,12 @@ function AdvertsPage() {
                         <div className="col mb-5">
                             <div className="card h-100">
                                 <div class="badge bg-user text-white position-absolute">@duenas</div>
+                                <div class="badge position-absolute fav-position">
+                                    <div class="fav-container">
+                                        <input type="checkbox" id="estrella1" class="fav" />
+                                        <label for="estrella1"></label>
+                                    </div>
+                                </div>
                                 {/* <div className="card-img-clonepop"> */}
                                 <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
                                 {/* </div> */}
@@ -74,7 +86,13 @@ function AdvertsPage() {
 
                         <div className="col mb-5">
                             <div className="card h-100">
-                                <div class="badge bg-user text-white position-absolute">@duenas</div>
+                                <div class="badge bg-user text-white position-absolute">@bestseller</div>
+                                <div class="badge position-absolute fav-position">
+                                    <div class="fav-container">
+                                        <input type="checkbox" id="estrella1" class="fav" />
+                                        <label for="estrella1"></label>
+                                    </div>
+                                </div>
                                 {/* <div className="card-img-clonepop"> */}
                                 <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
                                 {/* </div> */}
