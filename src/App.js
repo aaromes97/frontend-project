@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 
 import LoginPage from "./components/auth/LoginPage";
-import AdvertsPage from "./components/adverts";
+import AdvertsPage from "./components/adverts/AdvertsPage/AdvertsPage";
 
 function App() {
   return (
