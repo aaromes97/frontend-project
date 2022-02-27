@@ -6,30 +6,31 @@ import { useEffect, useState } from "react";
 import { getLatestAds } from "../service";
 
 function AdvertsPage() {
-  const [ads, setAds] = useState([]);
-  useEffect(() => {
-    getLatestAds().then((ads) => {
-      setAds(ads.data.results);
-      console.log(ads);
-    });
-  }, []);
-  return (
-    <>
-      <Layout >
-        {ads.length ? (
-          <div className="container">
-            {ads.map(( ...advert ) => (
-                {/* <Link to={`/adverts/${id}`} style={{ textDecoration: 'none' }}> */}
-                <Advert {...advert} />
-                {/* </Link> */}
-            )}
-          </div>
-        ) : (
-          <EmptyList />
-        )}
-      </Layout>
-    </>
-  );
+    const [ads, setAds] = useState([]);
+    useEffect(() => {
+        getLatestAds().then((ads) => {
+            setAds(ads.data.results);
+        });
+    }, []);
+    return (
+        <>
+            <Layout >
+                {
+                    ads.length ? (
+                        <div className="container px-4 px-lg-5 mt-5">
+                            <div className="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                                {ads.map(({ ...advert }) => (
+                                    <Advert {...advert} />
+                                ))}
+                            </div>
+                        </div>
+                    ) : (
+                        <EmptyList />
+                    )
+                }
+            </Layout>
+        </>
+    );
 }
 
 export default AdvertsPage;
