@@ -6,8 +6,8 @@ import {
   Redirect,
 } from "react-router-dom";
 
-import LoginPage from "./components/adverts/AdvertsPage";
 import AdvertsPage from "./components/adverts/AdvertsPage";
+import LoginPage from "./components/auth/LoginPage/LoginPage";
 
 function App() {
   return (
