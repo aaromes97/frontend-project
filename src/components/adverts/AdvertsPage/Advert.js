@@ -1,6 +1,6 @@
 import React from "react";
 import T from "prop-types";
-import "../../layout/styles.css";
+import "../../../bootstrap/style.css"
 
 const Advert = ({ nombre, venta, precio, descripcion, foto, autor }) => {
     return (
@@ -19,7 +19,7 @@ const Advert = ({ nombre, venta, precio, descripcion, foto, autor }) => {
                 <img
                     className="card-img-top"
                     src={`http://localhost:3001${foto}`}
-                    alt="..."
+                    alt="Imagen Producto"
                 />
                 {/* </div> */}
                 <div className="card-body p-4">
@@ -38,7 +38,7 @@ const Advert = ({ nombre, venta, precio, descripcion, foto, autor }) => {
                     </div>
                 </div>
 
-                <div class="card-footer text-center p-4 pt-0 border-top-0 bg-transparent">
+                <div class="card-footer text-center pt-0 pb-4 border-top-0 bg-transparent">
                     <p className="btn btn-outline-dark">{precio}€</p>
                 </div>
             </div>
