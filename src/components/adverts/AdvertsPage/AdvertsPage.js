@@ -5,7 +5,7 @@ import "../../layout/styles.css";
 import { useEffect, useState } from "react";
 import { getLatestAds } from "../service";
 
-function AdvertsPage({...props}) {
+function AdvertsPage({isLogged}) {
     const [ads, setAds] = useState([]);
     useEffect(() => {
         getLatestAds().then((ads) => {
@@ -14,7 +14,7 @@ function AdvertsPage({...props}) {
     }, []);
     return (
         <>
-            <Layout {...props} >
+            <Layout isLogged={isLogged} >
                 {
                     ads.length ? (
                         <div className="container px-4 px-lg-5 mt-5">
