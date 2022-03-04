@@ -9,20 +9,27 @@ function LoginPage({ onLogin }) {
 
 	const [value, setValue]= useState({email:'', password:''})
 	const [error, setError]= useState(null)
+	const [saveValue, setSaveValue] = useState(false)
 
-
+	const resetError = () => setError(null)
+	
 	const handleChange = event => {
 		setValue(prevState => ({
 			...prevState,
 			[event.target.name]: event.target.value,
 		}));
 	};
+	 const guardarToken = () => {
+        setSaveValue((prevState) => (prevState ? false : true));
+    };
+    
 
 	const handleSubmit =  async event => {
 		event.preventDefault();
+		resetError();
 		//call to api - send value
 		try {
-			await login(value);
+			await login(value, saveValue);
 			onLogin();
 			console.log(value)
 			

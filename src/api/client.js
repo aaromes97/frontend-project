@@ -8,7 +8,7 @@ const client = axios.create({
 
 
 client.interceptors.response.use(response => response.data, error => {
-    console.log(client)
+    console.log('client',client)
     if (!error.response) {
         return Promise.reject({ message: error.message });
     }
