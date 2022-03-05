@@ -3,6 +3,7 @@ import '../../../bootstrap/style.css';
 import './login.css';
 import logo from './img/login.png';
 import { login } from "../LoginPage/service";
+import { AuthContextConsumer } from "../context";
 
 
 function LoginPage({ onLogin }) {
@@ -94,4 +95,5 @@ function LoginPage({ onLogin }) {
 
 
 
-export default LoginPage;
+const ConnectedLoginPage= () => <AuthContextConsumer>{(auth) => <LoginPage onLogin={auth.handleLogin}/>}</AuthContextConsumer> 
+export default ConnectedLoginPage;

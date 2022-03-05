@@ -1,8 +1,11 @@
-import React, { Component } from "react";
+import React, { Component, useContext } from "react";
 import "./styles.css";
+import AuthContext from "../auth/context";
 
-function Header({className, isLogged, onLogout}) {
-   
+function Header({className}) {
+    
+  const {isLogged, handleLogout} = useContext(AuthContext);
+
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container px-4 px-lg-5">
@@ -68,7 +71,7 @@ function Header({className, isLogged, onLogout}) {
             <form className="d-flex">
               {
                 isLogged ?
-              <button className="btn btn-outline-dark" onClick={onLogout}>
+              <button className="btn btn-outline-dark" onClick={handleLogout}>
                 <i className=" me-1"></i>
                     Log Out
               </button>

@@ -9,6 +9,10 @@ import {
 import AdvertsPage from "./components/adverts/AdvertsPage";
 import LoginPage from "./components/auth/LoginPage/LoginPage";
 import { logout } from "./components/auth/LoginPage/service";
+import { AuthContextProvider } from "./components/auth/context";
+
+
+
 
 function App({isInitiallyLogged}) {
   const [isLogged, setIsLogged] = useState(isInitiallyLogged);
@@ -22,7 +26,9 @@ function App({isInitiallyLogged}) {
   };
 
   return (
-    <div className="App">
+    <AuthContextProvider value={{isLogged, handleLogout, handleLogin}}>
+
+    <div className="App" >
       <Router>
         {/* <Switch>
           <Route exact path="/login">
@@ -43,10 +49,13 @@ function App({isInitiallyLogged}) {
           </Route>
         </Switch> */}
 
-        {isLogged ? <AdvertsPage isLogged={isLogged} onLogout={handleLogout}/> : <LoginPage onLogin={handleLogin}/>} 
+        {isLogged ? <AdvertsPage /> : <LoginPage/>} 
 
       </Router>
     </div>
+
+
+    </AuthContextProvider>
   );
 }
 
