@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./styles.css";
+import "../../bootstrap/style.css"
 
 class Header extends Component {
   render() {
@@ -24,12 +24,12 @@ class Header extends Component {
             <ul className="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
               <li className="nav-item">
                 <a className="nav-link active" aria-current="page" href="#!">
-                  Home
+                  Subir producto
                 </a>
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="#!">
-                  About
+                  Mensajes
                 </a>
               </li>
               <li className="nav-item dropdown">
@@ -41,12 +41,17 @@ class Header extends Component {
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  Shop
+                  @user
                 </a>
                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li>
                     <a className="dropdown-item" href="#!">
-                      All Products
+                      Mis Anuncios
+                    </a>
+                  </li>
+                  <li>
+                    <a className="dropdown-item" href="#!">
+                      Mis Favoritos
                     </a>
                   </li>
                   <li>
@@ -54,16 +59,15 @@ class Header extends Component {
                   </li>
                   <li>
                     <a className="dropdown-item" href="#!">
-                      Popular Items
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#!">
-                      New Arrivals
+                      Mi Cuenta
                     </a>
                   </li>
                 </ul>
               </li>
+              <form class="form-inline">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+              </form>
             </ul>
             <form className="d-flex">
               <button className="btn btn-outline-dark" type="submit">

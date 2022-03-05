@@ -1,6 +1,6 @@
 import React from "react";
 import T from "prop-types";
-import "../../layout/styles.css";
+import "../../../bootstrap/style.css";
 
 const Advert = ({ nombre, venta, precio, descripcion, foto, autor }) => {
   return (

@@ -1,7 +1,7 @@
 import { EmptyList } from "./EmptyList";
 import Layout from "../../layout/layout";
 import Advert from "./Advert";
-import "../../layout/styles.css";
+import "../../../bootstrap/style.css"
 import { useEffect, useState } from "react";
 import { getLatestAds } from "../service";
 
