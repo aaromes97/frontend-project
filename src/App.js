@@ -8,6 +8,7 @@ import {
 
 import AdvertsPage from "./components/adverts/AdvertsPage";
 import LoginPage from "./components/auth/LoginPage/LoginPage";
+import NewAdvertPage from "./components/adverts/NewAdvertPage";
 
 function App() {
   return (
@@ -23,7 +24,9 @@ function App() {
           <Route exact path="/">
             <Redirect to="/adverts" />
           </Route>
-
+          <Route exact path="/adverts/new">
+            <NewAdvertPage />
+          </Route>
           <Route path="/404">
             <div>404 | Not Found Page</div>
           </Route>
