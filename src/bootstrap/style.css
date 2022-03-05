@@ -6764,6 +6764,10 @@ a.badge-dark.focus {
   }
 }
 
+.me-auto {
+  margin-right: auto !important;
+}
+
 .media {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -10261,6 +10265,10 @@ button.bg-dark:focus {
 
 .ml-auto,
 .mx-auto {
+  margin-left: auto !important;
+}
+
+.ml-auto {
   margin-left: auto !important;
 }
 

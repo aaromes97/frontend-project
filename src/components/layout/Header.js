@@ -9,6 +9,10 @@ class Header extends Component {
           <a href="/adverts">
             <img className="navbar-brand" src="clone.png" />
           </a>
+          <form class="form-inline">
+            <input class="form-control mx-2" type="search" placeholder="Search" aria-label="Search" />
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+          </form>
           <button
             className="navbar-toggler"
             type="button"
@@ -20,8 +24,9 @@ class Header extends Component {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
+
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+            <ul className="navbar-nav ml-auto mb-2 mb-lg-0 ms-lg-4">
               <li className="nav-item">
                 <a className="nav-link active" aria-current="page" href="#!">
                   Subir producto
@@ -64,10 +69,6 @@ class Header extends Component {
                   </li>
                 </ul>
               </li>
-              <form class="form-inline">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-              </form>
             </ul>
             <form className="d-flex">
               <button className="btn btn-outline-dark" type="submit">
