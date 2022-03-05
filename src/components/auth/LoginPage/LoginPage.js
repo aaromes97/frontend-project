@@ -6,6 +6,7 @@ import { login } from "../LoginPage/service";
 import { AuthContextConsumer } from "../context";
 
 
+
 function LoginPage({ onLogin }) {
 
 	const [value, setValue]= useState({email:'', password:''})
@@ -99,7 +100,7 @@ function LoginPage({ onLogin }) {
 		</div>
 		</div>
 		</div>
-						{error && <div onClick={resetError}>{error.message }</div>}</div>
+						{error && <div onClick={resetError} className="error-msg"> <i class="fa fa-times-circle"></i>{error.message }</div>}</div>
 		</section>
 };
 
