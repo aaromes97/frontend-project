@@ -8,12 +8,18 @@ import {
 
 import AdvertsPage from "./components/adverts/AdvertsPage";
 import LoginPage from "./components/auth/LoginPage/LoginPage";
+import { logout } from "./components/auth/LoginPage/service";
 
 function App({isInitiallyLogged}) {
   const [isLogged, setIsLogged] = useState(isInitiallyLogged);
   
   
   const handleLogin = () => setIsLogged(true);
+
+  const handleLogout = () => {
+    logout().then(() => setIsLogged(false));
+    
+  };
 
   return (
     <div className="App">
@@ -37,7 +43,7 @@ function App({isInitiallyLogged}) {
           </Route>
         </Switch> */}
 
-        {isLogged ? <AdvertsPage isLogged={ isLogged}/> : <LoginPage onLogin={handleLogin}/>} 
+        {isLogged ? <AdvertsPage isLogged={isLogged} onLogout={handleLogout}/> : <LoginPage onLogin={handleLogin}/>} 
 
       </Router>
     </div>

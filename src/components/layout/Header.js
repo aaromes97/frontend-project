@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./styles.css";
 
-function Header({className, isLogged}) {
+function Header({className, isLogged, onLogout}) {
    
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -68,12 +68,12 @@ function Header({className, isLogged}) {
             <form className="d-flex">
               {
                 isLogged ?
-              <button className="btn btn-outline-dark" type="submit">
+              <button className="btn btn-outline-dark" onClick={onLogout}>
                 <i className=" me-1"></i>
                     Log Out
               </button>
                   :
-              <button className="btn btn-outline-dark" type="submit">
+              <button className="btn btn-outline-dark" >
                 <i className=" me-1"></i>
                     Log In
               </button>
