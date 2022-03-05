@@ -8,9 +8,13 @@ import { login } from "../LoginPage/service";
 function LoginPage({ onLogin }) {
 
 	const [value, setValue]= useState({email:'', password:''})
-	const [error, setError]= useState(null)
+	const [error, setError] = useState(null)
+	//para implementar Spinner de Loading 
+	const [isLoading, setIsLoading] = useState(false)
+	
 	const [saveValue, setSaveValue] = useState(false)
 
+	//reseteamos error 
 	const resetError = () => setError(null)
 	
 	const handleChange = event => {
@@ -26,14 +30,17 @@ function LoginPage({ onLogin }) {
 
 	const handleSubmit =  async event => {
 		event.preventDefault();
+		setIsLoading(true)
 		resetError();
-		//call to api - send value
+		//llamamos al  api - enviamos value
 		try {
 			await login(value, saveValue);
+			setIsLoading(false)
 			onLogin();
 			console.log(value)
 			
 		} catch (error) {
+			setIsLoading(false)
 			console.log(error)
 			setError(error)
 		}
@@ -74,13 +81,13 @@ function LoginPage({ onLogin }) {
 		<div className="form-group d-md-flex">
 		<button className="btn btn-primary rounded submit p-3 px-5"
 	type="submit"
-	disabled={!value.email || !value.password}>Log In</button>
+	disabled={isLoading || !value.email || !value.password}>Log In</button>
 		</div>
 						</form>
 		</div>
 		</div>
 		</div>
-						{error && <div>{error.message }</div>}</div>
+						{error && <div onClick={resetError}>{error.message }</div>}</div>
 		</section>
 };
 

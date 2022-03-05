@@ -9,8 +9,10 @@ import {
 import AdvertsPage from "./components/adverts/AdvertsPage";
 import LoginPage from "./components/auth/LoginPage/LoginPage";
 
-function App() {
-  const [isLogged, setIsLogged] = useState(false);
+function App({isInitiallyLogged}) {
+  const [isLogged, setIsLogged] = useState(isInitiallyLogged);
+  
+  
   const handleLogin = () => setIsLogged(true);
 
   return (

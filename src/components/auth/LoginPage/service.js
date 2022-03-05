@@ -5,6 +5,8 @@ export const login = (credentials, saveValue) => {
     return client.post('/api/authenticate', credentials).then(({token}) => {
         console.log('login',token)
         setAuthorizationHeader(token);
+        //guardamos el token en LocalStorage
+        storage.set('auth', token);
   
     });
  
