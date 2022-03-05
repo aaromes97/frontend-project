@@ -71,7 +71,7 @@ class Header extends Component {
               </li>
             </ul>
             <form className="d-flex">
-              <button className="btn btn-outline-dark" type="submit">
+              <button className="btn btn-outline-dark ml-2" type="submit">
                 <i className=" me-1"></i>
                 Log In
               </button>
