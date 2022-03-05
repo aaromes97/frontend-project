@@ -42,7 +42,6 @@ function LoginPage({ onLogin }) {
 			
 		} catch (error) {
 			setIsLoading(false)
-			console.log(error)
 			setError(error)
 		}
 	}
@@ -79,6 +78,18 @@ function LoginPage({ onLogin }) {
 	value={value.password}
 	onChange={ handleChange}/>
 		</div>
+							
+	<div className='col-12'>
+        <div className='form-check'>
+            <input className="form-check-input"
+                type="checkbox"
+                value={saveValue}
+                onChange={guardarToken}
+                />
+        <label className='form-check-label'>Remember me</label>
+
+		</div>
+	</div>
 		<div className="form-group d-md-flex">
 		<button className="btn btn-primary rounded submit p-3 px-5"
 	type="submit"
