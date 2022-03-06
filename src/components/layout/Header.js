@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "../../bootstrap/style.css"
+import "../../bootstrap/style.css";
 
 class Header extends Component {
   render() {
@@ -10,8 +10,15 @@ class Header extends Component {
             <img className="navbar-brand" src="clone.png" />
           </a>
           <form class="form-inline">
-            <input class="form-control mx-2" type="search" placeholder="Search" aria-label="Search" />
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+            <input
+              class="form-control mx-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+              Buscar
+            </button>
           </form>
           <button
             className="navbar-toggler"
@@ -28,7 +35,11 @@ class Header extends Component {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav ml-auto mb-2 mb-lg-0 ms-lg-4">
               <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#!">
+                <a
+                  className="nav-link active"
+                  aria-current="page"
+                  href="/adverts/new"
+                >
                   Subir producto
                 </a>
               </li>
