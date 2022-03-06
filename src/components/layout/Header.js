@@ -1,6 +1,7 @@
 import React, { Component, useContext } from "react";
 import "./styles.css";
 import AuthContext from "../auth/context";
+import { Link, NavLink } from "react-router-dom";
 
 function Header({className}) {
     
@@ -76,10 +77,13 @@ function Header({className}) {
                     Log Out
               </button>
                   :
+              <Link to="/login">
               <button className="btn btn-outline-dark" >
                 <i className=" me-1"></i>
                     Log In
               </button>
+                    
+              </Link>    
               }
             </form>
           </div>

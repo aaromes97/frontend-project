@@ -10,11 +10,12 @@ import AdvertsPage from "./components/adverts/AdvertsPage";
 import LoginPage from "./components/auth/LoginPage/LoginPage";
 import { logout } from "./components/auth/LoginPage/service";
 import { AuthContextProvider } from "./components/auth/context";
+import RegisterPage from "./components/auth/NewUser/Register";
 
 
 
 
-function App({isInitiallyLogged}) {
+function App({isInitiallyLogged, history}) {
   const [isLogged, setIsLogged] = useState(isInitiallyLogged);
   
   
@@ -26,36 +27,35 @@ function App({isInitiallyLogged}) {
   };
 
   return (
+  <Router>
     <AuthContextProvider value={{isLogged, handleLogout, handleLogin}}>
 
     <div className="App" >
-      <Router>
-        {/* <Switch>
-          <Route exact path="/login">
-            <LoginPage />
+          <Switch>
+            <Route path="/login">
+              {({history}) => isLogged ? <Redirect to="/adverts"/>:<LoginPage history={history}/>}
           </Route>
-          <Route exact path="/adverts">
-            <AdvertsPage />
-          </Route>
+          <Route path="/register" component={RegisterPage}/>
+          {/* <Route path="/adverts/:advertId" component={AdvertPage} /> */}
+          {/* <Route exact path="/adverts/new" component={NewAdvertPage} /> */}
+          <Route exact path="/adverts" component={AdvertsPage}/>
           <Route exact path="/">
-            <Redirect to="/adverts" />
+            <Redirect to="/adverts" component={AdvertsPage} />
           </Route>
-
           <Route path="/404">
             <div>404 | Not Found Page</div>
           </Route>
           <Route>
             <Redirect to="/404" />
           </Route>
-        </Switch> */}
+        </Switch>
 
-        {isLogged ? <AdvertsPage /> : <LoginPage/>} 
-
-      </Router>
+        {/* {isLogged ? <AdvertsPage /> : <LoginPage/>}  */}
     </div>
 
 
     </AuthContextProvider>
+  </Router>
   );
 }
 
