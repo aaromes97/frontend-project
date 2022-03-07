@@ -11,9 +11,10 @@ function NewAdvertPage() {
   const [value, setValue] = useState({
     nombre: "",
     descripcion: "",
-    venta: true,
-    precio: "",
+    venta: "",
+    precio: null,
     tags: [],
+    foto: null
   });
   const [createdAdId, setCreatedAdId] = useState("");
   const handleChange = (event) => {
@@ -25,8 +26,16 @@ function NewAdvertPage() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      console.log(value);
-      const createdAdvert = await createAd(value);
+      let newAdvert = new FormData()
+      newAdvert.append("nombre", value.nombre)
+      newAdvert.append("descripcion", value.descripcion)
+      newAdvert.append("venta", value.venta)
+      newAdvert.append("precio", value.precio)
+      newAdvert.append("tags", value.tags)
+      newAdvert.append("foto", value.foto)
+      console.log(value)
+
+      const createdAdvert = await createAd(newAdvert);
       setCreatedAdId(createdAdvert.id);
     } catch (error) {
       console.log(error);
@@ -75,6 +84,7 @@ function NewAdvertPage() {
             <input
               type="number"
               name="precio"
+              min="0"
               label="Precio"
               placeholder="Precio del producto"
               className="loginForm-field"
@@ -92,7 +102,16 @@ function NewAdvertPage() {
               onChange={handleChange}
             ></textarea>{" "}
             <br></br>
-            <input name="foto" type="file" onChange={handleChange} />
+            <div className="advertPhoto">
+              <input
+                name="foto"
+                type="file"
+                onChange={(e) => setValue(prevState => ({
+                  ...prevState,
+                  [e.target.name]: e.target.files[0]
+                }))}
+              /><br></br>
+            </div>
             <br></br>
             <div className="newAdPage-footer">
               <Button
