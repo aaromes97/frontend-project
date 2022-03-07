@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { ReactComponent as Icon } from "../../assets/clone.svg";
 import "../../bootstrap/style.css";
 
 class Header extends Component {
@@ -7,7 +8,9 @@ class Header extends Component {
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container px-4 px-lg-5">
           <a href="/adverts">
-            <img className="navbar-brand" src="clone.png" />
+            <div className="navbar-brand">
+              <Icon width="32" height="42" />
+            </div>
           </a>
           <form class="form-inline">
             <input

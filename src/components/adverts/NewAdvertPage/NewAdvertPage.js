@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Redirect, useHistory } from "react-router";
 import Button from "../../common/Button";
-import Layout from "../../layout/layout";
+import Layout from "../../layout/Layout";
 import { createAd } from "../service";
 
 function NewAdvertPage() {
@@ -16,7 +16,7 @@ function NewAdvertPage() {
     tags: [],
     foto: null
   });
-  const [createdAdId, setCreatedAdId] = useState("");
+  const [createdAdvertId, setCreatedAdvertId] = useState("");
   const handleChange = (event) => {
     setValue((prevState) => ({
       ...prevState,
@@ -33,10 +33,11 @@ function NewAdvertPage() {
       newAdvert.append("precio", value.precio)
       newAdvert.append("tags", value.tags)
       newAdvert.append("foto", value.foto)
-      console.log(value)
 
       const createdAdvert = await createAd(newAdvert);
-      setCreatedAdId(createdAdvert.id);
+      setCreatedAdvertId(createdAdvert.data.result.id);
+      console.log(createdAdvertId)
+      history.push("/")
     } catch (error) {
       console.log(error);
       if (error.status === 401) {
@@ -45,9 +46,9 @@ function NewAdvertPage() {
       setError(error);
     }
   };
-  if (createdAdId) {
-    return <Redirect to={`/`} />;
-  }
+  // if (createdAdvertId) {
+  //   return <Redirect to={`/`} />;
+  // }
   return (
     <Layout title="Creación de un nuevo anuncio">
       <div className="newAdvertPage bordered">
