@@ -8,9 +8,9 @@ import { Link } from "react-router-dom";
 
 
 
-function LoginPage({ onLogin }) {
+function LoginPage({ onLogin, history }) {
 
-	const [value, setValue]= useState({email:'', password:''})
+	const [value, setValue]= useState({name:'', password:''})
 	const [error, setError] = useState(null)
 	//para implementar Spinner de Loading 
 	const [isLoading, setIsLoading] = useState(false)
@@ -40,6 +40,7 @@ function LoginPage({ onLogin }) {
 			await login(value, saveValue);
 			setIsLoading(false)
 			onLogin();
+			history.push('/adverts')
 			console.log(value)
 			
 		} catch (error) {
@@ -68,8 +69,8 @@ function LoginPage({ onLogin }) {
 		<input className="form-control rounded-left"
 	placeholder="Usuario"
 	type="text" 
-	name="email"
-	value={value.email}
+	name="name"
+	value={value.name}
 	onChange={handleChange} />
 		</div>
 		<div className="form-group d-flex">
@@ -99,7 +100,7 @@ function LoginPage({ onLogin }) {
 		<div className="form-group d-md-flex">
 		<button className="btn btn-primary rounded submit p-3 px-5"
 	type="submit"
-	disabled={isLoading || !value.email || !value.password}>Log In</button>
+	disabled={isLoading || !value.name || !value.password}>Log In</button>
 		</div>
 						</form>
 		</div>
@@ -112,5 +113,5 @@ function LoginPage({ onLogin }) {
 
 
 
-const ConnectedLoginPage= () => <AuthContextConsumer>{(auth) => <LoginPage onLogin={auth.handleLogin}/>}</AuthContextConsumer> 
+const ConnectedLoginPage = (props) => <AuthContextConsumer>{(auth) => <LoginPage onLogin={auth.handleLogin} {...props}/>}</AuthContextConsumer> 
 export default ConnectedLoginPage;

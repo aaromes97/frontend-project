@@ -9,7 +9,7 @@ import { login } from "../NewUser/service";
 
 function RegisterPage() {
 
-	const [value, setValue]= useState({email:'', password:''})
+	const [value, setValue]= useState({name:'', email:'', password:''})
 	const [error, setError] = useState(null)
 	//para implementar Spinner de Loading 
 	const [isLoading, setIsLoading] = useState(false)
@@ -61,8 +61,17 @@ function RegisterPage() {
 		<h3 className="text-center mb-4">Nuevo Usuario</h3>
 		<form className="login-form" onSubmit={handleSubmit}>
 		<div className="form-group">	
-		<input className="form-control rounded-left"
+
+	<div className="form-group">	
+	<input className="form-control rounded-left"
 	placeholder="Usuario"
+	type="text" 
+	name="name"
+	value={value.name}
+	onChange={handleChange} />
+	</div>							
+	<input className="form-control rounded-left"
+	placeholder="Email"
 	type="text" 
 	name="email"
 	value={value.email}
@@ -80,7 +89,7 @@ function RegisterPage() {
 		<div className="form-group d-md-flex">
 		<button className="btn btn-primary rounded submit p-3 px-5"
 	type="submit"
-	disabled={isLoading || !value.email || !value.password}>Registrar</button>
+	disabled={isLoading ||!value.name || !value.email || !value.password}>Registrar</button>
 		</div>
 						</form>
 		</div>

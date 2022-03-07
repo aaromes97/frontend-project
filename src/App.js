@@ -33,7 +33,7 @@ function App({isInitiallyLogged, history}) {
     <div className="App" >
           <Switch>
             <Route path="/login">
-              {({history}) => isLogged ? <Redirect to="/adverts"/>:<LoginPage history={history}/>}
+              {({history}) => <LoginPage history={history}/>}
           </Route>
           <Route path="/register" component={RegisterPage}/>
           {/* <Route path="/adverts/:advertId" component={AdvertPage} /> */}
