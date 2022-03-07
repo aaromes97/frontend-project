@@ -7,7 +7,7 @@ import { login } from "../NewUser/service";
 
 
 
-function RegisterPage() {
+function RegisterPage({history}) {
 
 	const [value, setValue]= useState({name:'', email:'', password:''})
 	const [error, setError] = useState(null)
@@ -35,7 +35,7 @@ function RegisterPage() {
 		try {
 			await login(value);
 			setIsLoading(false)
-	
+			history.push('/login')
 			console.log(value)
 			
 		} catch (error) {

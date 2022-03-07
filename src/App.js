@@ -35,7 +35,9 @@ function App({isInitiallyLogged, history}) {
             <Route path="/login">
               {({history}) => <LoginPage history={history}/>}
           </Route>
-          <Route path="/register" component={RegisterPage}/>
+          <Route path="/register">
+            {({ history }) => <RegisterPage history={history} />}
+          </Route>
           {/* <Route path="/adverts/:advertId" component={AdvertPage} /> */}
           {/* <Route exact path="/adverts/new" component={NewAdvertPage} /> */}
           <Route exact path="/adverts" component={AdvertsPage}/>
