@@ -1,11 +1,11 @@
 import { EmptyList } from "./EmptyList";
 import Layout from "../../layout/layout";
 import Advert from "./Advert";
-import "../../layout/styles.css";
+// import "../../layout/styles.css";
 import { useEffect, useState } from "react";
 import { getLatestAds } from "../service";
 
-function AdvertsPage() {
+function AdvertsPage(props) {
     const [ads, setAds] = useState([]);
     useEffect(() => {
         getLatestAds().then((ads) => {
@@ -14,7 +14,7 @@ function AdvertsPage() {
     }, []);
     return (
         <>
-            <Layout >
+            <Layout {...props} >
                 {
                     ads.length ? (
                         <div className="container px-4 px-lg-5 mt-5">

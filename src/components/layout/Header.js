@@ -1,8 +1,12 @@
-import React, { Component } from "react";
+import React, { Component, useContext } from "react";
 import "./styles.css";
+import AuthContext from "../auth/context";
+import { Link, NavLink } from "react-router-dom";
 
-class Header extends Component {
-  render() {
+function Header({className}) {
+    
+  const {isLogged, handleLogout} = useContext(AuthContext);
+
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container px-4 px-lg-5">
@@ -66,15 +70,25 @@ class Header extends Component {
               </li>
             </ul>
             <form className="d-flex">
-              <button className="btn btn-outline-dark" type="submit">
+              {
+                isLogged ?
+              <button className="btn btn-outline-dark" onClick={handleLogout}>
                 <i className=" me-1"></i>
-                Log In
+                    Log Out
               </button>
+                  :
+              <Link to="/login">
+              <button className="btn btn-outline-dark" >
+                <i className=" me-1"></i>
+                    Log In
+              </button>
+                    
+              </Link>    
+              }
             </form>
           </div>
         </div>
       </nav>
     );
   }
-}
 export default Header;
