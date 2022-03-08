@@ -72,14 +72,14 @@ function NewAdvertPage() {
               name="descripcion"
               rows="3"
               cols="25"
+              required
               onChange={handleChange}
             ></textarea>{" "}
             <br></br>
-            <select name="venta" value={value.venta} onChange={handleChange}>
+            <select name="venta" value={value.venta} required onChange={handleChange}>
+              <option value="">--</option>
               <option value="true">Venta</option>
-              <option value="false" selected>
-                Compra
-              </option>
+              <option value="false"> Compra </option>
             </select>
             <br></br>
             <input
@@ -107,6 +107,7 @@ function NewAdvertPage() {
               <input
                 name="foto"
                 type="file"
+                required
                 onChange={(e) => setValue(prevState => ({
                   ...prevState,
                   [e.target.name]: e.target.files[0]

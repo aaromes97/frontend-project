@@ -14,12 +14,12 @@ class Header extends Component {
           </a>
           <form class="form-inline">
             <input
-              class="form-control mx-2"
+              class="form-control mr-1"
               type="search"
               placeholder="Search"
               aria-label="Search"
             />
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+            <button class="btn btn-outline-success my-2 mr-1" type="submit">
               Buscar
             </button>
           </form>

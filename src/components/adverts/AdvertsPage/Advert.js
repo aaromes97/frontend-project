@@ -48,7 +48,7 @@ export const advertType = {
   precio: T.number.isRequired,
   descripcion: T.string.isRequired,
   autor: T.string.isRequired,
-  foto: T.string,
+  foto: T.string.isRequired,
 };
 
 Advert.propTypes = advertType;
