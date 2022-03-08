@@ -72,7 +72,7 @@ function RegisterPage({history}) {
 	</div>							
 	<input className="form-control rounded-left"
 	placeholder="Email"
-	type="text" 
+	type="email" 
 	name="email"
 	value={value.email}
 	onChange={handleChange} />
