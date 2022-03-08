@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Redirect, useHistory } from "react-router";
 import Button from "../../common/Button";
-import Layout from "../../layout/Layout";
+import Layout from "../../layout/layout";
 import { createAd } from "../service";
 
 function NewAdvertPage() {

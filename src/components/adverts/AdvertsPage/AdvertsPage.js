@@ -1,5 +1,5 @@
 import { EmptyList } from "./EmptyList";
-import Layout from "../../layout/Layout";
+import Layout from "../../layout/layout";
 import Advert from "./Advert";
 import "../../../bootstrap/style.css"
 import { useEffect, useState } from "react";
@@ -9,10 +9,12 @@ function AdvertsPage(props) {
     const [ads, setAds] = useState([]);
     useEffect(() => {
         getLatestAds().then((ads) => {
-            setAds(ads.data.results);
-            console.log(ads)
+            setAds(ads.results);
         });
     }, []);
+
+    console.log(ads)
+
     return (
         <>
             <Layout {...props} >
