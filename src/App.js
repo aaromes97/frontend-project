@@ -9,6 +9,7 @@ import {
 import AdvertsPage from "./components/adverts/AdvertsPage";
 import LoginPage from "./components/auth/LoginPage/LoginPage";
 import NewAdvertPage from "./components/adverts/NewAdvertPage";
+import DetailAdvertPage from "./components/adverts/DetailPage/DetailAdvertPage";
 
 function App() {
   return (
@@ -18,14 +19,19 @@ function App() {
           <Route exact path="/login">
             <LoginPage />
           </Route>
+          <Route exact path="/adverts/new">
+            <NewAdvertPage />
+          </Route>
+          <Route path="/adverts/:advertId">
+            {routeProps => (
+              <DetailAdvertPage {...routeProps} />
+            )}
+          </Route>
           <Route exact path="/adverts">
             <AdvertsPage />
           </Route>
           <Route exact path="/">
             <Redirect to="/adverts" />
-          </Route>
-          <Route exact path="/adverts/new">
-            <NewAdvertPage />
           </Route>
           <Route path="/404">
             <div>404 | Not Found Page</div>

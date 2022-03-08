@@ -4,6 +4,7 @@ import Advert from "./Advert";
 import "../../../bootstrap/style.css"
 import { useEffect, useState } from "react";
 import { getLatestAds } from "../service";
+import { Link } from "react-router-dom";
 
 function AdvertsPage() {
     const [ads, setAds] = useState([]);
@@ -21,7 +22,9 @@ function AdvertsPage() {
                         <div className="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                             {ads.map(({ id, ...advert }) => (
                                 <div key={id} >
-                                    <Advert {...advert} />
+                                    <Link to={`/adverts/${id}`} style={{ textDecoration: 'none' }}>
+                                        <Advert {...advert} />
+                                    </Link>
                                 </div>
 
                             ))}
