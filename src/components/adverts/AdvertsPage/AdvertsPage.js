@@ -10,6 +10,7 @@ function AdvertsPage(props) {
     useEffect(() => {
         getLatestAds().then((ads) => {
             setAds(ads.data.results);
+            console.log(ads)
         });
     }, []);
     return (

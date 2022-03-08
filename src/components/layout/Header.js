@@ -1,7 +1,6 @@
 import { ReactComponent as Icon } from "../../assets/clone.svg";
 import "../../bootstrap/style.css";
 import React, { Component, useContext } from "react";
-import "./styles.css";
 import AuthContext from "../auth/context";
 import { Link, NavLink } from "react-router-dom";
 
