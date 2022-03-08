@@ -97,6 +97,9 @@ function LoginPage({ onLogin, history }) {
 
 		</div>
 	</div>
+		<div>
+			<Link to="/forgot-password">Forgot your Password?</Link>							
+		</div>					
 		<div className="form-group d-md-flex">
 		<button className="btn btn-primary rounded submit p-3 px-5"
 	type="submit"
