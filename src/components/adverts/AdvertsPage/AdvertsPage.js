@@ -5,7 +5,7 @@ import "../../../bootstrap/style.css"
 import { useEffect, useState } from "react";
 import { getLatestAds } from "../service";
 
-function AdvertsPage() {
+function AdvertsPage(props) {
     const [ads, setAds] = useState([]);
     useEffect(() => {
         getLatestAds().then((ads) => {
@@ -14,7 +14,7 @@ function AdvertsPage() {
     }, []);
     return (
         <>
-            <Layout >
+            <Layout {...props} >
                 {
                     ads.length ? (
                         // <div className="container px-4 px-lg-5 mt-5">
