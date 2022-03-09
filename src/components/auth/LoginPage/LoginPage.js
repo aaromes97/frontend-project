@@ -5,6 +5,8 @@ import logo from "./img/login.png";
 import { login } from "../LoginPage/service";
 import { AuthContextConsumer } from "../context";
 import { Link } from "react-router-dom";
+import Loading from "../../Loading";
+
 
 function LoginPage({ onLogin, history }) {
   const [value, setValue] = useState({ name: "", password: "" });
@@ -12,11 +14,56 @@ function LoginPage({ onLogin, history }) {
   //para implementar Spinner de Loading
   const [isLoading, setIsLoading] = useState(false);
 
+<<<<<<< HEAD
   const [saveValue, setSaveValue] = useState(false);
+=======
+	const [value, setValue]= useState({name:'', password:''})
+	const [error, setError] = useState(null)
+	//para implementar Spinner de Loading 
+	const [isLoading, setIsLoading] = useState(false)
+
+
+
+	const [saveValue, setSaveValue] = useState(false)
+
+	//reseteamos error 
+	const resetError = () => setError(null)
+	
+	const handleChange = event => {
+		setValue(prevState => ({
+			...prevState,
+			[event.target.name]: event.target.value,
+		}));
+	};
+	 const guardarToken = () => {
+        setSaveValue((prevState) => (prevState ? false : true));
+    };
+    
+
+	const handleSubmit =  async event => {
+		event.preventDefault();
+		setIsLoading(true)
+		resetError();
+		//llamamos al  api - enviamos value
+		try {
+			await login(value, saveValue);
+			setIsLoading(false)
+			onLogin();
+			history.push('/adverts')
+			console.log(value)
+			
+		} catch (error) {
+			setIsLoading(false)
+			setError(error)
+		}
+	}
+
+>>>>>>> development
 
   //reseteamos error
   const resetError = () => setError(null);
 
+<<<<<<< HEAD
   const handleChange = (event) => {
     setValue((prevState) => ({
       ...prevState,
@@ -26,6 +73,29 @@ function LoginPage({ onLogin, history }) {
   const guardarToken = () => {
     setSaveValue((prevState) => (prevState ? false : true));
   };
+=======
+		</div>
+	</div>
+		<div>
+			<Link to="/forgot-password">Forgot your Password?</Link>							
+		</div>					
+		<div className="form-group d-md-flex">
+			
+		<button className="btn btn-primary rounded submit p-3 px-5"
+	type="submit"
+	disabled={!value.name || !value.password}>Login</button>
+	{isLoading && <button className="btn btn-primary rounded submit p-3 px-5" diabled>
+	<Loading>Loading</Loading>					
+	</button>}							
+		</div>
+						</form>
+		</div>
+		</div>
+		</div>
+						{error && <div onClick={resetError} className="error-msg"> <i class="fa fa-times-circle"></i>{error.message }</div>}</div>
+		</section>
+};
+>>>>>>> development
 
   const handleSubmit = async (event) => {
     event.preventDefault();
