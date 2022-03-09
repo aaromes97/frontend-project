@@ -10,3 +10,5 @@ export const createAd = async (ad) => {
   const url = `${adsBaseUrl}`;
   return client.post(url, ad);
 };
+
+

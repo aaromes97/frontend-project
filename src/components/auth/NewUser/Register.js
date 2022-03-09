@@ -1,21 +1,19 @@
 import { useState } from "react";
 import '../../../bootstrap/style.css';
-import './login.css';
-import logo from './img/login.png';
-import { login } from "../LoginPage/service";
-import { AuthContextConsumer } from "../context";
-import { Link } from "react-router-dom";
+import './register.css';
+import logo from '../LoginPage/img/login.png';
+import { login } from "../NewUser/service";
 
 
 
-function LoginPage({ onLogin, history }) {
 
-	const [value, setValue]= useState({name:'', password:''})
+function RegisterPage({history}) {
+
+	const [value, setValue]= useState({name:'', email:'', password:''})
 	const [error, setError] = useState(null)
 	//para implementar Spinner de Loading 
 	const [isLoading, setIsLoading] = useState(false)
 	
-	const [saveValue, setSaveValue] = useState(false)
 
 	//reseteamos error 
 	const resetError = () => setError(null)
@@ -26,9 +24,7 @@ function LoginPage({ onLogin, history }) {
 			[event.target.name]: event.target.value,
 		}));
 	};
-	 const guardarToken = () => {
-        setSaveValue((prevState) => (prevState ? false : true));
-    };
+
     
 
 	const handleSubmit =  async event => {
@@ -37,10 +33,9 @@ function LoginPage({ onLogin, history }) {
 		resetError();
 		//llamamos al  api - enviamos value
 		try {
-			await login(value, saveValue);
+			await login(value);
 			setIsLoading(false)
-			onLogin();
-			history.push('/adverts')
+			history.push('/login')
 			console.log(value)
 			
 		} catch (error) {
@@ -63,14 +58,23 @@ function LoginPage({ onLogin, history }) {
 		<div className="icon d-flex align-items-center justify-content-center">
 		<img className="logoLogin" src={logo} alt="logo"></img>
 		</div>
-		<h3 className="text-center mb-4">Inicia Sesión</h3>
+		<h3 className="text-center mb-4">Nuevo Usuario</h3>
 		<form className="login-form" onSubmit={handleSubmit}>
 		<div className="form-group">	
-		<input className="form-control rounded-left"
+
+	<div className="form-group">	
+	<input className="form-control rounded-left"
 	placeholder="Usuario"
 	type="text" 
 	name="name"
 	value={value.name}
+	onChange={handleChange} />
+	</div>							
+	<input className="form-control rounded-left"
+	placeholder="Email"
+	type="email" 
+	name="email"
+	value={value.email}
 	onChange={handleChange} />
 		</div>
 		<div className="form-group d-flex">
@@ -81,29 +85,11 @@ function LoginPage({ onLogin, history }) {
 	value={value.password}
 	onChange={ handleChange}/>
 		</div>
-	<div className="sign up">
-	<Link to="/register">Sign Up</Link>
-	
-	</div>						
 							
-	<div className='col-12'>
-        <div className='form-check'>
-            <input className="form-check-input"
-                type="checkbox"
-                value={saveValue}
-                onChange={guardarToken}
-                />
-        <label className='form-check-label'>Remember me</label>
-
-		</div>
-	</div>
-		<div>
-			<Link to="/forgot-password">Forgot your Password?</Link>							
-		</div>					
 		<div className="form-group d-md-flex">
 		<button className="btn btn-primary rounded submit p-3 px-5"
 	type="submit"
-	disabled={isLoading || !value.name || !value.password}>Log In</button>
+	disabled={isLoading ||!value.name || !value.email || !value.password}>Registrar</button>
 		</div>
 						</form>
 		</div>
@@ -115,6 +101,4 @@ function LoginPage({ onLogin, history }) {
 
 
 
-
-const ConnectedLoginPage = (props) => <AuthContextConsumer>{(auth) => <LoginPage onLogin={auth.handleLogin} {...props}/>}</AuthContextConsumer> 
-export default ConnectedLoginPage;
+export default RegisterPage;
