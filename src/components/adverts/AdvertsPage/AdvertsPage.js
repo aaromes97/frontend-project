@@ -13,10 +13,7 @@ function AdvertsPage(props) {
         });
     }, []);
 
-<<<<<<< HEAD
-=======
     console.log(ads)
->>>>>>> 382c512d18330d5ab1269aa2afab8e136b151d70
 
     return (
         <>

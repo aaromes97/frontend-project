@@ -6,7 +6,6 @@ const Advert = ({ nombre, venta, precio, descripcion, foto, autor }) => {
   return (
     <div className="col mb-5">
       <div className="card h-100">
-<<<<<<< HEAD
         <div className="badge bg-user text-white position-absolute small">
           {autor}
         </div>
@@ -14,15 +13,6 @@ const Advert = ({ nombre, venta, precio, descripcion, foto, autor }) => {
           <div className="fav-container">
             <input type="checkbox" id="estrella1" class="fav" />
             <label htmlFor="estrella1"></label>
-=======
-        <div class="badge bg-user text-white position-absolute small">
-          {autor}
-        </div>
-        <div class="badge position-absolute fav-position">
-          <div class="fav-container">
-            <input type="checkbox" id="estrella1" class="fav" />
-            <label for="estrella1"></label>
->>>>>>> 382c512d18330d5ab1269aa2afab8e136b151d70
           </div>
         </div>
         {/* <div className="card-img-clonepop"> */}
@@ -44,11 +34,7 @@ const Advert = ({ nombre, venta, precio, descripcion, foto, autor }) => {
           </div>
         </div>
 
-<<<<<<< HEAD
         <div className="card-footer text-center p-4 pt-0 border-top-0 bg-transparent">
-=======
-        <div class="card-footer text-center p-4 pt-0 border-top-0 bg-transparent">
->>>>>>> 382c512d18330d5ab1269aa2afab8e136b151d70
           <p className="btn btn-outline-dark">{precio}€</p>
         </div>
       </div>
