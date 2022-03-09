@@ -17,10 +17,6 @@ function LoginPage({ onLogin, history }) {
 	//para implementar Spinner de Loading 
 	const [isLoading, setIsLoading] = useState(false)
 
-
-
-	const [saveValue, setSaveValue] = useState(false)
-
 	//reseteamos error 
 	const resetError = () => setError(null)
 	
@@ -30,9 +26,7 @@ function LoginPage({ onLogin, history }) {
 			[event.target.name]: event.target.value,
 		}));
 	};
-	 const guardarToken = () => {
-        setSaveValue((prevState) => (prevState ? false : true));
-    };
+
     
 
 	const handleSubmit =  async event => {
@@ -41,7 +35,7 @@ function LoginPage({ onLogin, history }) {
 		resetError();
 		//llamamos al  api - enviamos value
 		try {
-			await login(value, saveValue);
+			await login(value);
 			setIsLoading(false)
 			onLogin();
 			history.push('/adverts')
@@ -90,17 +84,6 @@ function LoginPage({ onLogin, history }) {
 	
 	</div>						
 							
-	<div className='col-12'>
-        <div className='form-check'>
-            <input className="form-check-input"
-                type="checkbox"
-                value={saveValue}
-                onChange={guardarToken}
-                />
-        <label className='form-check-label'>Remember me</label>
-
-		</div>
-	</div>
 		<div>
 			<Link to="/forgot-password">Forgot your Password?</Link>							
 		</div>					

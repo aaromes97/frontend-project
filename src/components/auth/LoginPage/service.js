@@ -7,9 +7,8 @@ export const login = (credentials, saveValue) => {
         console.log('name', name)
         setAuthorizationHeader(token);
         //guardamos el token en LocalStorage si esta el checkbox marcado
-        if (saveValue) {
-            storage.set('auth', token);
-        }
+        storage.set('auth', token);
+        
   
     });
  
