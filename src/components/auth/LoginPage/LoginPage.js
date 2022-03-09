@@ -22,10 +22,6 @@ function LoginPage({ onLogin, history }) {
 	//para implementar Spinner de Loading 
 	const [isLoading, setIsLoading] = useState(false)
 
-
-
-	const [saveValue, setSaveValue] = useState(false)
-
 	//reseteamos error 
 	const resetError = () => setError(null)
 	
@@ -35,9 +31,7 @@ function LoginPage({ onLogin, history }) {
 			[event.target.name]: event.target.value,
 		}));
 	};
-	 const guardarToken = () => {
-        setSaveValue((prevState) => (prevState ? false : true));
-    };
+
     
 
 	const handleSubmit =  async event => {
@@ -46,7 +40,7 @@ function LoginPage({ onLogin, history }) {
 		resetError();
 		//llamamos al  api - enviamos value
 		try {
-			await login(value, saveValue);
+			await login(value);
 			setIsLoading(false)
 			onLogin();
 			history.push('/adverts')
@@ -58,6 +52,7 @@ function LoginPage({ onLogin, history }) {
 		}
 	}
 
+<<<<<<< HEAD
 >>>>>>> development
 
   //reseteamos error
@@ -76,6 +71,45 @@ function LoginPage({ onLogin, history }) {
 =======
 		</div>
 	</div>
+=======
+
+	return	<section className="ftco-section">
+		<div className="container">
+		<div className="row justify-content-center">
+		<div className="col-md-6 text-center mx-4">
+		<h2 className="heading-section">ClonePop</h2>
+		</div>
+		</div>
+		<div className="row justify-content-center">
+		<div className="col-md-6 col-lg-5">
+		<div className="login-wrap p-4 p-md-5">
+		<div className="icon d-flex align-items-center justify-content-center">
+		<img className="logoLogin" src={logo} alt="logo"></img>
+		</div>
+		<h3 className="text-center mb-4">Inicia Sesión</h3>
+		<form className="login-form" onSubmit={handleSubmit}>
+		<div className="form-group">	
+		<input className="form-control rounded-left"
+	placeholder="Usuario"
+	type="text" 
+	name="name"
+	value={value.name}
+	onChange={handleChange} />
+		</div>
+		<div className="form-group d-flex">
+		<input className="form-control rounded-left"
+	placeholder="Contraseña"
+	type="password"
+	name="password"
+	value={value.password}
+	onChange={ handleChange}/>
+		</div>
+	<div className="sign up">
+	<Link to="/register">Sign Up</Link>
+	
+	</div>						
+							
+>>>>>>> development
 		<div>
 			<Link to="/forgot-password">Forgot your Password?</Link>							
 		</div>					
