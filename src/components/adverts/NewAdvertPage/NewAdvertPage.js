@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Redirect, useHistory } from "react-router";
 import Button from "../../common/Button";
-import Layout from "../../layout/Layout";
+import Layout from "../../layout/layout";
 import { createAd } from "../service";
 
 function NewAdvertPage() {
@@ -14,7 +14,7 @@ function NewAdvertPage() {
     venta: "",
     precio: null,
     tags: [],
-    foto: null
+    foto: null,
   });
   const [createdAdvertId, setCreatedAdvertId] = useState("");
   const handleChange = (event) => {
@@ -26,18 +26,18 @@ function NewAdvertPage() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      let newAdvert = new FormData()
-      newAdvert.append("nombre", value.nombre)
-      newAdvert.append("descripcion", value.descripcion)
-      newAdvert.append("venta", value.venta)
-      newAdvert.append("precio", value.precio)
-      newAdvert.append("tags", value.tags)
-      newAdvert.append("foto", value.foto)
+      let newAdvert = new FormData();
+      newAdvert.append("nombre", value.nombre);
+      newAdvert.append("descripcion", value.descripcion);
+      newAdvert.append("venta", value.venta);
+      newAdvert.append("precio", value.precio);
+      newAdvert.append("tags", value.tags);
+      newAdvert.append("foto", value.foto);
 
       const createdAdvert = await createAd(newAdvert);
       setCreatedAdvertId(createdAdvert.data.result.id);
-      console.log(createdAdvertId)
-      history.push("/")
+      console.log(createdAdvertId);
+      history.push("/");
     } catch (error) {
       console.log(error);
       if (error.status === 401) {
@@ -76,7 +76,12 @@ function NewAdvertPage() {
               onChange={handleChange}
             ></textarea>{" "}
             <br></br>
-            <select name="venta" value={value.venta} required onChange={handleChange}>
+            <select
+              name="venta"
+              value={value.venta}
+              required
+              onChange={handleChange}
+            >
               <option value="">--</option>
               <option value="true">Venta</option>
               <option value="false"> Compra </option>
@@ -108,11 +113,14 @@ function NewAdvertPage() {
                 name="foto"
                 type="file"
                 required
-                onChange={(e) => setValue(prevState => ({
-                  ...prevState,
-                  [e.target.name]: e.target.files[0]
-                }))}
-              /><br></br>
+                onChange={(e) =>
+                  setValue((prevState) => ({
+                    ...prevState,
+                    [e.target.name]: e.target.files[0],
+                  }))
+                }
+              />
+              <br></br>
             </div>
             <br></br>
             <div className="newAdPage-footer">
