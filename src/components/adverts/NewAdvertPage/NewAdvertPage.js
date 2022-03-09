@@ -52,8 +52,10 @@ function NewAdvertPage() {
   return (
     <Layout title="Creación de un nuevo anuncio">
       <div className="newAdvertPage bordered">
-        <div className="right">
+        <div className="formNew">
           <form onSubmit={handleSubmit}>
+            <h1 className="formTitle">&bull; Alta de producto &bull;</h1>
+            <br></br>
             <input
               type="text"
               name="nombre"
@@ -66,8 +68,8 @@ function NewAdvertPage() {
               autofocus
             ></input>
             <br></br>
-            <label for="descripcion">Descripcion:</label>
             <textarea
+              placeholder="Descripcion del producto"
               id="descripcion"
               name="descripcion"
               rows="3"
@@ -75,6 +77,8 @@ function NewAdvertPage() {
               required
               onChange={handleChange}
             ></textarea>{" "}
+            <br></br>
+            <label for="venta">Estado:</label>
             <br></br>
             <select
               name="venta"
@@ -86,6 +90,7 @@ function NewAdvertPage() {
               <option value="true">Venta</option>
               <option value="false"> Compra </option>
             </select>
+            <br></br>
             <br></br>
             <input
               type="number"
@@ -99,8 +104,9 @@ function NewAdvertPage() {
               required
             ></input>
             <br></br>
-            <label for="tags">Tags:</label>
+            <br></br>
             <textarea
+              placeholder="Tags"
               id="tags"
               name="tags"
               rows="1"
@@ -138,4 +144,5 @@ function NewAdvertPage() {
     </Layout>
   );
 }
+
 export default NewAdvertPage;
