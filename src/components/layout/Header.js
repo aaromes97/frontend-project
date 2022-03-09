@@ -1,94 +1,113 @@
+import { ReactComponent as Icon } from "../../assets/clone.svg";
+import "../../bootstrap/style.css";
 import React, { Component, useContext } from "react";
-import "./styles.css";
 import AuthContext from "../auth/context";
 import { Link, NavLink } from "react-router-dom";
 
-function Header({className}) {
-    
-  const {isLogged, handleLogout} = useContext(AuthContext);
+function Header({ className }) {
 
-    return (
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <div className="container px-4 px-lg-5">
-          <a href="/adverts">
-            <img className="navbar-brand" src="clone.png" />
-          </a>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-              <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#!">
-                  Home
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#!">
-                  About
-                </a>
-              </li>
-              <li className="nav-item dropdown">
-                <a
-                  className="nav-link dropdown-toggle"
-                  id="navbarDropdown"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Shop
-                </a>
-                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li>
-                    <a className="dropdown-item" href="#!">
-                      All Products
-                    </a>
-                  </li>
-                  <li>
-                    <hr className="dropdown-divider" />
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#!">
-                      Popular Items
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#!">
-                      New Arrivals
-                    </a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-            <form className="d-flex">
-              {
-                isLogged ?
-              <button className="btn btn-outline-dark" onClick={handleLogout}>
-                <i className=" me-1"></i>
-                    Log Out
-              </button>
-                  :
-              <Link to="/login">
-              <button className="btn btn-outline-dark" >
-                <i className=" me-1"></i>
-                    Log In
-              </button>
-                    
-              </Link>    
-              }
-            </form>
+  const { isLogged, handleLogout } = useContext(AuthContext);
+
+  return (
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <div className="container px-4 px-lg-5">
+        <a href="/adverts">
+          <div className="navbar-brand">
+            <Icon width="32" height="42" />
           </div>
-        </div>
-      </nav>
-    );
-  }
+        </a>
+        <form class="form-inline">
+          <input
+            class="form-control mr-1"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button class="btn btn-outline-success my-2 mr-1" type="submit">
+            Buscar
+          </button>
+        </form>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul className="navbar-nav ml-auto mb-2 mb-lg-0 ms-lg-4">
+            <li className="nav-item">
+              <a
+                className="nav-link active"
+                aria-current="page"
+                href="/adverts/new"
+              >
+                Subir producto
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="#!">
+                Mensajes
+              </a>
+            </li>
+            <li className="nav-item dropdown">
+              <a
+                className="nav-link dropdown-toggle"
+                id="navbarDropdown"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                @user
+              </a>
+              <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li>
+                  <a className="dropdown-item" href="#!">
+                    Mis Anuncios
+                  </a>
+                </li>
+                <li>
+                  <a className="dropdown-item" href="#!">
+                    Mis Favoritos
+                  </a>
+                </li>
+                <li>
+                  <hr className="dropdown-divider" />
+                </li>
+                <li>
+                  <a className="dropdown-item" href="#!">
+                    Mi Cuenta
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <form className="d-flex">
+            {
+              isLogged ?
+                <button className="btn btn-outline-dark" onClick={handleLogout}>
+                  <i className=" me-1"></i>
+                  Log Out
+                </button>
+                :
+                <Link to="/login">
+                  <button className="btn btn-outline-dark" >
+                    <i className=" me-1"></i>
+                    Log In
+                  </button>
+
+                </Link>
+            }
+          </form>
+        </div >
+      </div >
+    </nav >
+  );
+}
 export default Header;

@@ -1,23 +1,15 @@
-import React, { Component } from 'react';
 import Footer from './Footer';
 import Header from './Header';
-import "./styles.css"
+import "../../bootstrap/style.css"
 
-<<<<<<< HEAD
-function Layout({ children }) {
-    return (
-        <>
-            <Header></Header>
-=======
 function Layout({ children, ...props }) {
     return (
         <>
-            <Header {...props}/>
->>>>>>> authenticate
+            <Header {...props} />
             <section className="py-5">
-
-                {children}
-
+                <div className="container px-4 px-lg-5 mt-5">
+                    {children}
+                </div>
             </section>
             <Footer></Footer>
         </>

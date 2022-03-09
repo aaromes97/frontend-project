@@ -5,6 +5,8 @@ import logo from './img/login.png';
 import { login } from "../LoginPage/service";
 import { AuthContextConsumer } from "../context";
 import { Link } from "react-router-dom";
+import Loading from "../../Loading";
+
 
 
 
@@ -14,7 +16,9 @@ function LoginPage({ onLogin, history }) {
 	const [error, setError] = useState(null)
 	//para implementar Spinner de Loading 
 	const [isLoading, setIsLoading] = useState(false)
-	
+
+
+
 	const [saveValue, setSaveValue] = useState(false)
 
 	//reseteamos error 
@@ -101,9 +105,13 @@ function LoginPage({ onLogin, history }) {
 			<Link to="/forgot-password">Forgot your Password?</Link>							
 		</div>					
 		<div className="form-group d-md-flex">
+			
 		<button className="btn btn-primary rounded submit p-3 px-5"
 	type="submit"
-	disabled={isLoading || !value.name || !value.password}>Log In</button>
+	disabled={!value.name || !value.password}>Login</button>
+	{isLoading && <button className="btn btn-primary rounded submit p-3 px-5" diabled>
+	<Loading>Loading</Loading>					
+	</button>}							
 		</div>
 						</form>
 		</div>
