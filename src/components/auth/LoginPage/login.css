@@ -17,7 +17,9 @@
 }
 
 /* Estilos errores */
-
+.linktoads {
+  text-decoration: none;
+}
 .info-msg,
 .success-msg,
 .warning-msg,
