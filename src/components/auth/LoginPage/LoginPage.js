@@ -80,12 +80,12 @@ function LoginPage({ onLogin, history }) {
 	onChange={ handleChange}/>
 		</div>
 	<div className="sign up">
-	<Link to="/register">Sign Up</Link>
+	<Link to="/register">Crear Usuario</Link>
 	
 	</div>						
 							
 		<div>
-			<Link to="/forgot-password">Forgot your Password?</Link>							
+			<Link to="/forgot-password">Has perdido tu contraseña?</Link>							
 		</div>					
 		<div className="form-group d-md-flex">
 			
