@@ -127,7 +127,6 @@ body {
   line-height: 1.5;
   color: #212529;
   text-align: left;
-  background-color: #fff;
 }
 
 [tabindex="-1"]:focus {
@@ -308,10 +307,19 @@ button:focus {
   outline: 1px dotted;
   outline: 5px auto -webkit-focus-ring-color;
 }
+.CreatableSelect {
+  background: none;
+}
+.newAdPage-footer {
+  justify-content: center;
+  align-content: center;
+}
 .loginForm-field,
 select,
 textarea {
+  padding: 0.5rem;
   background: none;
+  background-color: rgba(255, 255, 255, 0.952);
   border: none;
   border-bottom: solid 2px #474544;
   color: #474544;

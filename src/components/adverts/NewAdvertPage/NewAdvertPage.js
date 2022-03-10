@@ -11,7 +11,6 @@ const components = {
 };
 
 function NewAdvertPage() {
-
   const history = useHistory();
   const [error, setError] = useState(null);
   const autor = storage.get("name");
@@ -29,7 +28,7 @@ function NewAdvertPage() {
 
   const handleSelect = (newValue, actionMeta) => {
     console.group("Value Changed");
-    const tags = newValue.map(tag => tag.value)
+    const tags = newValue.map((tag) => tag.value);
     console.log(tags);
     // console.log(`action: ${actionMeta.action}`);
     console.groupEnd();
@@ -127,8 +126,13 @@ function NewAdvertPage() {
               required
             ></input>
             <br></br>
-            <br></br>
-            <CreatableSelect isMulti onChange={handleSelect} components={components} />
+            <CreatableSelect
+              className="CreatableSelect"
+              isMulti
+              onChange={handleSelect}
+              components={components}
+              placeholder="Escribe los Tags..."
+            />
             <br></br>
             <div className="advertPhoto">
               <input
