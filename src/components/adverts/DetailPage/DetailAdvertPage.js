@@ -16,13 +16,14 @@ function DetailAdvertPage() {
     const [isLoading, setIsLoading] = useState(false);
     const [display, setDisplay] = useState(false);
 
-    const history = useHistory();
-    const location = useLocation();
-    const { from } = location.state;
+    // const history = useHistory();
+    // const location = useLocation();
+    const part = advertId.split("-");
+    const _id = part[1];
 
     useEffect(() => {
-        getAd(from).then(advert => setAdvert(advert)).catch(error => setError(error));
-    }, [from]);
+        getAd(_id).then(advert => setAdvert(advert)).catch(error => setError(error));
+    }, [_id]);
 
     const handleConfirmDelete = async (event) => {
         event.preventDefault();
