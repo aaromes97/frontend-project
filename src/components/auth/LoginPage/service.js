@@ -11,8 +11,9 @@ export const login = (credentials, saveValue) => {
       console.log("login", token);
       console.log("name", name);
       setAuthorizationHeader(token);
-      //guardamos el token en LocalStorage si esta el checkbox marcado
+      //guardamos el token en LocalStorage
       storage.set("auth", token);
+      storage.set("name", name);
     });
 };
 
