@@ -73,7 +73,7 @@ function NewAdvertPage() {
   // }
   return (
     <Layout title="Creación de un nuevo anuncio">
-      <div className="newAdvertPage bordered">
+      <div className="newAdvertPage bordered ">
         <div className="formNew">
           <form onSubmit={handleSubmit}>
             <h1 className="formTitle">&bull; Alta de producto &bull;</h1>

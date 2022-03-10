@@ -307,6 +307,7 @@ button:focus {
   outline: 1px dotted;
   outline: 5px auto -webkit-focus-ring-color;
 }
+
 .loginForm-field,
 select,
 textarea {
@@ -10049,6 +10050,11 @@ button.bg-dark:focus {
 .ml-5,
 .mx-5 {
   margin-left: 3rem !important;
+}
+
+.newAdvertPage {
+  background-color: white;
+  border-radius: 20px;
 }
 
 .newAdPage-footer {
