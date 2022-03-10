@@ -13,8 +13,6 @@ function AdvertsPage(props) {
     });
   }, []);
 
-  console.log(ads);
-
   return (
     <>
       <Layout {...props}>

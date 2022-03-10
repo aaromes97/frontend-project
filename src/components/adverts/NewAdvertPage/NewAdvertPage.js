@@ -3,11 +3,11 @@ import { Redirect, useHistory } from "react-router";
 import Button from "../../common/Button";
 import Layout from "../../layout/layout";
 import { createAd } from "../service";
-
+import storage from "../../../utils/storage";
 function NewAdvertPage() {
   const history = useHistory();
   const [error, setError] = useState(null);
-
+  const autor = storage.get("name");
   const [value, setValue] = useState({
     nombre: "",
     descripcion: "",
@@ -15,6 +15,7 @@ function NewAdvertPage() {
     precio: null,
     tags: [],
     foto: null,
+    autor: autor,
   });
   const [createdAdvertId, setCreatedAdvertId] = useState("");
   const handleChange = (event) => {
@@ -33,10 +34,11 @@ function NewAdvertPage() {
       newAdvert.append("precio", value.precio);
       newAdvert.append("tags", value.tags);
       newAdvert.append("foto", value.foto);
-
+      newAdvert.append("autor", value.autor);
       const createdAdvert = await createAd(newAdvert);
       setCreatedAdvertId(createdAdvert.data.result.id);
       console.log(createdAdvertId);
+
       history.push("/");
     } catch (error) {
       console.log(error);

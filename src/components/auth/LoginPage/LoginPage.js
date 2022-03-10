@@ -16,6 +16,13 @@ function LoginPage({ onLogin, history }) {
   //reseteamos error
   const resetError = () => setError(null);
 
+  const handleChange = (event) => {
+    setValue((prevState) => ({
+      ...prevState,
+      [event.target.name]: event.target.value,
+    }));
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     setIsLoading(true);
