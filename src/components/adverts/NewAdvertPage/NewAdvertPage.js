@@ -17,6 +17,7 @@ function NewAdvertPage() {
     foto: null,
     autor: autor,
   });
+
   const [createdAdvertId, setCreatedAdvertId] = useState("");
   const handleChange = (event) => {
     setValue((prevState) => ({
@@ -24,15 +25,7 @@ function NewAdvertPage() {
       [event.target.name]: event.target.value,
     }));
   };
-  function convertir() {
-    var datos = document.getElementById("tags").value.split(",");
-    setValue((prevState) => ({
-      ...prevState,
-      tags: datos,
-    }));
-    console.log(value);
-    return datos;
-  }
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -121,7 +114,7 @@ function NewAdvertPage() {
               name="tags"
               rows="1"
               cols="25"
-              onChange={convertir}
+              onChange={handleChange}
             ></textarea>{" "}
             <br></br>
             <div className="advertPhoto">
