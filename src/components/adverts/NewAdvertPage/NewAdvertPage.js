@@ -145,7 +145,7 @@ function NewAdvertPage() {
               <br></br>
             </div>
             <br></br>
-            <div className="newAdPage-footer">
+            <div className="newAdPage-footer mt-2">
               <Button
                 type="submit"
                 className="newAdPage-submit"
@@ -157,6 +157,7 @@ function NewAdvertPage() {
           </form>
         </div>
       </div>
+
     </Layout>
   );
 }
