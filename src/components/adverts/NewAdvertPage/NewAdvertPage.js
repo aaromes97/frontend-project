@@ -36,7 +36,7 @@ function NewAdvertPage() {
       newAdvert.append("foto", value.foto);
       newAdvert.append("autor", value.autor);
       const createdAdvert = await createAd(newAdvert);
-      setCreatedAdvertId(createdAdvert.data.result.id);
+      setCreatedAdvertId(createdAdvert.result._id);
       console.log(createdAdvertId);
 
       history.push("/");
