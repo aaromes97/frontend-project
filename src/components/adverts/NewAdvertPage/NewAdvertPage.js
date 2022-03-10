@@ -24,6 +24,15 @@ function NewAdvertPage() {
       [event.target.name]: event.target.value,
     }));
   };
+  function convertir() {
+    var datos = document.getElementById("tags").value.split(",");
+    setValue((prevState) => ({
+      ...prevState,
+      tags: datos,
+    }));
+    console.log(value);
+    return datos;
+  }
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -37,7 +46,6 @@ function NewAdvertPage() {
       newAdvert.append("autor", value.autor);
       const createdAdvert = await createAd(newAdvert);
       setCreatedAdvertId(createdAdvert.result._id);
-      console.log(createdAdvertId);
 
       history.push("/");
     } catch (error) {
@@ -113,7 +121,7 @@ function NewAdvertPage() {
               name="tags"
               rows="1"
               cols="25"
-              onChange={handleChange}
+              onChange={convertir}
             ></textarea>{" "}
             <br></br>
             <div className="advertPhoto">
