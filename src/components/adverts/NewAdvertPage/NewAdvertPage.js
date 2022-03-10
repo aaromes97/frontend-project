@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Redirect, useHistory } from "react-router";
 import Button from "../../common/Button";
-import Layout from "../../layout/Layout";
+import Layout from "../../layout/layout";
 import { createAd } from "../service";
 
 function NewAdvertPage() {
@@ -66,7 +66,7 @@ function NewAdvertPage() {
               autofocus
             ></input>
             <br></br>
-            <label for="descripcion">Descripcion:</label>
+            <label htmlFor="descripcion">Descripcion:</label>
             <textarea
               id="descripcion"
               name="descripcion"
@@ -94,7 +94,7 @@ function NewAdvertPage() {
               required
             ></input>
             <br></br>
-            <label for="tags">Tags:</label>
+            <label htmlFor="tags">Tags:</label>
             <textarea
               id="tags"
               name="tags"
