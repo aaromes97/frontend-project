@@ -24,13 +24,12 @@ const Button = styled.button`
   pointer-events: ${(props) => (props.disabled ? "none" : "auto")};
   text-decoration: none;
   transition: background-color 0.2s;
-  width: 70%;
 
   &:hover {
     background-color: ${(props) =>
-    props.variant === "primary"
-      ? "rgb(26, 145, 218)"
-      : "rgba(29, 161, 242, 0.1)"};
+      props.variant === "primary"
+        ? "rgb(26, 145, 218)"
+        : "rgba(29, 161, 242, 0.1)"};
   }
 `;
 
