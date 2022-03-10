@@ -3,11 +3,12 @@ import "../../bootstrap/style.css";
 import React, { Component, useContext } from "react";
 import AuthContext from "../auth/context";
 import { Link, NavLink } from "react-router-dom";
+import storage from "../../utils/storage";
 
 function Header({ className }) {
 
   const { isLogged, handleLogout } = useContext(AuthContext);
-
+  const name = storage.get('name')
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container px-4 px-lg-5">
@@ -64,7 +65,7 @@ function Header({ className }) {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                @user
+                @{name}
               </a>
               <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li>
