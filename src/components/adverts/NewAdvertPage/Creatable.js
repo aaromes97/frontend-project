@@ -1,5 +1,7 @@
-import React, { Component } from "react";
+// import React, { Component } from "react";
 import CreatableSelect from "react-select/creatable";
+import { useState } from "react";
+
 
 // const options = [
 //     { value: "red", label: "rojo", color: "#FF5630" },
@@ -12,16 +14,19 @@ const components = {
     DropdownIndicator: null,
 };
 
-export default class Creatable extends Component {
-    handleChange = (newValue, actionMeta) => {
+function Creatable() {
+
+    const [tags, setTags] = useState([]);
+
+    const handleChange = (newValue, actionMeta) => {
         console.group("Value Changed");
         console.log(newValue);
         console.log(`action: ${actionMeta.action}`);
         console.groupEnd();
     };
-    render() {
-        return (
-            <CreatableSelect isMulti onChange={this.handleChange} components={components} />
-        );
-    }
+    return (
+        <CreatableSelect isMulti onChange={handleChange} components={components} />
+    );
 }
+
+export default Creatable;

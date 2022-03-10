@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
 import { Redirect, useHistory } from "react-router";
+import CreatableSelect from "react-select/creatable";
 import Button from "../../common/Button";
 import Layout from "../../layout/layout";
-import Creatable from "./Creatable";
 import { createAd } from "../service";
 import storage from "../../../utils/storage";
+
+const components = {
+  DropdownIndicator: null,
+};
 
 function NewAdvertPage() {
 
@@ -22,6 +26,19 @@ function NewAdvertPage() {
   });
 
   const [createdAdvertId, setCreatedAdvertId] = useState("");
+
+  const handleSelect = (newValue, actionMeta) => {
+    console.group("Value Changed");
+    const tags = newValue.map(tag => tag.value)
+    console.log(tags);
+    // console.log(`action: ${actionMeta.action}`);
+    console.groupEnd();
+    setValue((prevState) => ({
+      ...prevState,
+      tags: tags,
+    }));
+  };
+
   const handleChange = (event) => {
     setValue((prevState) => ({
       ...prevState,
@@ -111,14 +128,7 @@ function NewAdvertPage() {
             ></input>
             <br></br>
             <br></br>
-            <textarea
-              placeholder="Tags"
-              id="tags"
-              name="tags"
-              rows="1"
-              cols="25"
-              onChange={handleChange}
-            ></textarea>{" "}
+            <CreatableSelect isMulti onChange={handleSelect} components={components} />
             <br></br>
             <div className="advertPhoto">
               <input
@@ -134,7 +144,6 @@ function NewAdvertPage() {
               />
               <br></br>
             </div>
-            <Creatable></Creatable>
             <br></br>
             <div className="newAdPage-footer">
               <Button
