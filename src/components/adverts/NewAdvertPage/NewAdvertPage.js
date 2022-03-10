@@ -2,9 +2,12 @@ import { useEffect, useState } from "react";
 import { Redirect, useHistory } from "react-router";
 import Button from "../../common/Button";
 import Layout from "../../layout/layout";
+import Creatable from "./Creatable";
 import { createAd } from "../service";
 import storage from "../../../utils/storage";
+
 function NewAdvertPage() {
+
   const history = useHistory();
   const [error, setError] = useState(null);
   const autor = storage.get("name");
@@ -131,6 +134,7 @@ function NewAdvertPage() {
               />
               <br></br>
             </div>
+            <Creatable></Creatable>
             <br></br>
             <div className="newAdPage-footer">
               <Button
