@@ -43,7 +43,7 @@ const Advert = ({ venta, precio, descripcion, foto, autor, name }) => {
 };
 
 export const advertType = {
-  nombre: T.string.isRequired,
+  name: T.string.isRequired,
   venta: T.bool.isRequired,
   precio: T.number.isRequired,
   descripcion: T.string.isRequired,
