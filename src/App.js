@@ -24,36 +24,33 @@ function App({ isInitiallyLogged, history }) {
   };
 
   return (
-    <Router>
-      <AuthContextProvider value={{ isLogged, handleLogout, handleLogin }}>
-        <div className="App">
-          <Switch>
-            <Route path="/login">
-              {({ history }) => <LoginPage history={history} />}
-            </Route>
-            <Route path="/register">
-              {({ history }) => <RegisterPage history={history} />}
-            </Route>
-
-            <Route exact path="/adverts" component={AdvertsPage} />
-            <Route exact path="/">
-              <Redirect to="/adverts" component={AdvertsPage} />
-            </Route>
-            <PrivateRoute exact path="/adverts/new">
-              <NewAdvertPage />
-            </PrivateRoute>
-            <Route path="/404">
-              <div>404 | Not Found Page</div>
-            </Route>
-            <Route>
-              <Redirect to="/404" />
-            </Route>
-          </Switch>
-
-          {/* {isLogged ? <AdvertsPage /> : <LoginPage/>}  */}
-        </div>
-      </AuthContextProvider>
-    </Router>
+    <div className="App">
+      <Router>
+        <Switch>
+          <PrivateRoute exact path="/login">
+            <LoginPage />
+          </PrivateRoute>
+          <Route exact path="/adverts/new">
+            <NewAdvertPage />
+          </Route>
+          <Route path="/adverts/:advertURL">
+            {(routeProps) => <DetailAdvertPage {...routeProps} />}
+          </Route>
+          <Route exact path="/adverts">
+            <AdvertsPage />
+          </Route>
+          <Route exact path="/">
+            <Redirect to="/adverts" />
+          </Route>
+          <Route path="/404">
+            <div>404 | Not Found Page</div>
+          </Route>
+          <Route>
+            <Redirect to="/404" />
+          </Route>
+        </Switch>
+      </Router>
+    </div>
   );
 }
 
