@@ -22,8 +22,9 @@ function DetailAdvertPage() {
     const _id = part[1];
 
     useEffect(() => {
-        getAd(_id).then(advert => setAdvert(advert)).catch(error => setError(error));
+        getAd(_id).then(ads => setAdvert(ads.data.results)).catch(error => setError(error));
     }, [_id]);
+
 
     const handleConfirmDelete = async (event) => {
         event.preventDefault();
@@ -56,7 +57,11 @@ function DetailAdvertPage() {
         <div>
             {advert &&
                 <Layout >
-
+                    {advert.map(({ nombre, precio }) => (
+                        <p key={_id} >
+                            {nombre}
+                        </p>
+                    ))}
                     <Button className="delete-button" onClick={handleConfirmDelete}
                         disabled={buttonDisabled}
                         variant="delete"
