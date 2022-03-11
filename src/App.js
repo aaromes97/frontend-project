@@ -22,7 +22,7 @@ function App() {
           <Route exact path="/adverts/new">
             <NewAdvertPage />
           </Route>
-          <Route path="/adverts/:advertURL">
+          <Route path="/adverts/:advertId">
             {routeProps => (
               <DetailAdvertPage {...routeProps} />
             )}
