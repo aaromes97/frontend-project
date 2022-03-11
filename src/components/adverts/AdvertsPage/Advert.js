@@ -2,7 +2,7 @@ import React from "react";
 import T from "prop-types";
 import "../../../bootstrap/style.css";
 
-const Advert = ({ nombre, venta, precio, descripcion, foto, autor }) => {
+const Advert = ({ venta, precio, descripcion, foto, autor, name }) => {
   return (
     <div className="col mb-5">
       <div className="card h-100">
@@ -24,17 +24,17 @@ const Advert = ({ nombre, venta, precio, descripcion, foto, autor }) => {
         {/* </div> */}
         <div className="card-body p-4">
           <div className="text-center">
-            <h5 className="fw-bolder">{nombre}</h5>
+            <h5 className="fw-bolder">{name}</h5>
             <div className="d-flex justify-content-center text-dark ">
               <span>{venta === true ? <p> Venta </p> : <p> Busco </p>}</span>
             </div>
-            <div className="d-flex justify-content-center small ">
+            <div className="d-flex justify-content-center small pt-1">
               {descripcion}
             </div>
           </div>
         </div>
 
-        <div className="card-footer text-center p-4 pt-0 border-top-0 bg-transparent">
+        <div className="card-footer text-center pb-4 pl-4 pr-4 pt-2 border-top-0 bg-transparent">
           <p className="btn btn-outline-dark">{precio}€</p>
         </div>
       </div>
@@ -47,7 +47,7 @@ export const advertType = {
   venta: T.bool.isRequired,
   precio: T.number.isRequired,
   descripcion: T.string.isRequired,
-  autor: T.string.isRequired,
+  // autor: T.string.isRequired,
   foto: T.string.isRequired,
 };
 

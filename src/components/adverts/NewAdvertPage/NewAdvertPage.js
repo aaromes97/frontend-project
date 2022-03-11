@@ -90,6 +90,7 @@ function NewAdvertPage() {
               autofocus
             ></input>
             <br></br>
+            <label htmlFor="descripcion">Descripcion:</label>
             <textarea
               placeholder="Descripcion del producto"
               id="descripcion"
@@ -161,7 +162,6 @@ function NewAdvertPage() {
           </form>
         </div>
       </div>
-
     </Layout>
   );
 }

@@ -6,9 +6,8 @@ import { Link, NavLink } from "react-router-dom";
 import storage from "../../utils/storage";
 
 function Header({ className }) {
-
   const { isLogged, handleLogout } = useContext(AuthContext);
-  const name = storage.get('name')
+  const name = storage.get("name");
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container px-4 px-lg-5">
@@ -90,25 +89,23 @@ function Header({ className }) {
             </li>
           </ul>
           <form className="d-flex">
-            {
-              isLogged ?
-                <button className="btn btn-outline-dark" onClick={handleLogout}>
+            {isLogged ? (
+              <button className="btn btn-outline-dark" onClick={handleLogout}>
+                <i className=" me-1"></i>
+                Log Out
+              </button>
+            ) : (
+              <Link to="/login">
+                <button className="btn btn-outline-dark">
                   <i className=" me-1"></i>
-                  Log Out
+                  Log In
                 </button>
-                :
-                <Link to="/login">
-                  <button className="btn btn-outline-dark" >
-                    <i className=" me-1"></i>
-                    Log In
-                  </button>
-
-                </Link>
-            }
+              </Link>
+            )}
           </form>
-        </div >
-      </div >
-    </nav >
+        </div>
+      </div>
+    </nav>
   );
 }
 export default Header;
