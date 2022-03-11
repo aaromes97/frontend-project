@@ -5,7 +5,7 @@ const accentColor = "rgb(53, 179, 151)";
 const Button = styled.button`
   align-items: center;
   background-color: ${(props) =>
-        props.variant === "primary" ? accentColor : "white"};
+    props.variant === "primary" ? accentColor : "white"};
   border-radius: 9999px;
   border-style: solid;
   border-width: 1px;
@@ -27,9 +27,9 @@ const Button = styled.button`
 
   &:hover {
     background-color: ${(props) =>
-        props.variant === "primary"
-            ? "rgb(26, 145, 218)"
-            : "rgba(29, 161, 242, 0.1)"};
+      props.variant === "primary"
+        ? "rgb(26, 145, 218)"
+        : "rgba(29, 161, 242, 0.1)"};
   }
 `;
 

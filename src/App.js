@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -8,17 +8,29 @@ import {
 
 import AdvertsPage from "./components/adverts/AdvertsPage";
 import LoginPage from "./components/auth/LoginPage/LoginPage";
+import PrivateRoute from "./components/auth/PrivateRoute";
 import NewAdvertPage from "./components/adverts/NewAdvertPage";
-import DetailAdvertPage from "./components/adverts/DetailPage/DetailAdvertPage";
+import { logout } from "./components/auth/LoginPage/service";
+import DetailAdvertPage from "./components/adverts/DetailPage/DetailAdvertPage"
+import { AuthContextProvider } from "./components/auth/context";
+import RegisterPage from "./components/auth/NewUser/Register";
 
-function App() {
+function App({ isInitiallyLogged, history }) {
+  const [isLogged, setIsLogged] = useState(isInitiallyLogged);
+
+  const handleLogin = () => setIsLogged(true);
+
+  const handleLogout = () => {
+    logout().then(() => setIsLogged(false));
+  };
+
   return (
     <div className="App">
       <Router>
         <Switch>
-          <Route exact path="/login">
+          <PrivateRoute exact path="/login">
             <LoginPage />
-          </Route>
+          </PrivateRoute>
           <Route exact path="/adverts/new">
             <NewAdvertPage />
           </Route>
