@@ -14,3 +14,11 @@ export const getAd = advertId => {
   const url = `${adsBaseUrl}/${advertId}`;
   return client.get(url);
 };
+export const deleteAd = advertId => {
+  const url = `${adsBaseUrl}/${advertId}`;
+  return client.delete(url);
+};
+export const editAd = async (advertId, ad) => {
+  const url = `${adsBaseUrl}/${advertId}`;
+  return client.put(url, ad);
+};
