@@ -58,7 +58,7 @@ function DetailAdvertPage() {
           {advert.map(
             ({ nombre, precio, descripcion, venta, tags, foto, autor }) => (
               <div className="cardDetail">
-                <div classname="containerDetail">
+                <div classname="detailContainer">
                   <div className="headerDetail pb-1">
                     <p className="autor pt-2">{autor}</p>
                     <Button className="chat ">Chat para comprar</Button>

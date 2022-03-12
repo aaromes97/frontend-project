@@ -71,6 +71,12 @@
   display: flex;
   justify-content: center;
   height: 100%;
+  background-color: white;
+  border-radius: 20px;
+  padding: 1rem;
+}
+.precioDetail {
+  margin-top: 5px;
 }
 .precioDetail,
 .nombreDetail {
