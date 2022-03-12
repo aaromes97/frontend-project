@@ -9,12 +9,6 @@ const Advert = ({ venta, precio, descripcion, foto, autor, name }) => {
         <div className="badge bg-user text-white position-absolute small">
           {autor}
         </div>
-        <div className="badge position-absolute fav-position">
-          <div className="fav-container">
-            <input type="checkbox" id="estrella1" className="fav" />
-            <label htmlFor="estrella1"></label>
-          </div>
-        </div>
         {/* <div className="card-img-clonepop"> */}
         <img
           className="card-img-top"
