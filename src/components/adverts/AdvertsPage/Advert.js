@@ -9,26 +9,25 @@ const Advert = ({ venta, precio, descripcion, foto, autor, name }) => {
         <div className="badge bg-user text-white position-absolute small">
           {autor}
         </div>
-        {/* <div className="card-img-clonepop"> */}
         <img
           className="card-img-top"
           src={`http://localhost:3001${foto}`}
           alt="..."
         />
-        {/* </div> */}
         <div className="card-body p-4">
           <div className="text-center">
             <h5 className="fw-bolder">{name}</h5>
             <div className="d-flex justify-content-center text-dark ">
               <span>{venta === true ? <p> Venta </p> : <p> Busco </p>}</span>
             </div>
-            <div className="d-flex justify-content-center small pt-1">
+            <div style={{ overflow: "hidden", height: "4rem" }}
+              className="d-flex justify-content-center small pt-1">
               {descripcion}
             </div>
           </div>
         </div>
 
-        <div className="card-footer text-center pb-4 pl-4 pr-4 pt-2 border-top-0 bg-transparent">
+        <div className="card-footer text-center pb-4 pl-4 pr-4 pt-0 border-top-0 bg-transparent">
           <p className="btn btn-outline-dark">{precio}€</p>
         </div>
       </div>
