@@ -7,6 +7,11 @@ import Button from "../../common/Button";
 import Layout from "../../layout/layout";
 import { getAd } from "../service";
 import storage from "../../../utils/storage";
+import borrar from "../../../assets/eliminar.png";
+import vender from "../../../assets/apreton-de-manos.png";
+import reservar from "../../../assets/guardar-instagram.png";
+import editar from "../../../assets/editar.png";
+
 // import Confirmation from './Confirmation';
 // import './Confirmation.css';
 
@@ -66,15 +71,34 @@ function DetailAdvertPage() {
                   <div className="headerDetail pb-1">
                     <p className="autor pt-2">{autor}</p>
                     {autor === name ? (
-                      <a className="delete-button">
-                        <img src={"../../../assets/filled.png"}></img>
-                      </a>
+                      <div className="buttondetail-group">
+                        <a className="vender-button btn-grp">
+                          <div>
+                            <img src={vender}></img>
+                          </div>
+                        </a>
+                        <a className="guardar-button btn-grp">
+                          <div>
+                            <img src={reservar}></img>
+                          </div>
+                        </a>
+                        <a className="editar-button btn-grp">
+                          <div>
+                            <img src={editar}></img>
+                          </div>
+                        </a>
+                        <a className="borrar-button btn-grp">
+                          <div>
+                            <img src={borrar}></img>
+                          </div>
+                        </a>
+                      </div>
                     ) : (
                       <Button className="chat ">Chat para comprar</Button>
                     )}
                   </div>
                   <img
-                    classname="detailFoto"
+                    className="detailFoto"
                     src={`http://localhost:3001${foto}`}
                   ></img>
 
