@@ -22,6 +22,8 @@ function NewAdvertPage() {
     tags: [],
     foto: null,
     autor: autor,
+    reservado: false,
+    vendido: false,
   });
 
   const [createdAdvertId, setCreatedAdvertId] = useState("");
@@ -56,6 +58,8 @@ function NewAdvertPage() {
       newAdvert.append("tags", value.tags);
       newAdvert.append("foto", value.foto);
       newAdvert.append("autor", value.autor);
+      newAdvert.append("reservado", value.reservado);
+      newAdvert.append("vendido", value.vendido);
       const createdAdvert = await createAd(newAdvert);
       setCreatedAdvertId(createdAdvert.result._id);
 

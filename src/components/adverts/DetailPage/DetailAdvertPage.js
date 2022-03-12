@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Button from "../../common/Button";
 import Layout from "../../layout/layout";
-import { getAd } from "../service";
+import { getAd, deleteAd, editAd } from "../service";
 import storage from "../../../utils/storage";
 import borrar from "../../../assets/eliminar.png";
 import vender from "../../../assets/apreton-de-manos.png";
@@ -16,13 +16,14 @@ import editar from "../../../assets/editar.png";
 // import './Confirmation.css';
 
 function DetailAdvertPage() {
+  const history = useHistory();
   const { advertId } = useParams();
   const [advert, setAdvert] = useState(null);
   const [error, setError] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [display, setDisplay] = useState(false);
   const name = storage.get("name");
-
+  const [estadoVenta, setEstadoVenta] = useState(false);
   // const history = useHistory();
   // const location = useLocation();
   const part = advertId.split("-");
@@ -40,7 +41,37 @@ function DetailAdvertPage() {
 
     setDisplay(true);
   };
-
+  const handleReserva = async (event) => {
+    event.preventDefault();
+    const reserva = true;
+    try {
+      let reservar = new FormData();
+      reservar.append("reservado", reserva);
+      window.location.reload();
+      await editAd(_id, reservar);
+    } catch (error) {
+      console.log(error);
+      if (error.status === 401) {
+        return history.push("/login");
+      }
+      setError(error);
+    }
+  };
+  const handleLiberarReserva = async (event) => {
+    event.preventDefault();
+    try {
+      let reservar = new FormData();
+      reservar.append("reservado", false);
+      window.location.reload();
+      await editAd(_id, reservar);
+    } catch (error) {
+      console.log(error);
+      if (error.status === 401) {
+        return history.push("/login");
+      }
+      setError(error);
+    }
+  };
   // Procedimiento para borrar el anuncio
   // const handleDelete = async () => {
   //     try {
@@ -65,7 +96,17 @@ function DetailAdvertPage() {
       {advert && (
         <Layout>
           {advert.map(
-            ({ nombre, precio, descripcion, venta, tags, foto, autor }) => (
+            ({
+              nombre,
+              precio,
+              descripcion,
+              venta,
+              tags,
+              foto,
+              autor,
+              vendido,
+              reservado,
+            }) => (
               <div className="cardDetail">
                 <div className="detailContainer">
                   <div className="headerDetail pb-1">
@@ -77,11 +118,26 @@ function DetailAdvertPage() {
                             <img src={vender}></img>
                           </div>
                         </a>
-                        <a className="guardar-button btn-grp">
-                          <div>
-                            <img src={reservar}></img>
-                          </div>
-                        </a>
+                        {reservado === true ? (
+                          <button
+                            className="guardar-button btn-grp"
+                            onClick={handleLiberarReserva}
+                          >
+                            <div>
+                              <img src={reservar}></img>
+                            </div>
+                          </button>
+                        ) : (
+                          <button
+                            className="guardar-button btn-grp"
+                            onClick={handleReserva}
+                          >
+                            <div>
+                              <img src={reservar}></img>
+                            </div>
+                          </button>
+                        )}
+
                         <a className="editar-button btn-grp">
                           <div>
                             <img src={editar}></img>
@@ -109,6 +165,11 @@ function DetailAdvertPage() {
                       {venta === true ? <p> Venta </p> : <p> Busco </p>}
                     </span>
                   </div>
+                  {reservado === true ? (
+                    <p> Reservado </p>
+                  ) : (
+                    <p> No reservado </p>
+                  )}
                   <div className="descripcionDetail">
                     <span className="descripcion">{descripcion}</span>
                   </div>
