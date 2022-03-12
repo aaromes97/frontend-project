@@ -17,14 +17,14 @@ function Header({ className }) {
             <Icon width="32" height="42" />
           </div>
         </a>
-        <form class="form-inline">
+        <form className="form-inline">
           <input
-            class="form-control mr-1"
+            className="form-control mr-1"
             type="search"
             placeholder="Search"
             aria-label="Search"
           />
-          <button class="btn btn-outline-success my-2 mr-1" type="submit">
+          <button className="btn btn-outline-success my-2 mr-1" type="submit">
             Buscar
           </button>
         </form>
