@@ -67,11 +67,20 @@ function DetailAdvertPage() {
                     classname="detailFoto"
                     src={`http://localhost:3001${foto}`}
                   ></img>
+
                   <p className="fw-bolder precioDetail">{precio} EUR</p>
                   <p className="nombreDetail">{nombre}</p>
+                  <div className="d-flex text-dark ventaDetail">
+                    <span>
+                      {venta === true ? <p> Venta </p> : <p> Busco </p>}
+                    </span>
+                  </div>
+                  <div className="descripcionDetail">
+                    <span className="descripcion">{descripcion}</span>
+                  </div>
                   <div className="bodyDetail">
                     {tags.map((tag) => (
-                      <div>{tag}</div>
+                      <div className="tagsDetail">{tag}</div>
                     ))}
                   </div>
                 </div>

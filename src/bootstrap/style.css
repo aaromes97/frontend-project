@@ -83,6 +83,28 @@
   flex-direction: row;
   justify-content: space-between;
 }
+.bodyDetail {
+  display: flex;
+  flex-direction: row;
+}
+.descripcionDetail {
+  word-wrap: break-word;
+  width: 300px;
+}
+
+.ventaDetail {
+  border-bottom: 0.5px solid gray;
+  margin-bottom: 10px;
+}
+.tagsDetail {
+  font-size: small;
+  padding: 0.25rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin: 3px;
+  border: 1px solid black;
+  border-radius: 100px;
+}
 .fav + label {
   position: absolute;
   width: 100%;
