@@ -72,7 +72,7 @@ function NewAdvertPage() {
   //   return <Redirect to={`/`} />;
   // }
   return (
-    <Layout title="Creación de un nuevo anuncio">
+    <Layout title="Creación de un nuevo anuncio h1">
       <div className="newAdvertPage bordered ">
         <div className="formNew">
           <form onSubmit={handleSubmit}>
@@ -161,7 +161,6 @@ function NewAdvertPage() {
           </form>
         </div>
       </div>
-
     </Layout>
   );
 }
