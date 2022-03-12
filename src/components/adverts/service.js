@@ -10,5 +10,7 @@ export const createAd = async (ad) => {
   const url = `${adsBaseUrl}`;
   return client.post(url, ad);
 };
-
-
+export const getAd = advertId => {
+  const url = `${adsBaseUrl}/${advertId}`;
+  return client.get(url);
+};

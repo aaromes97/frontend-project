@@ -22,6 +22,7 @@ function App({ isInitiallyLogged, history }) {
   const handleLogout = () => {
     logout().then(() => setIsLogged(false));
   };
+  import DetailAdvertPage from "./components/adverts/DetailPage/DetailAdvertPage";
 
   return (
     <Router>
@@ -34,14 +35,18 @@ function App({ isInitiallyLogged, history }) {
             <Route path="/register">
               {({ history }) => <RegisterPage history={history} />}
             </Route>
-
+            <PrivateRoute exact path="/adverts/new">
+              <NewAdvertPage />
+            </PrivateRoute>
+            <Route path="/adverts/:advertId">
+              {routeProps => (
+                <DetailAdvertPage {...routeProps} />
+              )}
+            </Route>
             <Route exact path="/adverts" component={AdvertsPage} />
             <Route exact path="/">
               <Redirect to="/adverts" component={AdvertsPage} />
             </Route>
-            <PrivateRoute exact path="/adverts/new">
-              <NewAdvertPage />
-            </PrivateRoute>
             <Route path="/404">
               <div>404 | Not Found Page</div>
             </Route>

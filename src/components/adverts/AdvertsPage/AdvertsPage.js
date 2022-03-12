@@ -4,6 +4,7 @@ import Advert from "./Advert";
 import "../../../bootstrap/style.css";
 import { useEffect, useState } from "react";
 import { getLatestAds } from "../service";
+import { Link } from "react-router-dom";
 
 function AdvertsPage(props) {
 
@@ -18,19 +19,26 @@ function AdvertsPage(props) {
     return (
         <>
             <Layout {...props}>
-                {ads.length ? (
-                    // <div className="container px-4 px-lg-5 mt-5">
-                    <div className="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                        {ads.map(({ id, ...advert }) => (
-                            <div key={id}>
-                                <Advert {...advert} />
-                            </div>
-                        ))}
-                    </div>
-                ) : (
-                    // </div>
-                    <EmptyList />
-                )}
+                {
+                    ads.length ? (
+                        // <div className="container px-4 px-lg-5 mt-5">
+                        <div className="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                            {ads.map(({ _id, nombre, ...advert }) => (
+                                <div key={_id} >
+                                    <Link to={`/adverts/${nombre}-${_id}`} style={{ textDecoration: 'none', color: 'gray' }}>
+                                        <Advert {...advert}
+                                            name={nombre}
+                                        />
+                                    </Link>
+                                </div>
+
+                            ))}
+                        </div>
+                        // </div>
+                    ) : (
+                        <EmptyList />
+                    )
+                }
             </Layout>
         </>
     );
