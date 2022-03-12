@@ -22,11 +22,13 @@ function AdvertsPage(props) {
                 {ads.length ? (
                     <div className="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                         {ads.map(({ _id, nombre, ...advert }) => (
-                            <Link to={`/adverts/${nombre}-${_id}`} style={{ textDecoration: 'none', color: 'gray' }}>
-                                <Advert {...advert}
-                                    name={nombre}
-                                />
-                            </Link>
+                            <div key={_id}>
+                                <Link to={`/adverts/${nombre}-${_id}`} style={{ textDecoration: 'none', color: 'gray' }}>
+                                    <Advert {...advert}
+                                        name={nombre}
+                                    />
+                                </Link>
+                            </div>
                         ))}
                     </div>
                 ) : (

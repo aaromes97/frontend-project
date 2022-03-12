@@ -26,7 +26,6 @@ const Advert = ({ venta, precio, descripcion, foto, autor, name }) => {
             </div>
           </div>
         </div>
-
         <div className="card-footer text-center pb-4 pl-4 pr-4 pt-0 border-top-0 bg-transparent">
           <p className="btn btn-outline-dark">{precio}€</p>
         </div>
