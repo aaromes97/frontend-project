@@ -23,7 +23,7 @@ function DetailAdvertPage() {
 
   useEffect(() => {
     getAd(_id)
-      .then((ads) => setAdvert(ads.result))
+      .then((ads) => setAdvert(ads.results))
       .catch((error) => setError(error));
   }, [_id]);
 
@@ -55,52 +55,52 @@ function DetailAdvertPage() {
 
   return (
     <div>
-      {/* {advert && ( */}
-      <Layout>
-        {/* {advert.map(
-          ({ nombre, precio, descripcion, venta, tags, foto, autor }) => (
-            <div className="cardDetail">
-              <div classname="detailContainer">
-                <div className="headerDetail pb-1">
-                  <p className="autor pt-2">{autor}</p>
-                  <Button className="chat ">Chat para comprar</Button>
-                </div>
-                <img
-                  classname="detailFoto"
-                  src={`http://localhost:3001${foto}`}
-                ></img>
+      {advert && (
+        <Layout>
+          {advert.map(
+            ({ nombre, precio, descripcion, venta, tags, foto, autor }) => (
+              <div className="cardDetail">
+                <div classname="detailContainer">
+                  <div className="headerDetail pb-1">
+                    <p className="autor pt-2">{autor}</p>
+                    <Button className="chat ">Chat para comprar</Button>
+                  </div>
+                  <img
+                    classname="detailFoto"
+                    src={`http://localhost:3001${foto}`}
+                  ></img>
 
-                <p className="fw-bolder precioDetail">{precio} EUR</p>
-                <p className="nombreDetail">{nombre}</p>
-                <div className="d-flex text-dark ventaDetail">
-                  <span>
-                    {venta === true ? <p> Venta </p> : <p> Busco </p>}
-                  </span>
-                </div>
-                <div className="descripcionDetail">
-                  <span className="descripcion">{descripcion}</span>
-                </div>
-                <div className="bodyDetail">
-                  {tags.map((tag) => (
-                    <div className="tagsDetail">{tag}</div>
-                  ))}
+                  <p className="fw-bolder precioDetail">{precio} EUR</p>
+                  <p className="nombreDetail">{nombre}</p>
+                  <div className="d-flex text-dark ventaDetail">
+                    <span>
+                      {venta === true ? <p> Venta </p> : <p> Busco </p>}
+                    </span>
+                  </div>
+                  <div className="descripcionDetail">
+                    <span className="descripcion">{descripcion}</span>
+                  </div>
+                  <div className="bodyDetail">
+                    {tags.map((tag) => (
+                      <div className="tagsDetail">{tag}</div>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
-          )
-        )} */}
-        <Button
-          className="delete-button"
-          onClick={handleConfirmDelete}
-          disabled={buttonDisabled}
-          variant="delete"
-          as={Link}
-          to="/"
-        >
-          Borrar
-        </Button>
-      </Layout>
-      {/* )} */}
+            )
+          )}
+          <Button
+            className="delete-button"
+            onClick={handleConfirmDelete}
+            disabled={buttonDisabled}
+            variant="delete"
+            as={Link}
+            to="/"
+          >
+            Borrar
+          </Button>
+        </Layout>
+      )}
     </div>
   );
 }
