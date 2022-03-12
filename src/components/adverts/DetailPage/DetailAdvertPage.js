@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 import Button from "../../common/Button";
 import Layout from "../../layout/layout";
 import { getAd } from "../service";
+import storage from "../../../utils/storage";
+
 // import Confirmation from './Confirmation';
 // import './Confirmation.css';
 
@@ -15,6 +17,7 @@ function DetailAdvertPage() {
   const [error, setError] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [display, setDisplay] = useState(false);
+  const name = storage.get("name");
 
   // const history = useHistory();
   // const location = useLocation();
@@ -29,7 +32,7 @@ function DetailAdvertPage() {
 
   const handleConfirmDelete = async (event) => {
     event.preventDefault();
-    console.log(advert)
+    console.log(advert);
 
     setDisplay(true);
   };
@@ -60,10 +63,23 @@ function DetailAdvertPage() {
           {advert.map(
             ({ nombre, precio, descripcion, venta, tags, foto, autor }) => (
               <div className="cardDetail">
-                <div classname="detailContainer">
+                <div className="detailContainer">
                   <div className="headerDetail pb-1">
                     <p className="autor pt-2">{autor}</p>
-                    <Button className="chat ">Chat para comprar</Button>
+                    {autor === name ? (
+                      <Button
+                        className="delete-button"
+                        onClick={handleConfirmDelete}
+                        disabled={buttonDisabled}
+                        variant="delete"
+                        as={Link}
+                        to="/"
+                      >
+                        Borrar
+                      </Button>
+                    ) : (
+                      <Button className="chat ">Chat para comprar</Button>
+                    )}
                   </div>
                   <img
                     classname="detailFoto"
@@ -89,16 +105,6 @@ function DetailAdvertPage() {
               </div>
             )
           )}
-          <Button
-            className="delete-button"
-            onClick={handleConfirmDelete}
-            disabled={buttonDisabled}
-            variant="delete"
-            as={Link}
-            to="/"
-          >
-            Borrar
-          </Button>
         </Layout>
       )}
     </div>
