@@ -7,7 +7,6 @@ import Button from "../../common/Button";
 import Layout from "../../layout/layout";
 import { getAd } from "../service";
 import storage from "../../../utils/storage";
-
 // import Confirmation from './Confirmation';
 // import './Confirmation.css';
 
@@ -67,16 +66,9 @@ function DetailAdvertPage() {
                   <div className="headerDetail pb-1">
                     <p className="autor pt-2">{autor}</p>
                     {autor === name ? (
-                      <Button
-                        className="delete-button"
-                        onClick={handleConfirmDelete}
-                        disabled={buttonDisabled}
-                        variant="delete"
-                        as={Link}
-                        to="/"
-                      >
-                        Borrar
-                      </Button>
+                      <a className="delete-button">
+                        <img src={"../../../assets/filled.png"}></img>
+                      </a>
                     ) : (
                       <Button className="chat ">Chat para comprar</Button>
                     )}
