@@ -7,7 +7,7 @@ function Layout({ children, ...props }) {
     <>
       <Header {...props} />
       <section className="pb-5">
-        <div className="container px-4 px-lg-5 mt-5">{children}</div>
+        <div className="container px-4 px-lg-5 mt-2">{children}</div>
       </section>
       <Footer></Footer>
     </>
