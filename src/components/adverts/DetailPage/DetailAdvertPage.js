@@ -186,7 +186,7 @@ function DetailAdvertPage() {
                     </a>
                   </div>
                 ) : (
-                  <Button className="chat ">Chat para comprar</Button>
+                  <button className="chat ">Chat</button>
                 )}
               </div>
 

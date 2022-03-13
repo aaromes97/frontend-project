@@ -65,32 +65,40 @@
     height: 1rem;
   }
 }
-@media (max-width: 576px) {
+@media (min-width: 1000px) {
   .detailContainer {
     background: white;
     padding: 1rem;
     border-radius: 20px;
-    width: 90%;
+    width: 450%;
   }
 }
-@media (min-width: 875px) {
-  .detailContainer {
-    background: white;
-    padding: 1rem;
-    border-radius: 20px;
-    width: 40%;
-  }
+
+.detailContainer {
+  background: white;
+  padding: 1rem;
+  border-radius: 20px;
+  width: 70%;
 }
+
 /* Detalle del producto */
+.chat {
+  font-size: 13px;
+  background: white;
+  border: 1px solid #28a745;
+  color: #28a745;
+  border-radius: 20px;
+  padding: 0 1rem;
+}
 .cardDetail {
   display: flex;
   justify-content: center;
   height: 100%;
-
   padding: 1rem;
 }
 .precioDetail {
   margin-top: 5px;
+  display: flex;
 }
 .detailFoto {
   height: 400px;
@@ -113,11 +121,11 @@
 .bodyDetail {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .descripcionDetail {
   word-wrap: break-word;
-  width: 300px;
 }
 
 .ventaDetail {
