@@ -121,7 +121,7 @@ function DetailAdvertPage() {
                     {advert[0].vendido === true ? (
                       <button className="vender-button btn-grp vendido">
                         <div>
-                          <img src={vender}></img>
+                          <img src={vender} alt="vender"></img>
                         </div>
                       </button>
                     ) : (
@@ -130,7 +130,7 @@ function DetailAdvertPage() {
                         onClick={handleVender}
                       >
                         <div>
-                          <img src={vender}></img>
+                          <img src={vender} alt="vender"></img>
                         </div>
                       </button>
                     )}
@@ -139,13 +139,13 @@ function DetailAdvertPage() {
                         {advert[0].reservado === true ? (
                           <button className="guardar-button btn-grp" disabled>
                             <div>
-                              <img src={reservar}></img>
+                              <img src={reservar} alt="reservar"></img>
                             </div>
                           </button>
                         ) : (
                           <button className="guardar-button btn-grp" disabled>
                             <div>
-                              <img src={reservar}></img>
+                              <img src={reservar} alt="reservar"></img>
                             </div>
                           </button>
                         )}
