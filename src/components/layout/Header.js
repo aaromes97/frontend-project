@@ -5,7 +5,7 @@ import AuthContext from "../auth/context";
 import { Link, NavLink } from "react-router-dom";
 import storage from "../../utils/storage";
 
-function Header({ className }) {
+function Header() {
   const { isLogged, handleLogout } = useContext(AuthContext);
   const name = storage.get("name");
   return (
@@ -43,7 +43,7 @@ function Header({ className }) {
           <ul className="navbar-nav ml-auto mb-2 mb-lg-0 ms-lg-4">
             <li className="nav-item">
               <a
-                className="nav-link active"
+                className="nav-link"
                 aria-current="page"
                 href="/adverts/new"
               >
@@ -55,38 +55,42 @@ function Header({ className }) {
                 Mensajes
               </a>
             </li>
-            <li className="nav-item dropdown">
-              <a
-                className="nav-link dropdown-toggle"
-                id="navbarDropdown"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                @{name}
-              </a>
-              <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li>
-                  <a className="dropdown-item" href="#!">
-                    Mis Anuncios
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#!">
-                    Mis Favoritos
-                  </a>
-                </li>
-                <li>
-                  <hr className="dropdown-divider" />
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#!">
-                    Mi Cuenta
-                  </a>
-                </li>
-              </ul>
-            </li>
+            {isLogged ? (
+              <li className="nav-item dropdown">
+                <a
+                  className="nav-link dropdown-toggle"
+                  id="navbarDropdown"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  @{name}
+                </a>
+                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li>
+                    <a className="dropdown-item" href="#!">
+                      Mis Anuncios
+                    </a>
+                  </li>
+                  <li>
+                    <a className="dropdown-item" href="#!">
+                      Mis Favoritos
+                    </a>
+                  </li>
+                  <li>
+                    <hr className="dropdown-divider" />
+                  </li>
+                  <li>
+                    <a className="dropdown-item" href="#!">
+                      Mi Cuenta
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            ) : (
+              <div></div>
+            )}
           </ul>
           <form className="d-flex">
             {isLogged ? (
