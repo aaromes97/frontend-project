@@ -65,21 +65,38 @@
     height: 1rem;
   }
 }
-
+@media (max-width: 576px) {
+  .detailContainer {
+    background: white;
+    padding: 1rem;
+    border-radius: 20px;
+    width: 90%;
+  }
+}
+@media (min-width: 875px) {
+  .detailContainer {
+    background: white;
+    padding: 1rem;
+    border-radius: 20px;
+    width: 40%;
+  }
+}
 /* Detalle del producto */
 .cardDetail {
   display: flex;
   justify-content: center;
   height: 100%;
-  background-color: white;
-  border-radius: 20px;
+
   padding: 1rem;
 }
-
 .precioDetail {
   margin-top: 5px;
 }
-
+.detailFoto {
+  height: 400px;
+  width: 100%;
+  object-fit: cover;
+}
 .precioDetail,
 .nombreDetail {
   color: #000;
@@ -107,9 +124,16 @@
   border-bottom: 0.5px solid gray;
   margin-bottom: 10px;
 }
-.reservar {
+.reservado {
+  z-index: 10;
+  background: rgb(93, 157, 216);
+  opacity: 0.5;
 }
-
+.vendido {
+  z-index: 10;
+  background: rgb(216, 93, 93);
+  opacity: 0.5;
+}
 .tagsDetail {
   font-size: small;
   padding: 0.26rem;
