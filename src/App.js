@@ -11,9 +11,9 @@ import LoginPage from "./components/auth/LoginPage/LoginPage";
 import PrivateRoute from "./components/auth/PrivateRoute";
 import NewAdvertPage from "./components/adverts/NewAdvertPage";
 import { logout } from "./components/auth/LoginPage/service";
+import DetailAdvertPage from "./components/adverts/DetailPage/DetailAdvertPage";
 import { AuthContextProvider } from "./components/auth/context";
 import RegisterPage from "./components/auth/NewUser/Register";
-import DetailAdvertPage from "./components/adverts/DetailPage/DetailAdvertPage";
 
 function App({ isInitiallyLogged, history }) {
   const [isLogged, setIsLogged] = useState(isInitiallyLogged);
@@ -39,9 +39,7 @@ function App({ isInitiallyLogged, history }) {
               <NewAdvertPage />
             </PrivateRoute>
             <Route path="/adverts/:advertId">
-              {routeProps => (
-                <DetailAdvertPage {...routeProps} />
-              )}
+              {(routeProps) => <DetailAdvertPage {...routeProps} />}
             </Route>
             <Route exact path="/adverts" component={AdvertsPage} />
             <Route exact path="/">

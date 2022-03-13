@@ -7,37 +7,42 @@ import { getLatestAds } from "../service";
 import { Link } from "react-router-dom";
 
 function AdvertsPage(props) {
+  const [ads, setAds] = useState([]);
 
-    const [ads, setAds] = useState([]);
+  useEffect(() => {
+    getLatestAds().then((ads) => {
+      setAds(ads.results);
+    });
+  }, []);
 
-    useEffect(() => {
-        getLatestAds().then((ads) => {
-            setAds(ads.results);
-        });
-    }, []);
+  useEffect(() => {
+    getLatestAds().then((ads) => {
+      setAds(ads.results);
+    });
+  }, []);
 
-    return (
-        <>
-            <Layout {...props}>
-                {ads.length ? (
-                    <div className="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                        {ads.map(({ _id, nombre, ...advert }) => (
-                            <div key={_id}>
-                                <Link to={`/adverts/${nombre}-${_id}`} style={{ textDecoration: 'none', color: 'gray' }}>
-                                    <Advert {...advert}
-                                        name={nombre}
-                                    />
-                                </Link>
-                            </div>
-                        ))}
-                    </div>
-                ) : (
-                    <EmptyList />
-                )
-                }
-            </Layout>
-        </>
-    );
+  return (
+    <>
+      <Layout {...props}>
+        {ads.length ? (
+          <div className="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            {ads.map(({ _id, nombre, ...advert }) => (
+              <div key={_id}>
+                <Link
+                  to={`/adverts/${nombre}-${_id}`}
+                  style={{ textDecoration: "none", color: "gray" }}
+                >
+                  <Advert {...advert} name={nombre} />
+                </Link>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <EmptyList />
+        )}
+      </Layout>
+    </>
+  );
 }
 
 export default AdvertsPage;

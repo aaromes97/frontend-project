@@ -20,8 +20,10 @@ const Advert = ({ venta, precio, descripcion, foto, autor, name }) => {
             <div className="d-flex justify-content-center text-dark ">
               <span>{venta === true ? <p> Venta </p> : <p> Busco </p>}</span>
             </div>
-            <div style={{ overflow: "hidden", height: "4rem" }}
-              className="d-flex justify-content-center small pt-1">
+            <div
+              style={{ overflow: "hidden", height: "4rem" }}
+              className="d-flex justify-content-center small pt-1"
+            >
               {descripcion}
             </div>
           </div>
