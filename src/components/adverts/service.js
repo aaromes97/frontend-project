@@ -1,6 +1,6 @@
 import client from "../../api/client";
 
-const adsBaseUrl = "/api";
+const adsBaseUrl = "/api/anuncios";
 
 export const getLatestAds = () => {
   const url = `${adsBaseUrl}`;

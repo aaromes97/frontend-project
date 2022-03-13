@@ -192,7 +192,7 @@ function DetailAdvertPage() {
 
               <img
                 className="detailFoto"
-                src={`http://localhost:3001${advert[0].foto}`}
+                src={`http://3.92.133.123${advert[0].foto}`}
               ></img>
               <p className="fw-bolder precioDetail">{advert[0].precio} EUR</p>
               <p className="nombreDetail">{advert[0].nombre}</p>

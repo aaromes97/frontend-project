@@ -2,7 +2,7 @@ import axios from 'axios';
 
 
 const client = axios.create({
-    baseURL:'http://localhost:3001',
+    baseURL: 'http://3.92.133.123',
 });
 
 
@@ -20,10 +20,9 @@ client.interceptors.response.use(response => response.data, error => {
 
 //añadimos las claves
 
-export const setAuthorizationHeader = (token, name) =>
-{
+export const setAuthorizationHeader = (token, name) => {
     client.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-   
+
 
 };
 
