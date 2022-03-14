@@ -1,4 +1,6 @@
 import React from "react";
+import ReactSimpleTooltip from "react-simple-tooltip";
+
 import { useEffect, useState, useMemo } from "react";
 import { Redirect, useLocation, useParams } from "react-router";
 import { useHistory } from "react-router-dom";
@@ -105,71 +107,243 @@ function DetailAdvertPage() {
                 {advert[0].autor === name ? (
                   <div className="buttondetail-group">
                     {advert[0].vendido === true ? (
-                      <button className="vender-button btn-grp vendido">
-                        <div>
-                          <img src={vender} alt="vender"></img>
-                        </div>
-                      </button>
+                      <div>
+                        <ReactSimpleTooltip
+                          arrow={15}
+                          background="#000"
+                          border="#000"
+                          color="#fff"
+                          content="Vender"
+                          fadeDuration={0}
+                          fadeEasing="linear"
+                          fixed={false}
+                          fontFamily="inherit"
+                          fontSize="12px"
+                          offset={0}
+                          padding={5}
+                          placement="top"
+                          radius={0}
+                          zIndex={1}
+                        >
+                          <ReactSimpleTooltip>
+                            <button className="vender-button btn-grp vendido">
+                              <div>
+                                <img src={vender} alt="vender"></img>
+                              </div>
+                            </button>
+                          </ReactSimpleTooltip>
+                        </ReactSimpleTooltip>
+                      </div>
                     ) : (
-                      <button
-                        className="vender-button btn-grp"
-                        onClick={handleVender}
+                      <ReactSimpleTooltip
+                        arrow={15}
+                        background="#000"
+                        border="#000"
+                        color="#fff"
+                        content="Vender"
+                        fadeDuration={0}
+                        fadeEasing="linear"
+                        fixed={false}
+                        fontFamily="inherit"
+                        fontSize="12px"
+                        offset={0}
+                        padding={5}
+                        placement="top"
+                        radius={0}
+                        zIndex={1}
                       >
-                        <div>
-                          <img src={vender} alt="vender"></img>
-                        </div>
-                      </button>
+                        <ReactSimpleTooltip>
+                          <button
+                            className="vender-button btn-grp"
+                            onClick={handleVender}
+                          >
+                            <div>
+                              <img src={vender} alt="vender"></img>
+                            </div>
+                          </button>
+                        </ReactSimpleTooltip>
+                      </ReactSimpleTooltip>
                     )}
                     {advert[0].vendido === true ? (
                       <div>
                         {advert[0].reservado === true ? (
-                          <button className="guardar-button btn-grp" disabled>
-                            <div>
-                              <img src={reservar} alt="reservar"></img>
-                            </div>
-                          </button>
+                          <ReactSimpleTooltip
+                            arrow={15}
+                            background="#000"
+                            border="#000"
+                            color="#fff"
+                            content="Reservar"
+                            fadeDuration={0}
+                            fadeEasing="linear"
+                            fixed={false}
+                            fontFamily="inherit"
+                            fontSize="12px"
+                            offset={0}
+                            padding={5}
+                            placement="top"
+                            radius={0}
+                            zIndex={1}
+                          >
+                            <ReactSimpleTooltip>
+                              <button
+                                className="guardar-button btn-grp"
+                                disabled
+                              >
+                                <div>
+                                  <img src={reservar} alt="reservar"></img>
+                                </div>
+                              </button>
+                            </ReactSimpleTooltip>
+                          </ReactSimpleTooltip>
                         ) : (
-                          <button className="guardar-button btn-grp" disabled>
-                            <div>
-                              <img src={reservar} alt="reservar"></img>
-                            </div>
-                          </button>
+                          <ReactSimpleTooltip
+                            arrow={15}
+                            background="#000"
+                            border="#000"
+                            color="#fff"
+                            content="Reservar"
+                            fadeDuration={0}
+                            fadeEasing="linear"
+                            fixed={false}
+                            fontFamily="inherit"
+                            fontSize="12px"
+                            offset={0}
+                            padding={5}
+                            placement="top"
+                            radius={0}
+                            zIndex={1}
+                          >
+                            <ReactSimpleTooltip>
+                              <button
+                                className="guardar-button btn-grp"
+                                disabled
+                              >
+                                <div>
+                                  <img src={reservar} alt="reservar"></img>
+                                </div>
+                              </button>
+                            </ReactSimpleTooltip>
+                          </ReactSimpleTooltip>
                         )}
                       </div>
                     ) : (
                       <div>
                         {advert[0].reservado === true ? (
-                          <button
-                            className="guardar-button btn-grp reservado"
-                            onClick={handleLiberarReserva}
+                          <ReactSimpleTooltip
+                            arrow={15}
+                            background="#000"
+                            border="#000"
+                            color="#fff"
+                            content="Liberar"
+                            fadeDuration={0}
+                            fadeEasing="linear"
+                            fixed={false}
+                            fontFamily="inherit"
+                            fontSize="12px"
+                            offset={0}
+                            padding={5}
+                            placement="top"
+                            radius={0}
+                            zIndex={1}
                           >
-                            <div>
-                              <img src={reservar}></img>
-                            </div>
-                          </button>
+                            <ReactSimpleTooltip>
+                              <button
+                                className="guardar-button btn-grp reservado"
+                                onClick={handleLiberarReserva}
+                              >
+                                <div>
+                                  <img src={reservar} alt="boton reservar"></img>
+                                </div>
+                              </button>
+                            </ReactSimpleTooltip>
+                          </ReactSimpleTooltip>
                         ) : (
-                          <button
-                            className="guardar-button btn-grp"
-                            onClick={handleReserva}
+                          <ReactSimpleTooltip
+                            arrow={15}
+                            background="#000"
+                            border="#000"
+                            color="#fff"
+                            content="Reservar"
+                            fadeDuration={0}
+                            fadeEasing="linear"
+                            fixed={false}
+                            fontFamily="inherit"
+                            fontSize="12px"
+                            offset={0}
+                            padding={5}
+                            placement="top"
+                            radius={0}
+                            zIndex={1}
                           >
-                            <div>
-                              <img src={reservar}></img>
-                            </div>
-                          </button>
+                            <ReactSimpleTooltip>
+                              <button
+                                className="guardar-button btn-grp"
+                                onClick={handleReserva}
+                              >
+                                <div>
+                                  <img src={reservar} alt="imagen reserva"></img>
+                                </div>
+                              </button>
+                            </ReactSimpleTooltip>
+                          </ReactSimpleTooltip>
                         )}
                       </div>
                     )}
-
-                    <a className="editar-button btn-grp">
-                      <div>
-                        <img src={editar} alt="borrar anuncio"></img>
-                      </div>
-                    </a>
-                    <a className="borrar-button btn-grp">
-                      <div>
-                        <img src={borrar} onClick={handleConfirmDelete} alt="borrar anuncio"></img>
-                      </div>
-                    </a>
+                    <ReactSimpleTooltip
+                      arrow={15}
+                      background="#000"
+                      border="#000"
+                      color="#fff"
+                      content="Editar"
+                      fadeDuration={0}
+                      fadeEasing="linear"
+                      fixed={false}
+                      fontFamily="inherit"
+                      fontSize="12px"
+                      offset={0}
+                      padding={5}
+                      placement="top"
+                      radius={0}
+                      zIndex={1}
+                    >
+                      <ReactSimpleTooltip>
+                        <button
+                          className="editar-button btn-grp"
+                        // onClick={handleEditar}
+                        >
+                          <div>
+                            <img src={editar}></img>
+                          </div>
+                        </button>
+                      </ReactSimpleTooltip>
+                    </ReactSimpleTooltip>
+                    <ReactSimpleTooltip
+                      arrow={15}
+                      background="#000"
+                      border="#000"
+                      color="#fff"
+                      content="Borrar"
+                      fadeDuration={0}
+                      fadeEasing="linear"
+                      fixed={false}
+                      fontFamily="inherit"
+                      fontSize="12px"
+                      offset={0}
+                      padding={5}
+                      placement="top"
+                      radius={0}
+                      zIndex={1}
+                    >
+                      <ReactSimpleTooltip>
+                        <button
+                          className="borrar-button btn-grp"
+                          onClick={handleConfirmDelete}                        >
+                          <div>
+                            <img src={borrar} alt="imagen borrar"></img>
+                          </div>
+                        </button>
+                      </ReactSimpleTooltip>
+                    </ReactSimpleTooltip>
                   </div>
                 ) : (
                   <button className="chat ">Chat</button>
@@ -179,6 +353,7 @@ function DetailAdvertPage() {
               <img
                 className="detailFoto"
                 src={`http://localhost:3001${advert[0].foto}`}
+                alt="foto detalle"
               ></img>
               <p className="fw-bolder precioDetail">{advert[0].precio} EUR</p>
               <p className="nombreDetail">{advert[0].nombre}</p>
