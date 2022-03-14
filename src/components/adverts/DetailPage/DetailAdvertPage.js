@@ -2,18 +2,14 @@ import React from "react";
 import { useEffect, useState, useMemo } from "react";
 import { Redirect, useLocation, useParams } from "react-router";
 import { useHistory } from "react-router-dom";
-import { Link } from "react-router-dom";
-import Button from "../../common/Button";
 import Layout from "../../layout/layout";
+import Confirmation from './Confirmation';
 import { getAd, deleteAd, editAd } from "../service";
 import storage from "../../../utils/storage";
 import borrar from "../../../assets/eliminar.png";
 import vender from "../../../assets/apreton-de-manos.png";
 import reservar from "../../../assets/guardar-instagram.png";
 import editar from "../../../assets/editar.png";
-
-// import Confirmation from './Confirmation';
-// import './Confirmation.css';
 
 function DetailAdvertPage() {
   const history = useHistory();
@@ -24,8 +20,7 @@ function DetailAdvertPage() {
   const [display, setDisplay] = useState(false);
   const name = storage.get("name");
   const [estadoVenta, setEstadoVenta] = useState(false);
-  // const history = useHistory();
-  // const location = useLocation();
+
   const part = advertId.split("-");
   const _id = part[1];
 
@@ -38,7 +33,6 @@ function DetailAdvertPage() {
   const handleConfirmDelete = async (event) => {
     event.preventDefault();
     console.log(advert);
-
     setDisplay(true);
   };
   const handleReserva = async (event) => {
@@ -89,18 +83,10 @@ function DetailAdvertPage() {
       setError(error);
     }
   };
-  // Procedimiento para borrar el anuncio
-  // const handleDelete = async () => {
-  //     try {
-  //         await deleteAdvert(advertId);
-  //         setIsLoading(false);
-  //         const { from } = location.state || { from: { pathname: "/adverts" } };
-  //         history.replace(from);
-  //     } catch (error) {
-  //         setError(error);
-  //         setIsLoading(false);
-  //     }
-  // }
+  const handleDelete = async () => {
+    await deleteAd(_id)
+    history.replace("/")
+  }
 
   const buttonDisabled = useMemo(() => isLoading[isLoading]);
 
@@ -176,12 +162,12 @@ function DetailAdvertPage() {
 
                     <a className="editar-button btn-grp">
                       <div>
-                        <img src={editar}></img>
+                        <img src={editar} alt="borrar anuncio"></img>
                       </div>
                     </a>
                     <a className="borrar-button btn-grp">
                       <div>
-                        <img src={borrar}></img>
+                        <img src={borrar} onClick={handleConfirmDelete} alt="borrar anuncio"></img>
                       </div>
                     </a>
                   </div>
@@ -212,6 +198,11 @@ function DetailAdvertPage() {
               </div>
             </div>
           </div>
+          {display && (
+            <Confirmation onConfirm={handleDelete} onDisplay={setDisplay}>
+              ¿Estas seguro que quieres borrar este anuncio?
+            </Confirmation>
+          )}
         </Layout>
       )}
     </div>
