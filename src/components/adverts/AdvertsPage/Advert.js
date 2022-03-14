@@ -11,7 +11,7 @@ const Advert = ({ venta, precio, descripcion, foto, autor, name }) => {
         </div>
         <img
           className="card-img-top"
-          src={`http://3.92.133.123${foto}`}
+          src={`http://localhost:3001${foto}`}
           alt="..."
         />
         <div className="card-body p-4">
