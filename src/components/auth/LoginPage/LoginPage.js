@@ -7,7 +7,7 @@ import { AuthContextConsumer } from "../context";
 import { Link } from "react-router-dom";
 import Loading from "../../Loading";
 
-function LoginPage({ onLogin, history }) {
+function LoginPage({ onLogin, history, location }) {
   const [value, setValue] = useState({ name: "", password: "" });
   const [error, setError] = useState(null);
   //para implementar Spinner de Loading
@@ -32,7 +32,8 @@ function LoginPage({ onLogin, history }) {
       await login(value);
       setIsLoading(false);
       onLogin();
-      history.push("/adverts");
+      const { from } = location.state || { from: { pathname: "/" } };
+      history.replace(from);
       console.log(value);
     } catch (error) {
       setIsLoading(false);

@@ -30,7 +30,7 @@ function App({ isInitiallyLogged, history }) {
         <div className="App">
           <Switch>
             <Route path="/login">
-              {({ history }) => <LoginPage history={history} />}
+              {({ history, location }) => <LoginPage history={history} location={location} />}
             </Route>
             <Route path="/register">
               {({ history }) => <RegisterPage history={history} />}
