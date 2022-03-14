@@ -46,6 +46,7 @@
   flex-direction: column;
   position: fixed;
   background-color: #f8f9fd;
+  opacity: 0.9;
   border: 1px solid black;
   width: 230px;
   top: 50%;
@@ -242,6 +243,7 @@
   border-bottom: 0.5px solid gray;
   margin-bottom: 10px;
 }
+
 .labelVendido {
   position: absolute;
 }
