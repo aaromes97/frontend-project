@@ -9,11 +9,14 @@ import {
 import AdvertsPage from "./components/adverts/AdvertsPage";
 import LoginPage from "./components/auth/LoginPage/LoginPage";
 import PrivateRoute from "./components/auth/PrivateRoute";
+import PrivateRouteForgotPassword from "./components/auth/PrivateRouteForgotPassword";
 import NewAdvertPage from "./components/adverts/NewAdvertPage";
 import { logout } from "./components/auth/LoginPage/service";
 import DetailAdvertPage from "./components/adverts/DetailPage/DetailAdvertPage";
 import { AuthContextProvider } from "./components/auth/context";
 import RegisterPage from "./components/auth/NewUser/Register";
+import ForgotPasswordSendEmailPage from "./components/auth/ForgotPassword/SendEmailPage/SendEmailPage";
+import ForgotPasswordResetPage from "./components/auth/ForgotPassword/ResetPage/ResetPage";
 
 function App({ isInitiallyLogged, history }) {
   const [isLogged, setIsLogged] = useState(isInitiallyLogged);
@@ -30,21 +33,26 @@ function App({ isInitiallyLogged, history }) {
         <div className="App">
           <Switch>
             <Route path="/login">
-              {({ history, location }) => <LoginPage history={history} location={location} />}
+              {({ history }) => <LoginPage history={history} />}
             </Route>
             <Route path="/register">
               {({ history }) => <RegisterPage history={history} />}
             </Route>
-            <PrivateRoute exact path="/adverts/new">
-              <NewAdvertPage />
-            </PrivateRoute>
-            <Route path="/adverts/:advertId">
-              {(routeProps) => <DetailAdvertPage {...routeProps} />}
+            <Route exact path="/forgot-password">
+              {({ history }) => <ForgotPasswordSendEmailPage history={history} />}
             </Route>
+            <PrivateRouteForgotPassword exact path="/forgot-password/check">
+              {({ history }) => <ForgotPasswordResetPage history={history} />}
+            </PrivateRouteForgotPassword>
+
+
             <Route exact path="/adverts" component={AdvertsPage} />
             <Route exact path="/">
               <Redirect to="/adverts" component={AdvertsPage} />
             </Route>
+            <PrivateRoute exact path="/adverts/new">
+              <NewAdvertPage />
+            </PrivateRoute>
             <Route path="/404">
               <div>404 | Not Found Page</div>
             </Route>

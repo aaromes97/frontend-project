@@ -9,11 +9,11 @@ import { Link } from "react-router-dom";
 function AdvertsPage(props) {
   const [ads, setAds] = useState([]);
 
-  useEffect(() => {
-    getLatestAds().then((ads) => {
-      setAds(ads.results);
-    });
-  }, []);
+  // useEffect(() => {
+  //   getLatestAds().then((ads) => {
+  //     setAds(ads.results);
+  //   });
+  // }, []);
 
   useEffect(() => {
     getLatestAds().then((ads) => {
