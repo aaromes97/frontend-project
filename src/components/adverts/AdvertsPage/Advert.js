@@ -2,18 +2,35 @@ import React from "react";
 import T from "prop-types";
 import "../../../bootstrap/style.css";
 
-const Advert = ({ venta, precio, descripcion, foto, autor, name }) => {
+const Advert = ({
+  venta,
+  precio,
+  descripcion,
+  foto,
+  autor,
+  name,
+  vendido,
+  reservado,
+}) => {
   return (
     <div className="col mb-5">
       <div className="card h-100">
         <div className="badge bg-user text-white position-absolute small">
           {autor}
         </div>
+
         <img
           className="card-img-top"
           src={`http://localhost:3001${foto}`}
           alt="..."
         />
+        <div className="badge bg-user text-white  small">
+          {vendido === true ? (
+            <p> Vendido </p>
+          ) : reservado === true ? (
+            <p>Reservado</p>
+          ) : null}
+        </div>
         <div className="card-body p-4">
           <div className="text-center">
             <h5 className="fw-bolder">{name}</h5>
