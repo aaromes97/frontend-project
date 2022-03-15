@@ -1,14 +1,18 @@
 import { ReactComponent as Icon } from "../../assets/clone.svg";
 import "../../bootstrap/style.css";
-import React, { Component, useContext } from "react";
+import React, { Component, useContext, useEffect, useState } from "react";
 import AuthContext from "../auth/context";
 import { Link, NavLink } from "react-router-dom";
 import storage from "../../utils/storage";
+import { getLatestAds } from "../adverts/service";
+import Search from "../../utils/search";
 
 function Header({ className }) {
 
   const { isLogged, handleLogout } = useContext(AuthContext);
   const name = storage.get('name')
+  
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container px-4 px-lg-5">
@@ -17,17 +21,21 @@ function Header({ className }) {
             <Icon width="32" height="42" />
           </div>
         </a>
-        <form class="form-inline">
+        {/* <Search>
+
+        </Search> */}
+        {/* <form className="form-inline">
           <input
             class="form-control mr-1"
             type="search"
             placeholder="Search"
             aria-label="Search"
+           
           />
-          <button class="btn btn-outline-success my-2 mr-1" type="submit">
+          <button className="btn btn-outline-success my-2 mr-1" type="submit">
             Buscar
           </button>
-        </form>
+        </form> */}
         <button
           className="navbar-toggler"
           type="button"

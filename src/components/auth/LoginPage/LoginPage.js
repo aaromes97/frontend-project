@@ -92,7 +92,7 @@ function LoginPage({ onLogin, history }) {
 		<button className="btn btn-primary rounded submit p-3 px-5"
 	type="submit"
 	disabled={!value.name || !value.password}>Login</button>
-	{isLoading && <button className="btn btn-primary rounded submit p-3 px-5" diabled>
+	{isLoading && <button className="btn btn-primary rounded submit p-3 px-5" disabled>
 	<Loading>Loading</Loading>					
 	</button>}							
 		</div>

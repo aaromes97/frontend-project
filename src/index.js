@@ -4,15 +4,17 @@ import './index.css';
 import App from './App';
 import client, { setAuthorizationHeader } from './api/client';
 import storage from './utils/storage';
-
 const accessToken = storage.get('auth');
 setAuthorizationHeader(accessToken)
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App isInitiallyLogged = {!!accessToken} />
-  </React.StrictMode>,
-  document.getElementById('root')
+    <React.StrictMode>
+      <App isInitiallyLogged = {!!accessToken} />
+    </React.StrictMode>,
+    document.getElementById('root')
+
+
+
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -4,27 +4,41 @@ import Advert from "./Advert";
 import "../../../bootstrap/style.css"
 import { useEffect, useState } from "react";
 import { getLatestAds } from "../service";
+import { AuthContextConsumer } from "../../auth/context";
+import AdvertFilter from "./AdvertFilter";
+import { Link } from "react-router-dom";
 
-function AdvertsPage(props) {
-    const [ads, setAds] = useState([]);
+
+
+
+function AdvertsPage({history, ...props }) {
+    const [adverts, setAdverts] = useState([]);
     useEffect(() => {
-        getLatestAds().then((ads) => {
-            setAds(ads.results);
+        getLatestAds().then((adverts) => {
+            console.log(adverts, 'desde AdvertsPAge')
+            setAdverts(adverts.results);
         });
     }, []);
 
-    console.log(ads)
+    
 
+  
     return (
-        <>
-            <Layout {...props} >
+        
+            <Layout {...props}>
+             
+            <AdvertFilter filterAds={ads => setAdverts(ads.results)} selectedAds={adverts} />
+            {console.log(adverts,'desde return')}
+
                 {
-                    ads.length ? (
+                    adverts.length ? (
                         // <div className="container px-4 px-lg-5 mt-5">
-                        <div className="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                            {ads.map(({ id, ...advert }) => (
+                        <div className="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center" >
+                            {adverts.map(({ id, ...advert }) => (
                                 <div key={id} >
+                                    <Link to={`/adverts/${id}`}>
                                     <Advert {...advert} />
+                                       </Link>
                                 </div>
 
                             ))}
@@ -35,8 +49,9 @@ function AdvertsPage(props) {
                     )
                 }
             </Layout>
-        </>
+        
     );
 }
 
-export default AdvertsPage;
+
+ export default AdvertsPage;

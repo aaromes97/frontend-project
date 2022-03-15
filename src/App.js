@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -10,17 +10,18 @@ import AdvertsPage from "./components/adverts/AdvertsPage";
 import LoginPage from "./components/auth/LoginPage/LoginPage";
 import NewAdvertPage from "./components/adverts/NewAdvertPage";
 import { logout } from "./components/auth/LoginPage/service";
-import { AuthContextProvider } from "./components/auth/context";
+import AuthContext, { AuthContextProvider } from "./components/auth/context";
 import RegisterPage from "./components/auth/NewUser/Register";
+import { getLatestAds } from "./components/adverts/service";
+
 
 
 
 
 function App({ isInitiallyLogged, history }) {
   const [isLogged, setIsLogged] = useState(isInitiallyLogged);
-
-
   const handleLogin = () => setIsLogged(true);
+  const [adverts, setAdverts] = useState('')
 
   const handleLogout = () => {
     logout().then(() => setIsLogged(false));
@@ -28,8 +29,10 @@ function App({ isInitiallyLogged, history }) {
   };
 
   return (
+
+
     <Router>
-      <AuthContextProvider value={{ isLogged, handleLogout, handleLogin }}>
+      <AuthContextProvider value={{ isLogged, handleLogout, handleLogin, adverts }}>
 
         <div className="App" >
           <Switch>
@@ -62,6 +65,7 @@ function App({ isInitiallyLogged, history }) {
 
       </AuthContextProvider>
     </Router>
+
   );
 }
 
