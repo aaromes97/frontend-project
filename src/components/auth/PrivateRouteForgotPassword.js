@@ -27,7 +27,7 @@ const PrivateRouteForgotPassword = (props) => {
 
 	return (
 		<>
-			{resIsChecked === "Valid url" ? (
+			{resIsChecked === "Url valida" ? (
 				<Route {...props} />
 			) : (
 				<ResetFailed />
