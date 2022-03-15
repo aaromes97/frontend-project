@@ -99,7 +99,7 @@ function LoginPage({ onLogin, history, location }) {
                   {isLoading && (
                     <button
                       className="btn btn-primary rounded submit p-3 px-5"
-                      diabled
+                      disabled
                     >
                       <Loading>Loading</Loading>
                     </button>

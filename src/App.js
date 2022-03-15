@@ -44,6 +44,15 @@ function App({ isInitiallyLogged, history }) {
             <PrivateRouteForgotPassword exact path="/forgot-password/check">
               {({ history }) => <ForgotPasswordResetPage history={history} />}
             </PrivateRouteForgotPassword>
+            <PrivateRoute exact path="/adverts/new">
+              <NewAdvertPage />
+            </PrivateRoute>
+            <Route path="/adverts/:advertId">
+              {(routeProps) => <DetailAdvertPage {...routeProps} />}
+            </Route>
+            <PrivateRouteForgotPassword exact path="/forgot-password/check">
+              {({ history }) => <ForgotPasswordResetPage history={history} />}
+            </PrivateRouteForgotPassword>
 
 
             <Route exact path="/adverts" component={AdvertsPage} />
