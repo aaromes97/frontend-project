@@ -16,6 +16,7 @@ import { AuthContextProvider } from "./components/auth/context";
 import RegisterPage from "./components/auth/NewUser/Register";
 import ForgotPasswordSendEmailPage from "./components/auth/ForgotPassword/SendEmailPage/SendEmailPage";
 import ForgotPasswordResetPage from "./components/auth/ForgotPassword/ResetPage/ResetPage";
+import PrivateRouteForgotPassword from "./components/auth/PrivateRouteForgotPassword";
 
 function App({ isInitiallyLogged, history }) {
   const [isLogged, setIsLogged] = useState(isInitiallyLogged);
@@ -37,6 +38,12 @@ function App({ isInitiallyLogged, history }) {
             <Route path="/register">
               {({ history }) => <RegisterPage history={history} />}
             </Route>
+            <Route exact path="/forgot-password">
+              {({ history }) => <ForgotPasswordSendEmailPage history={history} />}
+            </Route>
+            <PrivateRouteForgotPassword exact path="/forgot-password/check">
+              {({ history }) => <ForgotPasswordResetPage history={history} />}
+            </PrivateRouteForgotPassword>
             <PrivateRoute exact path="/adverts/new">
               <NewAdvertPage />
             </PrivateRoute>
