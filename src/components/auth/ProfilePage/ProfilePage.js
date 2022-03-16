@@ -32,6 +32,8 @@ function ProfilePage() {
 		event.preventDefault();
 		try {
 			const resultDataUpdated = await updateProfile(value, id);
+			storage.set("name", autor);
+			storage.set("email",email);
 			setMessage(resultDataUpdated)
 		} catch (error) {
 			setError(error);
@@ -80,7 +82,6 @@ function ProfilePage() {
 		className="loginForm-field"
 		value={value.password}
 		onChange={handleChange}
-		autoFocus
 		></input>
 		<br></br>
 
