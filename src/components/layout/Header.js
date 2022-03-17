@@ -82,7 +82,7 @@ function Header() {
                     <hr className="dropdown-divider" />
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#!">
+                    <a className="dropdown-item" href="/profile">
                       Mi Cuenta
                     </a>
                   </li>

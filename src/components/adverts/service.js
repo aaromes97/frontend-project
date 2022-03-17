@@ -2,9 +2,9 @@ import client from "../../api/client";
 
 const adsBaseUrl = "/api/anuncios";
 
-export const getLatestAds = () => {
+export const getLatestAds = async () => {
   const url = `${adsBaseUrl}`;
-  return client.get(url);
+  return await client.get(url);
 };
 export const createAd = async (ad) => {
   const url = `${adsBaseUrl}`;

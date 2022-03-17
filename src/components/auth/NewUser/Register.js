@@ -1,6 +1,6 @@
 import { useState } from "react";
 import '../../../bootstrap/style.css';
-import './register.css';
+import '../auth.css';
 import logo from '../LoginPage/img/login.png';
 import { login } from "../NewUser/service";
 
