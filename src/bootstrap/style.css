@@ -123,18 +123,10 @@
 /*desmarcado*/
 
 .fav-position {
-  top: 0.2rem;
-  right: 1rem;
+  right: 0rem;
 }
 
-.fav-container {
-  z-index: 100;
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 1.5rem;
-  height: 1.5rem;
-}
+.fav-container {}
 
 /*oculatamos el input*/
 
@@ -258,6 +250,10 @@
   z-index: 10;
   background: rgb(216, 93, 93);
   opacity: 0.5;
+}
+
+.estadoAnuncio {
+  margin-right: 30px;
 }
 
 .tagsDetail {
@@ -8378,6 +8374,10 @@ a.close.disabled {
 
 .bg-user {
   background-color: var(--bs-blue);
+}
+
+.bg-selled {
+  background-color: red;
 }
 
 a.bg-primary:hover,

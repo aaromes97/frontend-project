@@ -11,12 +11,6 @@ function AdvertsPage(props) {
 
   useEffect(() => {
     getLatestAds().then((ads) => {
-      setAds(ads.results);
-    });
-  }, []);
-
-  useEffect(() => {
-    getLatestAds().then((ads) => {
       setAds(ads.results.reverse()); // mostramos los ultimos anuncios del array (mas nuevos) primero
     });
   }, []);
