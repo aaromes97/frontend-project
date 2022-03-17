@@ -13,6 +13,10 @@ function ProfilePage() {
 	const email = storage.get("email");
 	const resetError = () => setError(null);
 
+	const handleChange = async (event) => {
+		return history.push("/adverts");
+	};
+	
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 		try {
@@ -37,7 +41,7 @@ function ProfilePage() {
 		<form className="login-form" onSubmit={handleSubmit}>
 		<div className="deleteUserDivGeneral">
 		<p className="text">¿Desea eliminar la cuenta?</p>
-		<button	className="deleteUserCancelButton" type="button">Cancelar</button>
+		<button	className="deleteUserCancelButton" type="button" onClick={handleChange}>Cancelar</button>
 		<button	className="deleteUserButton" type="submit">Eliminar</button>
 		</div>
 		</form>
