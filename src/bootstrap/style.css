@@ -262,6 +262,10 @@
 .estadoAnuncio {
   margin-right: 30px;
 }
+.sharebuttonsStyle {
+  display: flex;
+  margin-top: 3px;
+}
 .tagsDetail {
   font-size: small;
   padding: 0.26rem;

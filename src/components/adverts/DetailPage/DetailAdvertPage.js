@@ -1,11 +1,24 @@
 import React from "react";
 import ReactSimpleTooltip from "react-simple-tooltip";
+import {
+  FacebookShareButton,
+  TwitterShareButton,
+  TelegramShareButton,
+  WhatsappShareButton,
+} from "react-share";
+import {
+  FacebookIcon,
+  TwitterIcon,
+  TelegramIcon,
+  WhatsappIcon,
+} from "react-share";
+import { FacebookShareCount } from "react-share";
 
 import { useEffect, useState, useMemo } from "react";
 import { Redirect, useLocation, useParams } from "react-router";
 import { useHistory } from "react-router-dom";
 import Layout from "../../layout/layout";
-import Confirmation from './Confirmation';
+import Confirmation from "./Confirmation";
 import { getAd, deleteAd, editAd } from "../service";
 import storage from "../../../utils/storage";
 import borrar from "../../../assets/eliminar.png";
@@ -86,9 +99,9 @@ function DetailAdvertPage() {
     }
   };
   const handleDelete = async () => {
-    await deleteAd(_id)
-    history.replace("/")
-  }
+    await deleteAd(_id);
+    history.replace("/");
+  };
 
   const buttonDisabled = useMemo(() => isLoading[isLoading]);
 
@@ -252,7 +265,10 @@ function DetailAdvertPage() {
                                 onClick={handleLiberarReserva}
                               >
                                 <div>
-                                  <img src={reservar} alt="boton reservar"></img>
+                                  <img
+                                    src={reservar}
+                                    alt="boton reservar"
+                                  ></img>
                                 </div>
                               </button>
                             </ReactSimpleTooltip>
@@ -281,7 +297,10 @@ function DetailAdvertPage() {
                                 onClick={handleReserva}
                               >
                                 <div>
-                                  <img src={reservar} alt="imagen reserva"></img>
+                                  <img
+                                    src={reservar}
+                                    alt="imagen reserva"
+                                  ></img>
                                 </div>
                               </button>
                             </ReactSimpleTooltip>
@@ -309,7 +328,7 @@ function DetailAdvertPage() {
                       <ReactSimpleTooltip>
                         <button
                           className="editar-button btn-grp"
-                        // onClick={handleEditar}
+                          // onClick={handleEditar}
                         >
                           <div>
                             <img src={editar}></img>
@@ -337,7 +356,8 @@ function DetailAdvertPage() {
                       <ReactSimpleTooltip>
                         <button
                           className="borrar-button btn-grp"
-                          onClick={handleConfirmDelete}                        >
+                          onClick={handleConfirmDelete}
+                        >
                           <div>
                             <img src={borrar} alt="imagen borrar"></img>
                           </div>
@@ -370,6 +390,28 @@ function DetailAdvertPage() {
                 {advert[0].tags.map((tag) => (
                   <div className="tagsDetail">{tag}</div>
                 ))}
+              </div>
+              <div className="sharebuttonsStyle">
+                <FacebookShareButton
+                  url={`http://localhost:3000/adverts/${advertId}`}
+                >
+                  <FacebookIcon size={32} round />
+                </FacebookShareButton>
+                <WhatsappShareButton
+                  url={`http://localhost:3000/adverts/${advertId}`}
+                >
+                  <WhatsappIcon size={32} round />
+                </WhatsappShareButton>
+                <TwitterShareButton
+                  url={`http://localhost:3000/adverts/${advertId}`}
+                >
+                  <TwitterIcon size={32} round />
+                </TwitterShareButton>
+                <TelegramShareButton
+                  url={`http://localhost:3000/adverts/${advertId}`}
+                >
+                  <TelegramIcon size={32} round />
+                </TelegramShareButton>
               </div>
             </div>
           </div>
