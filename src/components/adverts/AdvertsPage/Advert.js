@@ -24,13 +24,30 @@ const Advert = ({
           src={`http://localhost:3001${foto}`}
           alt="..."
         />
-        <div className="badge bg-user text-white  small">
+        {/* <div className="badge bg-user text-white  small">
           {vendido === true ? (
             <p> Vendido </p>
           ) : reservado === true ? (
             <p>Reservado</p>
           ) : null}
-        </div>
+        </div> */}
+        {/* <div className="badge position-absolute bg-user fav-position">
+          <div className="fav-container"> */}
+        {vendido === true ? (
+          <div className="badge position-absolute bg-selled fav-position">
+            <div className="fav-container">
+              <p> Vendido </p>
+            </div>
+          </div>
+        ) : reservado === true ? (
+          <div className="badge position-absolute bg-selled fav-position">
+            <div className="fav-container">
+              <p> Reservado </p>
+            </div>
+          </div>
+        ) : null}
+        {/* </div>
+        </div> */}
         <div className="card-body p-4">
           <div className="text-center">
             <h5 className="fw-bolder">{name}</h5>
