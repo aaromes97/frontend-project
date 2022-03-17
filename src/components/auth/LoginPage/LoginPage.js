@@ -34,7 +34,6 @@ function LoginPage({ onLogin, history, location }) {
       onLogin();
       const { from } = location.state || { from: { pathname: "/" } };
       history.replace(from);
-      console.log(value);
     } catch (error) {
       setIsLoading(false);
       setError(error);

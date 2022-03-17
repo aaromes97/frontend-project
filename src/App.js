@@ -18,6 +18,7 @@ import ForgotPasswordSendEmailPage from "./components/auth/ForgotPassword/SendEm
 import ForgotPasswordResetPage from "./components/auth/ForgotPassword/ResetPage/ResetPage";
 import PrivateRouteForgotPassword from "./components/auth/PrivateRouteForgotPassword";
 import ProfilePage from "./components/auth/ProfilePage/ProfilePage";
+import DeleteUserPage from "./components/auth/DeleteUserPage/DeleteUserPage";
 
 function App({ isInitiallyLogged, history }) {
   const [isLogged, setIsLogged] = useState(isInitiallyLogged);
@@ -53,6 +54,9 @@ function App({ isInitiallyLogged, history }) {
             </Route>
             <PrivateRoute path="/profile">
               {(history) => <ProfilePage {...history} />}
+            </PrivateRoute>
+            <PrivateRoute path="/deleteUser">
+              {(history) => <DeleteUserPage {...history} />}
             </PrivateRoute>
             <Route exact path="/adverts" component={AdvertsPage} />
             <Route exact path="/">
