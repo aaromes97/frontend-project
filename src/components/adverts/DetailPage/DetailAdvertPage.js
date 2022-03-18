@@ -346,7 +346,10 @@ function DetailAdvertPage() {
                     </ReactSimpleTooltip>
                   </div>
                 ) : (
-                  <button className="chat ">Chat</button>
+                  <button
+                    className="chat"
+                    onClick={() => history.push("/chat")}
+                  >Chat</button>
                 )}
               </div>
 
