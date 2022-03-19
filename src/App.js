@@ -21,7 +21,6 @@ import PrivateRouteForgotPassword from "./components/auth/PrivateRouteForgotPass
 import ProfilePage from "./components/auth/ProfilePage/ProfilePage";
 // import { Chat } from "./components/chat/Chat";
 import Chat from "./chat/chat/chat";
-import Process from "./chat/process/process";
 import Home from "./chat/home/home";
 
 import io from "socket.io-client";
@@ -37,9 +36,6 @@ function Appmain(props) {
           roomname={props.match.params.roomname}
           socket={socket}
         />
-      </div>
-      <div className="left">
-        <Process />
       </div>
     </React.Fragment>
   );

@@ -348,7 +348,7 @@ function DetailAdvertPage() {
                 ) : (
                   <button
                     className="chat"
-                    onClick={() => history.push("/chat")}
+                    onClick={() => history.push(`/chat/${advert[0].nombre}/${name}`)}
                   >Chat</button>
                 )}
               </div>
