@@ -21,7 +21,6 @@ import PrivateRouteForgotPassword from "./components/auth/PrivateRouteForgotPass
 import ProfilePage from "./components/auth/ProfilePage/ProfilePage";
 // import { Chat } from "./components/chat/Chat";
 import Chat from "./chat/chat/chat";
-import Home from "./chat/home/home";
 
 import io from "socket.io-client";
 
@@ -71,10 +70,7 @@ function App({ isInitiallyLogged, history }) {
               <NewAdvertPage />
             </PrivateRoute>
             <Route path="/adverts/:advertId">
-              {(routeProps) => <DetailAdvertPage {...routeProps} />}
-            </Route>
-            <Route path="/chat" exact>
-              <Home socket={socket} />
+              {(routeProps) => <DetailAdvertPage {...routeProps} socket={socket} />}
             </Route>
             <Route path="/chat/:roomname/:username" component={Appmain} />
             <PrivateRoute path="/profile">

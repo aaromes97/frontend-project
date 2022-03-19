@@ -1,8 +1,8 @@
 import React from "react";
 import ReactSimpleTooltip from "react-simple-tooltip";
-
-import { useEffect, useState, useMemo } from "react";
-import { Redirect, useLocation, useParams } from "react-router";
+import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Redirect, useParams } from "react-router";
 import { useHistory } from "react-router-dom";
 import Layout from "../../layout/layout";
 import Confirmation from './Confirmation';
@@ -13,24 +13,29 @@ import vender from "../../../assets/apreton-de-manos.png";
 import reservar from "../../../assets/guardar-instagram.png";
 import editar from "../../../assets/editar.png";
 
-function DetailAdvertPage() {
+function DetailAdvertPage({ socket }) {
   const history = useHistory();
   const { advertId } = useParams();
   const [advert, setAdvert] = useState(null);
   const [error, setError] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
   const [display, setDisplay] = useState(false);
   const name = storage.get("name");
-  const [estadoVenta, setEstadoVenta] = useState(false);
+  // const [estadoVenta, setEstadoVenta] = useState(false);
 
   const part = advertId.split("-");
   const _id = part[1];
 
+
   useEffect(() => {
     getAd(_id)
-      .then((ads) => setAdvert(ads.results))
+      .then((ads) =>
+        setAdvert(ads.results))
       .catch((error) => setError(error));
   }, [_id]);
+
+  const [username, setusername] = useState(name);
+  const [roomname, setroomname] = useState("Chat");
 
   const handleConfirmDelete = async (event) => {
     event.preventDefault();
@@ -90,7 +95,16 @@ function DetailAdvertPage() {
     history.replace("/")
   }
 
-  const buttonDisabled = useMemo(() => isLoading[isLoading]);
+  const sendData = () => {
+    if (username && roomname) {
+      socket.emit("joinRoom", { username, roomname });
+    } else {
+      alert("username and roomname are must !");
+      window.location.reload();
+    }
+  };
+
+  // const buttonDisabled = useMemo(() => isLoading[isLoading]);
 
   if (error?.status === 404) {
     return <Redirect to="/404" />;
@@ -346,10 +360,9 @@ function DetailAdvertPage() {
                     </ReactSimpleTooltip>
                   </div>
                 ) : (
-                  <button
-                    className="chat"
-                    onClick={() => history.push(`/chat/${advert[0].nombre}/${name}`)}
-                  >Chat</button>
+                  <Link to={`/chat/${roomname}/${username}`}>
+                    <button className="chat" onClick={sendData}>Chat</button>
+                  </Link>
                 )}
               </div>
 
