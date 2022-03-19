@@ -5,6 +5,7 @@ import {
   Switch,
   Redirect,
 } from "react-router-dom";
+import "./App.css";
 
 import AdvertsPage from "./components/adverts/AdvertsPage";
 import LoginPage from "./components/auth/LoginPage/LoginPage";
@@ -18,7 +19,31 @@ import ForgotPasswordSendEmailPage from "./components/auth/ForgotPassword/SendEm
 import ForgotPasswordResetPage from "./components/auth/ForgotPassword/ResetPage/ResetPage";
 import PrivateRouteForgotPassword from "./components/auth/PrivateRouteForgotPassword";
 import ProfilePage from "./components/auth/ProfilePage/ProfilePage";
-import { Chat } from "./components/chat/Chat";
+// import { Chat } from "./components/chat/Chat";
+import Chat from "./chat/chat/chat";
+import Process from "./chat/process/process";
+import Home from "./chat/home/home";
+
+import io from "socket.io-client";
+
+const socket = io.connect('/');
+
+function Appmain(props) {
+  return (
+    <React.Fragment>
+      <div className="right">
+        <Chat
+          username={props.match.params.username}
+          roomname={props.match.params.roomname}
+          socket={socket}
+        />
+      </div>
+      <div className="left">
+        <Process />
+      </div>
+    </React.Fragment>
+  );
+}
 
 function App({ isInitiallyLogged, history }) {
   const [isLogged, setIsLogged] = useState(isInitiallyLogged);
@@ -52,9 +77,10 @@ function App({ isInitiallyLogged, history }) {
             <Route path="/adverts/:advertId">
               {(routeProps) => <DetailAdvertPage {...routeProps} />}
             </Route>
-            <Route path="/chat">
-              {(routeProps) => <Chat {...routeProps} />}
+            <Route path="/chat" exact>
+              <Home socket={socket} />
             </Route>
+            <Route path="/chat/:roomname/:username" component={Appmain} />
             <PrivateRoute path="/profile">
               {(history) => <ProfilePage {...history} />}
             </PrivateRoute>
