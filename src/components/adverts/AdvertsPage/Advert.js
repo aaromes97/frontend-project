@@ -4,6 +4,8 @@ import "../../../bootstrap/style.css";
 
 const Advert = ({ nombre, venta, precio, descripcion, foto, autor }) => {
   return (
+    <div className="flex-card">
+
     <div className="col mb-5">
       <div className="card h-100">
         <div className="badge bg-user text-white position-absolute small">
@@ -20,7 +22,7 @@ const Advert = ({ nombre, venta, precio, descripcion, foto, autor }) => {
           className="card-img-top"
           src={`http://localhost:3001${foto}`}
           alt="..."
-        />
+          />
         {/* </div> */}
         <div className="card-body p-4">
           <div className="text-center">
@@ -39,6 +41,7 @@ const Advert = ({ nombre, venta, precio, descripcion, foto, autor }) => {
         </div>
       </div>
     </div>
+</div>
   );
 };
 

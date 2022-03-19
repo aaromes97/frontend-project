@@ -4,8 +4,7 @@ import React, { Component, useContext, useEffect, useState } from "react";
 import AuthContext from "../auth/context";
 import { Link, NavLink } from "react-router-dom";
 import storage from "../../utils/storage";
-import { getLatestAds } from "../adverts/service";
-import Search from "../../utils/search";
+
 
 function Header({ className }) {
 
@@ -24,7 +23,7 @@ function Header({ className }) {
         {/* <Search>
 
         </Search> */}
-        {/* <form className="form-inline">
+        <form className="form-inline">
           <input
             class="form-control mr-1"
             type="search"
@@ -35,7 +34,7 @@ function Header({ className }) {
           <button className="btn btn-outline-success my-2 mr-1" type="submit">
             Buscar
           </button>
-        </form> */}
+        </form>
         <button
           className="navbar-toggler"
           type="button"

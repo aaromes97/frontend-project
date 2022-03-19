@@ -6,11 +6,15 @@ function Layout({ children, ...props }) {
     return (
         <>
             <Header {...props} />
-            <section className="py-5">
-                <div className="container px-4 px-lg-5 mt-5">
+            <div className='contenedor'>
+            {/* <section className="py-5"> */}
+                {/* <div className="container px-4 px-lg-5 mt-5"> */}
                     {children}
-                </div>
-            </section>
+                {/* </div> */}
+            {/* </section> */}
+
+
+            </div>
             <Footer></Footer>
         </>
     )

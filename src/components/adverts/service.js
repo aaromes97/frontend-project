@@ -16,7 +16,8 @@ export const getFilteredAds = (filter) => {
   const filterList = {
     nombre: filter.nombre,
     tags: filter.tags,
-    precio: [filter.precioMin, filter.precioMax],
+    precioMin: filter.precioMin,
+    precioMax: filter.precioMax,
     venta: filter.sale,
   };
 

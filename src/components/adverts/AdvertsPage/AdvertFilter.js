@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { getFilteredAds } from "../service";
-
+import '../../layout/styles.css';
 
 function AdvertFilter(props) {
   const [filter, setFilter] = useState({
@@ -45,36 +45,39 @@ function AdvertFilter(props) {
 
   return (
 
-    
-    <form noValidate onSubmit={handleFilter}>
+    <nav className="flex-container">
+          
+    <div className="flex-items">
+              
+    <form noValidate onSubmit={handleFilter }>
       <div className="input-group input-group-sm mb-3">
-      <input
+        <input
+        className="textbox"
         name="nombre"
         type="text"
         placeholder="Buscar Producto"
         onChange={handleInput}
         value={filter.nombre}
         required
-              />
-        <div>
-        <i className="bi bi-search"></i>
-        </div>     
+              />   
       </div>
       
 
       <div className="input-group input-group-sm mb-3">
-      <input
-       name="precioMin"
-       type="number"
-       placeholder="Precio mínimo"
-       onChange={handleInput}
-       min="0"
-       value={filter.precioMin}
+        <input
+        className="textbox"
+        name="precioMin"
+        type="number"
+        placeholder="Precio mínimo"
+        onChange={handleInput}
+        min="0"
+        value={filter.precioMin}
   
        />
        </div>
       <div className="input-group input-group-sm mb-3">
-      <input
+        <input
+        className="textbox"
         name="precioMax"
         type="number"
         placeholder="Precio Máximo"
@@ -107,11 +110,14 @@ function AdvertFilter(props) {
       </select>
       </div> */}
       <div>
-      <button className="btn btn-primary btn-lg btn-block" type="submit">SEARCH</button>
+      <button className="boton" type="submit">SEARCH</button>
 
       
       </div>
     </form>
+    </div>
+
+    </nav>
   );
 }
 
