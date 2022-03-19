@@ -20,21 +20,7 @@ function Header({ className }) {
             <Icon width="32" height="42" />
           </div>
         </a>
-        {/* <Search>
-
-        </Search> */}
-        <form className="form-inline">
-          <input
-            class="form-control mr-1"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-           
-          />
-          <button className="btn btn-outline-success my-2 mr-1" type="submit">
-            Buscar
-          </button>
-        </form>
+     
         <button
           className="navbar-toggler"
           type="button"
@@ -47,7 +33,7 @@ function Header({ className }) {
           <span className="navbar-toggler-icon"></span>
         </button>
 
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+        <div className="collapse navbar-collapse element-menu" id="navbarSupportedContent">
           <ul className="navbar-nav ml-auto mb-2 mb-lg-0 ms-lg-4">
             <li className="nav-item">
               <a
