@@ -1,23 +1,29 @@
-.contenedor {
+/* .contenedor {
   display: flex;
   justify-content: flex-start;
   margin: 20px;
-}
-
+} */
+/* 
 .flex-adverts {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-}
+} */
 
 .flex-container {
-  margin: 5px;
+  margin: 10px;
 }
 
-.flex-adverts {
+.flex-items {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* .flex-adverts {
   justify-content: center;
   align-items: stretch;
-}
+} */
 
 .boton {
   text-decoration: none;
@@ -57,6 +63,16 @@
   -webkit-box-shadow: 0px 0px 8px #7bc1f7;
 }
 
-.element-menu {
+/* .element-menu {
   justify-content: flex-end;
+}  */
+.deleteUser {
+  background: red;
+  color: black;
+  font-weight: bold;
+}
+.deleteUser:hover {
+  background: #ff4747;
+  color: white;
+  font-weight: bold;
 }
