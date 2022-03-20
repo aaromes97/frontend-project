@@ -39,6 +39,7 @@ function DetailAdvertPage({ socket }) {
 
   const part = advertId.split("-");
   const _id = part[1];
+  const advertName = part[0];
 
   useEffect(() => {
     getAd(_id)
@@ -47,7 +48,7 @@ function DetailAdvertPage({ socket }) {
   }, [_id]);
 
   const [username, setusername] = useState(name);
-  const [roomname, setroomname] = useState("Chat");
+  const [roomname, setroomname] = useState(advertName);
 
   const handleConfirmDelete = async (event) => {
     event.preventDefault();

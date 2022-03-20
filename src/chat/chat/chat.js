@@ -69,9 +69,8 @@ function Chat({ username, roomname, socket }) {
             } else {
               return (
                 <div className="message mess-right">
-                  <p>
-                    {i.username}: {i.text}{" "}
-                  </p>
+                  <p>{i.text}</p>
+                  <span>{i.username}</span>
                 </div>
               );
             }
