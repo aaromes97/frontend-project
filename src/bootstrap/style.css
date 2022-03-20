@@ -10287,7 +10287,7 @@ button.bg-dark:focus {
   margin-left: 3rem !important;
 }
 
-.newAdvertPage {
+.newAdvertPage, .updateProfile {
   background-color: white;
   border-radius: 20px;
 }

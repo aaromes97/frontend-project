@@ -4,14 +4,21 @@ import './index.css';
 import App from './App';
 import client, { setAuthorizationHeader } from './api/client';
 import storage from './utils/storage';
+import rootReducers from "./store/reducer/index";
+import { createStore } from "redux";
+import { Provider } from "react-redux";
 
 const accessToken = storage.get('auth');
 setAuthorizationHeader(accessToken)
 
+const store = createStore(rootReducers);
+
 ReactDOM.render(
-  <React.StrictMode>
-    <App isInitiallyLogged = {!!accessToken} />
-  </React.StrictMode>,
+  <Provider store={store}>
+    <React.StrictMode>
+      <App isInitiallyLogged={!!accessToken} />
+    </React.StrictMode>
+  </Provider>,
   document.getElementById('root')
 );
 

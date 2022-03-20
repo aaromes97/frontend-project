@@ -1,15 +1,15 @@
 import { useState } from "react";
-import '../../../bootstrap/style.css';
-import '../auth.css';
-import logo from '../LoginPage/img/login.png';
-import { login } from "../NewUser/service";
+import '../../../../bootstrap/style.css';
+import '../../auth.css';
+import logo from '../../LoginPage/img/login.png';
+import { login } from "../SendEmailPage/service";
 
 
 
 
-function RegisterPage({ history }) {
+function ForgotPasswordSendEmailPage({ history }) {
 
-	const [value, setValue] = useState({ name: '', email: '', password: '' })
+	const [value, setValue] = useState({ email: '' })
 	const [error, setError] = useState(null)
 	//para implementar Spinner de Loading 
 	const [isLoading, setIsLoading] = useState(false)
@@ -35,6 +35,7 @@ function RegisterPage({ history }) {
 		try {
 			await login(value);
 			setIsLoading(false)
+			window.alert("Correo enviado correctament")
 			history.push('/login')
 			console.log(value)
 
@@ -58,18 +59,10 @@ function RegisterPage({ history }) {
 						<div className="icon d-flex align-items-center justify-content-center">
 							<img className="logoLogin" src={logo} alt="logo"></img>
 						</div>
-						<h3 className="text-center mb-4">Nuevo Usuario</h3>
+						<h3 className="text-center mb-4">Reestablecer Contraseña</h3>
 						<form className="login-form" onSubmit={handleSubmit}>
 							<div className="form-group">
 
-								<div className="form-group">
-									<input className="form-control rounded-left"
-										placeholder="Usuario"
-										type="text"
-										name="name"
-										value={value.name}
-										onChange={handleChange} />
-								</div>
 								<input className="form-control rounded-left"
 									placeholder="Email"
 									type="email"
@@ -77,28 +70,19 @@ function RegisterPage({ history }) {
 									value={value.email}
 									onChange={handleChange} />
 							</div>
-							<div className="form-group d-flex">
-								<input className="form-control rounded-left"
-									placeholder="Contraseña"
-									type="password"
-									name="password"
-									value={value.password}
-									onChange={handleChange} />
-							</div>
-
 							<div className="form-group d-md-flex">
 								<button className="btn btn-primary rounded submit p-3 px-5"
 									type="submit"
-									disabled={isLoading || !value.name || !value.email || !value.password}>Registrar</button>
+									disabled={isLoading || !value.email}>Enviar</button>
 							</div>
 						</form>
 					</div>
 				</div>
 			</div>
-			{error && <div onClick={resetError} className="error-msg"> <i className="fa fa-times-circle"></i>{error.message}</div>}</div>
+			{error && <div onClick={resetError} className="error-msg"> <i class="fa fa-times-circle"></i>{error.message}</div>}</div>
 	</section>
 };
 
 
 
-export default RegisterPage;
+export default ForgotPasswordSendEmailPage;
