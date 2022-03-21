@@ -342,7 +342,7 @@ function DetailAdvertPage({ socket }) {
                       <ReactSimpleTooltip>
                         <button
                           className="editar-button btn-grp"
-                          // onClick={handleEditar}
+                        // onClick={handleEditar}
                         >
                           <div>
                             <img src={editar}></img>
