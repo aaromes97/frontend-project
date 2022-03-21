@@ -33,7 +33,9 @@ function DetailAdvertPage({ socket }) {
   const [advert, setAdvert] = useState(null);
   const [error, setError] = useState([]);
   // const [isLoading, setIsLoading] = useState(false);
-  const [display, setDisplay] = useState(false);
+  const [displayDelete, setDisplayDelete] = useState(false);
+  const [displaySell, setDisplaySell] = useState(false);
+
   const name = storage.get("name");
   // const [estadoVenta, setEstadoVenta] = useState(false);
 
@@ -52,9 +54,14 @@ function DetailAdvertPage({ socket }) {
 
   const handleConfirmDelete = async (event) => {
     event.preventDefault();
-    console.log(advert);
-    setDisplay(true);
+    setDisplayDelete(true);
   };
+
+  const handleConfirmSell = async (event) => {
+    event.preventDefault();
+    setDisplaySell(true);
+  };
+
   const handleReserva = async (event) => {
     event.preventDefault();
     const reserva = true;
@@ -87,7 +94,6 @@ function DetailAdvertPage({ socket }) {
     }
   };
   const handleVender = async (event) => {
-    event.preventDefault();
     try {
       let reservar = new FormData();
       let vender = new FormData();
@@ -182,7 +188,7 @@ function DetailAdvertPage({ socket }) {
                         <ReactSimpleTooltip>
                           <button
                             className="vender-button btn-grp"
-                            onClick={handleVender}
+                            onClick={handleConfirmSell}
                           >
                             <div>
                               <img src={vender} alt="vender"></img>
@@ -433,9 +439,14 @@ function DetailAdvertPage({ socket }) {
               </div>
             </div>
           </div>
-          {display && (
-            <Confirmation onConfirm={handleDelete} onDisplay={setDisplay}>
+          {displayDelete && (
+            <Confirmation onConfirm={handleDelete} onDisplay={setDisplayDelete}>
               ¿Estas seguro que quieres borrar este anuncio?
+            </Confirmation>
+          )}
+          {displaySell && (
+            <Confirmation onConfirm={handleVender} onDisplay={setDisplaySell}>
+              ¿Estas seguro que quieres vender este anuncio? No se podrá deshacer.
             </Confirmation>
           )}
         </Layout>
