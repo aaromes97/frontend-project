@@ -1,0 +1,10 @@
+{
+    "header":{
+        "mensaje": "Mensaje",
+        "subir-producto": "Subir Producto",
+        "mis-anuncios": "Mis Anuncios",
+        "mis-favoritos": "Mis Favoritos",
+        "mi-cuenta": "Mi Cuenta",
+        "eliminar-cuenta": "Eliminar Cuenta"
+    }
+}

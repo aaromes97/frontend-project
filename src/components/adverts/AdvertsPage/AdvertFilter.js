@@ -2,7 +2,9 @@ import { useState } from "react";
 import { getFilteredAds } from "../service";
 import '../../layout/styles.css';
 
+
 function AdvertFilter(props) {
+
   const [filter, setFilter] = useState({
     nombre: "",
     precioMin: "",
@@ -37,20 +39,25 @@ function AdvertFilter(props) {
       const ads = await getFilteredAds(filter);
       adverts = ads
       console.log(adverts)
-      props.filterAds(adverts);
+        props.filterAds(adverts);
+    
     } catch (error) {
       console.error(error);
     }
   };
+    
+    const handleReset = async (event) => {
+        
+    }
 
   return (
 
-    <nav className="flex-container">
+    
           
-    <div className="flex-items">
               
-    <form noValidate onSubmit={handleFilter }>
-      <div className="input-group input-group-sm mb-3">
+      <form noValidate onSubmit={handleFilter } className="flex-items">
+     
+      <div className=" search" >
         <input
         className="textbox"
         name="nombre"
@@ -63,7 +70,7 @@ function AdvertFilter(props) {
       </div>
       
 
-      <div className="input-group input-group-sm mb-3">
+      <div className="precioMin">
         <input
         className="textbox"
         name="precioMin"
@@ -75,7 +82,7 @@ function AdvertFilter(props) {
   
        />
        </div>
-      <div className="input-group input-group-sm mb-3">
+      <div className="precioMax">
         <input
         className="textbox"
         name="precioMax"
@@ -87,8 +94,8 @@ function AdvertFilter(props) {
         
         />
       </div>
-      <div className="input-group input-group-sm mb-3">
-      <select className="form-control"  name="sale" onChange={handleInput}>
+      <div className=" Compra">
+      <select className=""  name="sale" onChange={handleInput}>
         <option value="">Compra/Venta</option>
         <option value="true">Venta</option>
         <option value="false">Compra</option>
@@ -109,15 +116,18 @@ function AdvertFilter(props) {
         <option value="work">Work</option>
       </select>
       </div> */}
-      <div>
+      <div className="submit">
       <button className="boton" type="submit">SEARCH</button>
-
-      
-      </div>
-    </form>
+          </div>
+    
+          <div className="submit">
+      <button className="boton" type='reset' onClick={handleReset} >RESET</button>
     </div>
 
-    </nav>
+  
+    </form>
+
+   
   );
 }
 

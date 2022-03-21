@@ -1,0 +1,10 @@
+{
+    "header":{
+        "mensaje": "Message",
+        "subir-producto": "Upload Product",
+        "mis-anuncios": "My Listings",
+         "mis-favoritos": "My Favorites",
+         "mi-cuenta": "My Account",
+         "eliminar-cuenta": "Delete Account"
+    }
+}

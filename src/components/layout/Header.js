@@ -5,17 +5,33 @@ import AuthContext from "../auth/context";
 import { Link, NavLink } from "react-router-dom";
 import storage from "../../utils/storage";
 import './styles.css'
+import AdvertFilter from "../adverts/AdvertsPage/AdvertFilter"
+import {useTranslation} from "react-i18next"
 
 function Header() {
-	const { isLogged, handleLogout } = useContext(AuthContext);
-	const name = storage.get("name");
+  const [t, i18n] = useTranslation("global");
+  const { isLogged, handleLogout } = useContext(AuthContext);
+  const name = storage.get("name");
+  const changeToEnglish = event => {
+    i18n.changeLanguage('en');
+    event.preventDefault()
+  }
+  const changeToSpanish = event => {
+    i18n.changeLanguage('es');
+    event.preventDefault();
+  }
+
+
+
 	return (
 		<nav className="navbar navbar-expand-lg navbar-light bg-light">
 		<div className="container px-4 px-lg-5">
 		<a href="/adverts">
 		<div className="navbar-brand">
 		<Icon width="32" height="42" />
-		</div>
+    </div>
+    <button onClick={changeToSpanish}>ES</button> 
+    <button onClick={changeToEnglish}>EN</button>      
 		</a>
 		<button
 		className="navbar-toggler"
@@ -28,7 +44,6 @@ function Header() {
 		>
 		<span className="navbar-toggler-icon"></span>
 		</button>
-
 		<div className="collapse navbar-collapse" id="navbarSupportedContent">
 		<ul className="navbar-nav ml-auto mb-2 mb-lg-0 ms-lg-4">
 		<li className="nav-item">
@@ -37,12 +52,12 @@ function Header() {
 		aria-current="page"
 		href="/adverts/new"
 		>
-		Subir producto
+		{t("header.subir-producto")}
 		</a>
 		</li>
 		<li className="nav-item">
 		<a className="nav-link" href="#!">
-		Mensajes
+		{t("header.mensaje")}
 		</a>
 		</li>
 		{isLogged ? (
@@ -60,12 +75,12 @@ function Header() {
 			<ul className="dropdown-menu" aria-labelledby="navbarDropdown">
 			<li>
 			<a className="dropdown-item" href="#!">
-			Mis Anuncios
+			{t("header.mis-anuncios")}
 			</a>
 			</li>
 			<li>
 			<a className="dropdown-item" href="#!">
-			Mis Favoritos
+			{t("header.mis-favoritos")}
 			</a>
 			</li>
 			<li>
@@ -73,7 +88,7 @@ function Header() {
 			</li>
 			<li>
 			<a className="dropdown-item" href="/profile">
-			Mi Cuenta
+			{t("header.mi-cuenta")}
 			</a>
 			</li>
 			<li>
@@ -81,7 +96,7 @@ function Header() {
 			</li>
 			<li>
 			<a className="deleteUser dropdown-item" href="/deleteUser">
-			Eliminar Cuenta
+			{t("header.eliminar-cuenta")}
 			</a>
 			</li>
 			</ul>
@@ -89,7 +104,7 @@ function Header() {
 		) : (
 			<div></div>
 		)}
-		</ul>
+          </ul>
 		<form className="d-flex">
 		{isLogged ? (
 			<button className="btn btn-outline-dark" onClick={handleLogout}>
