@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { getFilteredAds } from "../service";
 import '../../layout/styles.css';
+import {useTranslation} from "react-i18next"
 
 
 function AdvertFilter(props) {
@@ -13,6 +14,8 @@ function AdvertFilter(props) {
     // tags: [],
     foto: "",
   });
+
+    const {t} = useTranslation("global")
 
   const handleInput = (event) => {
     const filterName = event.target.name;
@@ -62,7 +65,7 @@ function AdvertFilter(props) {
         className="textbox"
         name="nombre"
         type="text"
-        placeholder="Buscar Producto"
+        placeholder={t("filter.buscar-producto")}
         onChange={handleInput}
         value={filter.nombre}
         required
@@ -75,7 +78,7 @@ function AdvertFilter(props) {
         className="textbox"
         name="precioMin"
         type="number"
-        placeholder="Precio mínimo"
+        placeholder={t("filter.precio-minimo")}
         onChange={handleInput}
         min="0"
         value={filter.precioMin}
@@ -87,7 +90,7 @@ function AdvertFilter(props) {
         className="textbox"
         name="precioMax"
         type="number"
-        placeholder="Precio Máximo"
+        placeholder={t("filter.precio-maximo")}
         onChange={handleInput}
         min="0"
         value={filter.precioMax}
@@ -96,7 +99,7 @@ function AdvertFilter(props) {
       </div>
       <div className=" Compra">
       <select className=""  name="sale" onChange={handleInput}>
-        <option value="">Compra/Venta</option>
+        <option value="">{t("filter.compra-venta")}</option>
         <option value="true">Venta</option>
         <option value="false">Compra</option>
       </select>
@@ -117,7 +120,7 @@ function AdvertFilter(props) {
       </select>
       </div> */}
       <div className="submit">
-      <button className="boton" type="submit">SEARCH</button>
+      <button className="boton" type="submit">{t("filter.buscar")}</button>
           </div>
     
           <div className="submit">

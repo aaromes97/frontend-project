@@ -8,7 +8,8 @@ import './styles.css'
 import AdvertFilter from "../adverts/AdvertsPage/AdvertFilter"
 import {useTranslation} from "react-i18next"
 
-function Header() {
+
+function Header({history, ...props}) {
   const [t, i18n] = useTranslation("global");
   const { isLogged, handleLogout } = useContext(AuthContext);
   const name = storage.get("name");

@@ -6,5 +6,31 @@
         "mis-favoritos": "Mis Favoritos",
         "mi-cuenta": "Mi Cuenta",
         "eliminar-cuenta": "Eliminar Cuenta"
+    },
+    "filter":{
+        "buscar-producto": "Buscar Producto",
+        "precio-minimo": "Precio mínimo",
+        "precio-maximo": "Precio máximo",
+        "compra-venta": "Compra-Venta",
+        "buscar": "Buscar"
+        
+    },
+    "newAdvert":{
+        "nombre-producto":"Nombre del Producto",
+        "descripcion": "Descripcion:",
+        "compra": "Compra",
+        "venta": "Venta",
+        "precio-producto":"Precio del producto",
+        "seleccionar-archivo":"Seleccionar archivo",
+        "archivo-seleccionado": "Ningun archivo seleccionado",
+        "crear-anuncio": "Crear Anuncio"
+        
+    },
+     "advert":{
+        "vendido": "Vendido",
+        "reservado": "Reservado",
+        "venta": "Venta",
+        "busco": "Busco"
     }
+
 }

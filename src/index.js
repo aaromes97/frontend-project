@@ -17,6 +17,10 @@ i18next
       order: ['path', 'cookie', 'htmlTag'],
       caches: ['cookie'],
     },
+    cookie: 'nodeapi-locale',
+     defaultLocale: 'en',
+    autoReload: true,
+    syncFiles: true,
   // interpolation: { escapeValue: false },
   // lng:'es',
   resources: {

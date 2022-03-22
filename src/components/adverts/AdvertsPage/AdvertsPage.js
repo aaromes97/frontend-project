@@ -11,11 +11,12 @@ import { Link } from "react-router-dom";
 
 
 
-function AdvertsPage({history, ...props }) {
+function AdvertsPage({history, t, ...props }) {
     const [ads, setAds] = useState([]);
     useEffect(() => {
         getLatestAds().then((adverts) => {
             console.log(adverts, 'desde AdvertsPAge')
+            console.log(t,'t')
             setAds(adverts.results);
         });
     }, []);
@@ -24,33 +25,6 @@ function AdvertsPage({history, ...props }) {
 
   
     return (
-        
-            // <Layout {...props}>
-             
-            // <AdvertFilter filterAds={ads => setAdverts(ads.results)} selectedAds={adverts} />
-            // {console.log(adverts,'desde return')}
-
-            //     {
-            //     adverts.length ? (
-                    
-            //         <div className="container px-4 px-lg-5 mt-5">
-            //             <div className="flex-adverts" >
-            //                 {adverts.map(({ id, ...advert }) => (
-            //                     <div key={id} >
-            //                         <Link to={`/adverts/${id}`}>
-            //                         <Advert {...advert} />
-            //                            </Link>
-            //                     </div>
-
-            //                 ))}
-            //             </div>
-            //             </div>
-            //         ) : (
-            //             <EmptyList />
-            //         )
-            //     }
-            // </Layout>
-        
          <>
             <Layout {...props}>
                   <AdvertFilter filterAds={ads => setAds(ads.results)} selectedAds={ads} />
