@@ -6,32 +6,9 @@ import client, { setAuthorizationHeader } from './api/client';
 import storage from './utils/storage';
 import { I18nextProvider } from "react-i18next";
 import i18next from "i18next";
-import global_es from "./translations/es/global.json";
-import global_en from "./translations/en/global.json";
+import "./utils/i18n";
 
-i18next
-  .init({
-    lng:'es',
-    fallbackLng: 'es',
-    detection: {
-      order: ['path', 'cookie', 'htmlTag'],
-      caches: ['cookie'],
-    },
-    cookie: 'nodeapi-locale',
-     defaultLocale: 'en',
-    autoReload: true,
-    syncFiles: true,
-  // interpolation: { escapeValue: false },
-  // lng:'es',
-  resources: {
-    es: {
-      global: global_es
-    },
-    en: {
-      global: global_en
-    }
-  }
-})
+
 
 const accessToken = storage.get('auth');
 setAuthorizationHeader(accessToken)

@@ -6,7 +6,7 @@ import { createAd } from "../service";
 import { useTranslation } from "react-i18next"
 
 function NewAdvertPage() {
-  const {t}= useTranslation("global")
+  const {t}= useTranslation("common")
   const history = useHistory();
   const [error, setError] = useState(null);
 

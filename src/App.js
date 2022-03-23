@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import { Suspense } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -11,7 +12,7 @@ import NewAdvertPage from "./components/adverts/NewAdvertPage";
 import { logout } from "./components/auth/LoginPage/service";
 import AuthContext, { AuthContextProvider } from "./components/auth/context";
 import RegisterPage from "./components/auth/NewUser/Register";
-import { getLatestAds } from "./components/adverts/service";
+
 
 
 
@@ -29,6 +30,7 @@ function App({ isInitiallyLogged, history }) {
 
   return (
 
+    <Suspense fallback={null}>
 
     <Router>
       <AuthContextProvider value={{ isLogged, handleLogout, handleLogin, adverts }}>
@@ -64,6 +66,8 @@ function App({ isInitiallyLogged, history }) {
 
       </AuthContextProvider>
     </Router>
+
+    </Suspense>
 
   );
 }

@@ -14,7 +14,7 @@ const Advert = ({
   reservado,
 }) => {
   
-  const { t } = useTranslation("global")
+  const { t } = useTranslation("common")
   
   return (
     <div className="col mb-5">

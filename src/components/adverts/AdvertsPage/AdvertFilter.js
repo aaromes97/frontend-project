@@ -15,7 +15,7 @@ function AdvertFilter(props) {
     foto: "",
   });
 
-    const {t} = useTranslation("global")
+    const {t} = useTranslation("common")
 
   const handleInput = (event) => {
     const filterName = event.target.name;

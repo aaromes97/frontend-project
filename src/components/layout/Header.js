@@ -1,26 +1,37 @@
 import { ReactComponent as Icon } from "../../assets/clone.svg";
 import "../../bootstrap/style.css";
-import React, { Component, useContext } from "react";
+import React, { Component, useContext, useEffect } from "react";
 import AuthContext from "../auth/context";
 import { Link, NavLink } from "react-router-dom";
 import storage from "../../utils/storage";
 import './styles.css'
 import AdvertFilter from "../adverts/AdvertsPage/AdvertFilter"
-import {useTranslation} from "react-i18next"
+import { useTranslation } from "react-i18next"
+import i18next from "i18next"
 
 
 function Header({history, ...props}) {
-  const [t, i18n] = useTranslation("global");
+  const [t, i18n] = useTranslation("common");
   const { isLogged, handleLogout } = useContext(AuthContext);
   const name = storage.get("name");
-  const changeToEnglish = event => {
-    i18n.changeLanguage('en');
+  
+  useEffect(() => {
+	  if (localStorage.getItem("i18nextLng")?.length > 2) {
+		  i18next.changeLanguage("es")
+	  }
+  }, []);
+	
+	const changeToEnglish = event => {
+	i18n.changeLanguage('en');
+	localStorage.getItem("i18nextLng")
     event.preventDefault()
   }
   const changeToSpanish = event => {
-    i18n.changeLanguage('es');
+	i18n.changeLanguage('es');
+	localStorage.getItem("i18nextLng")
     event.preventDefault();
   }
+	
 
 
 
@@ -31,8 +42,8 @@ function Header({history, ...props}) {
 		<div className="navbar-brand">
 		<Icon width="32" height="42" />
     </div>
-    <button onClick={changeToSpanish}>ES</button> 
-    <button onClick={changeToEnglish}>EN</button>      
+	<button onClick={changeToSpanish} >ES</button> 
+    <button onClick={changeToEnglish} >EN</button>      
 		</a>
 		<button
 		className="navbar-toggler"
