@@ -396,7 +396,7 @@ function DetailAdvertPage({ socket }) {
 
               <img
                 className="detailFoto"
-                src={`http://localhost:3001${advert[0].foto}`}
+                src={`${process.env.REACT_APP_API}${advert[0].foto}`}
                 alt="foto detalle"
               ></img>
               <p className="fw-bolder precioDetail">{advert[0].precio} EUR</p>
