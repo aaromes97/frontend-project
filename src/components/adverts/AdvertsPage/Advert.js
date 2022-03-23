@@ -21,7 +21,7 @@ const Advert = ({
 
         <img
           className="card-img-top"
-          src={`${process.env.REACT_APP_API}${foto}`}
+          src={`${process.env.REACT_APP_API_BASE_URL}${foto}`}
           alt="..."
         />
         {/* <div className="badge bg-user text-white  small">
