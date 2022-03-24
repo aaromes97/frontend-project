@@ -24,7 +24,7 @@ import Chat from "./chat/chat/chat";
 
 import io from "socket.io-client";
 
-const socket = io.connect('/');
+const socket = io("/");
 
 function Appmain(props) {
   return (

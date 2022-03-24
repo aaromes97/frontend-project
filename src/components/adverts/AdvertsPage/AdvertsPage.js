@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 
 function AdvertsPage(props) {
   const [ads, setAds] = useState([]);
-  console.log(process.env.REACT_APP_API)
 
   useEffect(() => {
     getLatestAds().then((ads) => {
