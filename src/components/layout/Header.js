@@ -4,11 +4,11 @@ import React, { Component, useContext, useEffect } from "react";
 import AuthContext from "../auth/context";
 import { Link, NavLink } from "react-router-dom";
 import storage from "../../utils/storage";
-import './styles.css'
-import AdvertFilter from "../adverts/AdvertsPage/AdvertFilter"
-import { useTranslation } from "react-i18next"
-import i18next from "i18next"
-
+import './styles.css';
+import { useTranslation } from "react-i18next";
+import i18next from "i18next";
+import es from './../../img/bandera-spain.png'
+import uk from './../../img/united-kingdom.png'
 
 function Header({history, ...props}) {
   const [t, i18n] = useTranslation("common");
@@ -42,8 +42,8 @@ function Header({history, ...props}) {
 		<div className="navbar-brand">
 		<Icon width="32" height="42" />
     </div>
-	<button onClick={changeToSpanish} >ES</button> 
-    <button onClick={changeToEnglish} >EN</button>      
+		<button className="banderas" onClick={changeToSpanish} ><img src={es} alt='bandera-españa'/></button> 
+    	<button className="banderas" onClick={changeToEnglish} ><img src={uk} alt='bandera-UK'/></button>      
 		</a>
 		<button
 		className="navbar-toggler"

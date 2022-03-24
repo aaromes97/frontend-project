@@ -5,7 +5,7 @@ import {useTranslation} from "react-i18next"
 
 
 function AdvertFilter(props) {
-
+  
   const [filter, setFilter] = useState({
     nombre: "",
     precioMin: "",
@@ -14,6 +14,29 @@ function AdvertFilter(props) {
     // tags: [],
     foto: "",
   });
+  
+  // const resetError = () => setFilter({ ...filter, valido: 'true' })
+ 
+  
+  // const is_numeric = (value) => {
+  //   return !isNaN(parseFloat(value)) && isFinite(value)  ;
+  // }
+  
+  // const validateNum = () => {
+  //   if ((is_numeric(filter.precioMin)) && (filter.precioMin >=0))  {
+  //     setFilter({ ...filter, valido: "true" });
+      
+  //   }
+  //   else if (filter.precioMin === '') {
+  //     setFilter({ ...filter, valido: "true" })
+  //   }
+    
+  //   else {
+  //       console.log('Debe ser un numero positivo')
+  //        setFilter({ ...filter, valido: "false" });
+  //     }
+  // }
+  
 
     const {t} = useTranslation("common")
 
@@ -23,17 +46,6 @@ function AdvertFilter(props) {
     setFilter({ ...filter, [filterName]: filterValue });
   };
 
-  const handleMultiSelect = (event) => {
-    const filterName = event.target.name;
-    const filterValue = event.target.value;
-    let multiselect = [...filter[filterName]];
-    if (multiselect.indexOf(filterValue) < 0) {
-      multiselect.push(filterValue);
-    } else {
-      multiselect = multiselect.filter((e) => e !== filterValue);
-    }
-    setFilter({ ...filter, [filterName]: multiselect });
-  };
 
   const handleFilter = async (event) => {
     event.preventDefault();
@@ -49,9 +61,7 @@ function AdvertFilter(props) {
     }
   };
     
-    const handleReset = async (event) => {
-        
-    }
+   const handleReset = () => { Array.from(document.querySelectorAll("input")).forEach( input => (input.value = "") ); setFilter({ filter: [{}] }); };
 
   return (
 
@@ -69,10 +79,11 @@ function AdvertFilter(props) {
         onChange={handleInput}
         value={filter.nombre}
         required
+          
               />   
       </div>
       
-
+      {/* { filter.valido === 'true' ? */}
       <div className="precioMin">
         <input
         className="textbox"
@@ -80,11 +91,17 @@ function AdvertFilter(props) {
         type="number"
         placeholder={t("filter.precio-minimo")}
         onChange={handleInput}
+        // onKeyUp={validateNum}
+        // onBlur={validateNum}
         min="0"
         value={filter.precioMin}
-  
        />
+        {/* </div> : <div className= 'precioMin'>
+          <div className="error-input" onClick={resetError}></div> */}
+      
        </div>
+
+      {/* }  */}
       <div className="precioMax">
         <input
         className="textbox"
@@ -98,27 +115,13 @@ function AdvertFilter(props) {
         />
       </div>
       <div className=" Compra">
-      <select className=""  name="sale" onChange={handleInput}>
+      <select className="select-header" name="sale" onChange={handleInput}>
         <option value="">{t("filter.compra-venta")}</option>
-        <option value="true">Venta</option>
-        <option value="false">Compra</option>
+          <option value="true">{t("filter.venta") }</option>
+          <option value="false">{t("filter.compra") }</option>
       </select>
       </div>
-      {/* <div className="input-group input-group-sm mb-3">
-        <select
-          className="input-group input-group-sm mb-3"
-        name="tags"
-        onChange={handleMultiSelect}
-        multiple={true}
-        value={filter.tags}
-      
-      >
-        <option value="lifestyle">Lifestyle</option>
-        <option value="mobile">Mobile</option>
-        <option value="motor">Motor</option>
-        <option value="work">Work</option>
-      </select>
-      </div> */}
+
       <div className="submit">
       <button className="boton" type="submit">{t("filter.buscar")}</button>
           </div>

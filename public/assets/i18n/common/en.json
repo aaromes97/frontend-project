@@ -12,7 +12,9 @@
          "precio-minimo": "Minimum Price",
          "precio-maximo": "Maximun Price",
          "compra-venta": "Buy-Shell",
-         "buscar": "Search"
+         "compra": "Buy",
+         "venta":"Shell",
+         "buscar": "SEARCH"
     },
      "newAdvert":{
         "nombre-producto":"Name of Product",
@@ -30,7 +32,23 @@
         "vendido": "sold",
         "reservado": "reserved",
         "venta": "Shell",
-        "busco": "Seek"
+        "busco": "Buy"
+    },
+
+    "login":{
+        "inicia-sesion": "Start Session",
+        "usuario": "User",
+        "contraseña": "Password",
+        "crear-usuario": "Create User",
+        "contraseña-perdida": "Have you lost your password?"
+
+    },
+    "register":{
+        "nuevo-usuario":"New User",
+        "usuario": "User",
+        "contraseña": "Password",
+        "email": "E-mail",
+        "registrar":"Register"
     }
 
 }

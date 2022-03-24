@@ -12,7 +12,9 @@
         "precio-minimo": "Precio mínimo",
         "precio-maximo": "Precio máximo",
         "compra-venta": "Compra-Venta",
-        "buscar": "Buscar"
+        "buscar": "BUSCAR",
+        "venta": "Venta",
+        "compra":"Compra"
         
     },
     "newAdvert":{
@@ -31,6 +33,24 @@
         "reservado": "Reservado",
         "venta": "Venta",
         "busco": "Busco"
+    },
+    
+
+    "login":{
+        "inicia-sesion": "Inicia Sesión",
+        "usuario": "Usuario",
+        "contraseña": "Contraseña",
+        "crear-usuario": "Crear Usuario",
+        "contraseña-perdida": "Has perdido tu contraseña?"
+
+    },
+    
+    "register":{
+        "nuevo-usuario":"Nuevo Usuario",
+        "usuario": "Usuario",
+        "contraseña": "Contraseña",
+        "email": "E-mail",
+        "registrar":"Registrar"
     }
 
 }
