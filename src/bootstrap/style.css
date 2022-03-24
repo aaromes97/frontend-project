@@ -10239,7 +10239,7 @@ button.bg-dark:focus {
   margin-left: 3rem !important;
 }
 
-.newAdvertPage, .updateProfile {
+.newAdvertPage, .updateProfile, .deleteUserDiv{
   background-color: white;
   border-radius: 20px;
 }

@@ -32,8 +32,8 @@ function ProfilePage() {
 		event.preventDefault();
 		try {
 			const resultDataUpdated = await updateProfile(value, id);
-			storage.set("name", autor);
-			storage.set("email",email);
+			storage.set("name", resultDataUpdated.data.user);
+			storage.set("email", resultDataUpdated.data.email);
 			setMessage(resultDataUpdated)
 		} catch (error) {
 			setError(error);

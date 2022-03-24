@@ -1,0 +1,10 @@
+.deleteUser {
+    background: red;
+    color: black;
+    font-weight: bold;
+}
+.deleteUser:hover {
+    background: #ff4747;
+    color: white;
+    font-weight: bold;
+}

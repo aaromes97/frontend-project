@@ -19,6 +19,7 @@ import ForgotPasswordSendEmailPage from "./components/auth/ForgotPassword/SendEm
 import ForgotPasswordResetPage from "./components/auth/ForgotPassword/ResetPage/ResetPage";
 import PrivateRouteForgotPassword from "./components/auth/PrivateRouteForgotPassword";
 import ProfilePage from "./components/auth/ProfilePage/ProfilePage";
+<<<<<<< HEAD
 // import { Chat } from "./components/chat/Chat";
 import Chat from "./chat/chat/chat";
 
@@ -39,6 +40,9 @@ function Appmain(props) {
     </React.Fragment>
   );
 }
+=======
+import DeleteUserPage from "./components/auth/DeleteUserPage/DeleteUserPage";
+>>>>>>> 62760665cd9d87e1f2bac599c73aba4655fc7751
 
 function App({ isInitiallyLogged, history }) {
   const [isLogged, setIsLogged] = useState(isInitiallyLogged);
@@ -81,6 +85,9 @@ function App({ isInitiallyLogged, history }) {
             <Route path="/chat/:roomname/:username" component={Appmain} />
             <PrivateRoute path="/profile">
               {(history) => <ProfilePage {...history} />}
+            </PrivateRoute>
+            <PrivateRoute path="/deleteUser">
+              {(history) => <DeleteUserPage {...history} />}
             </PrivateRoute>
             <Route exact path="/adverts" component={AdvertsPage} />
             <Route exact path="/">
