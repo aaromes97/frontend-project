@@ -348,7 +348,7 @@ function DetailAdvertPage({ socket }) {
                       <ReactSimpleTooltip>
                         <button
                           className="editar-button btn-grp"
-                        // onClick={handleEditar}
+                          // onClick={handleEditar}
                         >
                           <div>
                             <img src={editar}></img>
@@ -446,7 +446,8 @@ function DetailAdvertPage({ socket }) {
           )}
           {displaySell && (
             <Confirmation onConfirm={handleVender} onDisplay={setDisplaySell}>
-              ¿Estas seguro que quieres vender este anuncio? No se podrá deshacer.
+              ¿Estas seguro que quieres vender este anuncio? No se podrá
+              deshacer.
             </Confirmation>
           )}
         </Layout>

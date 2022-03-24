@@ -9,7 +9,6 @@ const PrivateRouteForgotPassword = (props) => {
 	const queryParams = new URLSearchParams(window.location.search);
 	const id = queryParams.get('id');
 	const [resIsChecked, setresIsChecked] = useState(null);
-	console.log("resIsChecked:", resIsChecked)
 	//console.log("tokenisvalid2:", resIsChecked)
 
 	useEffect(() => {

@@ -37,7 +37,6 @@ function ForgotPasswordSendEmailPage({ history }) {
 			setIsLoading(false)
 			window.alert("Correo enviado correctament")
 			history.push('/login')
-			console.log(value)
 
 		} catch (error) {
 			setIsLoading(false)

@@ -40,7 +40,6 @@ function ForgotPasswordResetPage({history}) {
 			await login(value, id);
 			setIsLoading(false)
 			history.push('/login')
-			console.log(value)
 
 		} catch (error) {
 			setIsLoading(false)
