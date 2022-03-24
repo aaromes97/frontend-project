@@ -24,7 +24,7 @@ import Chat from "./chat/chat/chat";
 
 import io from "socket.io-client";
 
-const socket = io.connect('/');
+const socket = io.connect("/");
 
 function Appmain(props) {
   return (
@@ -55,13 +55,17 @@ function App({ isInitiallyLogged, history }) {
         <div className="App">
           <Switch>
             <Route path="/login">
-              {({ history, location }) => <LoginPage history={history} location={location} />}
+              {({ history, location }) => (
+                <LoginPage history={history} location={location} />
+              )}
             </Route>
             <Route path="/register">
               {({ history }) => <RegisterPage history={history} />}
             </Route>
             <Route exact path="/forgot-password">
-              {({ history }) => <ForgotPasswordSendEmailPage history={history} />}
+              {({ history }) => (
+                <ForgotPasswordSendEmailPage history={history} />
+              )}
             </Route>
             <PrivateRouteForgotPassword exact path="/forgot-password/check">
               {({ history }) => <ForgotPasswordResetPage history={history} />}
@@ -70,7 +74,9 @@ function App({ isInitiallyLogged, history }) {
               <NewAdvertPage />
             </PrivateRoute>
             <Route path="/adverts/:advertId">
-              {(routeProps) => <DetailAdvertPage {...routeProps} socket={socket} />}
+              {(routeProps) => (
+                <DetailAdvertPage {...routeProps} socket={socket} />
+              )}
             </Route>
             <Route path="/chat/:roomname/:username" component={Appmain} />
             <PrivateRoute path="/profile">
