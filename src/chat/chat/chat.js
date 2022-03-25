@@ -18,6 +18,7 @@ function Chat({ username, roomname, socket }) {
     getChat(idAnuncio).then(chat => {
       setMessages(chat.results[0].mensajes)
     })
+    // cuando renderiza añade al estado todos los elementos que devuelve el socket
     socket.on("message", (data) => {
       setMessages((prevState) => ([
         ...prevState,
@@ -36,11 +37,14 @@ function Chat({ username, roomname, socket }) {
       socket.emit("chat", ans);
       setText("");
       try {
-        let chat = new FormData();
-
-        chat.append("mensajes", JSON.stringify({ messages }));
-        console.log(chat + "chatForm")
-        await updateChat(idAnuncio, chat);
+        let prova =
+        {
+          "mensajes": messages
+        }
+        console.log(prova)
+        // chat.append("mensajes", JSON.stringify(prova));
+        // console.log(chat + "chatForm")
+        await updateChat(idAnuncio, prova);
       } catch (error) {
         console.log(error);
       }
