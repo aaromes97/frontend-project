@@ -92,8 +92,8 @@ function RegisterPage({history}) {
 	value={value.email}
 	onChange={handleChange} />
 		</div>
-		<div className="form-group d-flex">
-		<input className="form-control rounded-left"
+	<div className="form-group d-flex">
+	<input className="form-control rounded-left"
 	placeholder={t("register.contraseña")}
 	type="password"
 	name="password"
