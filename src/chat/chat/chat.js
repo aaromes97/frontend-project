@@ -2,7 +2,7 @@ import "./chat.css";
 // import { to_Decrypt, to_Encrypt } from "../../aes";
 import React, { useState, useEffect, useRef } from "react";
 import Layout from "../../components/layout/layout";
-import { getChat } from "../service";
+import { getChat, updateChat } from "../service";
 import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
 
 function Chat({ username, roomname, socket }) {
@@ -29,12 +29,21 @@ function Chat({ username, roomname, socket }) {
     });
   }, [socket, idAnuncio]);
 
-  const sendData = () => {
+  const sendData = async () => {
     if (text !== "") {
       //encrypt here
       const ans = text;
       socket.emit("chat", ans);
       setText("");
+      try {
+        let chat = new FormData();
+
+        chat.append("mensajes", JSON.stringify({ messages }));
+        console.log(chat + "chatForm")
+        await updateChat(idAnuncio, chat);
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
   const messagesEndRef = useRef(null);

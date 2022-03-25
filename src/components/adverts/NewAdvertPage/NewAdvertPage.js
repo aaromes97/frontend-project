@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { Redirect, useHistory } from "react-router";
+import { useState } from "react";
+import { useHistory } from "react-router";
 import CreatableSelect from "react-select/creatable";
 import Button from "../../common/Button";
 import Layout from "../../layout/layout";
@@ -91,7 +91,7 @@ function NewAdvertPage() {
               value={value.nombre}
               onChange={handleChange}
               required
-              autofocus
+              autoFocus
             ></input>
             <br></br>
             <textarea
@@ -104,7 +104,7 @@ function NewAdvertPage() {
               onChange={handleChange}
             ></textarea>{" "}
             <br></br>
-            <label for="venta">Estado:</label>
+            <label htmlFor="venta">Estado:</label>
             <br></br>
             <select
               name="venta"
