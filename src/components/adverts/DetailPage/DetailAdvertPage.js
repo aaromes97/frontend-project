@@ -12,10 +12,8 @@ import {
   TelegramIcon,
   WhatsappIcon,
 } from "react-share";
-import { FacebookShareCount } from "react-share";
-
-import { useEffect, useState, useMemo } from "react";
-import { Redirect, useLocation, useParams } from "react-router";
+import { useEffect, useState } from "react";
+import { Redirect, useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import Layout from "../../layout/layout";
@@ -348,10 +346,10 @@ function DetailAdvertPage({ socket }) {
                       <ReactSimpleTooltip>
                         <button
                           className="editar-button btn-grp"
-                          // onClick={handleEditar}
+                        // onClick={handleEditar}
                         >
                           <div>
-                            <img src={editar}></img>
+                            <img src={editar} alt="editIcon"></img>
                           </div>
                         </button>
                       </ReactSimpleTooltip>
@@ -386,7 +384,9 @@ function DetailAdvertPage({ socket }) {
                     </ReactSimpleTooltip>
                   </div>
                 ) : (
-                  <Link to={`/chat/${roomname}/${username}`}>
+                  <Link to={{
+                    pathname: `/chat/${roomname}/${username}`, state: { idAnuncio: _id, autor: advert[0].autor },
+                  }}>
                     <button className="chat" onClick={sendData}>
                       Chat
                     </button>

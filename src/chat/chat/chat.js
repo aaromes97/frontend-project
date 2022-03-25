@@ -1,35 +1,33 @@
 import "./chat.css";
 // import { to_Decrypt, to_Encrypt } from "../../aes";
-import { process } from "../../store/action/index";
 import React, { useState, useEffect, useRef } from "react";
-import { useDispatch } from "react-redux";
 import Layout from "../../components/layout/layout";
+import { getChat } from "../service";
+import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
 
 function Chat({ username, roomname, socket }) {
   const [text, setText] = useState("");
   const [messages, setMessages] = useState([]);
+  // Obtenemos la Id del anuncio del cual queremos recuperar el chat
+  const location = useLocation()
+  const idAnuncio = location.state?.idAnuncio
+  const autor = location.state?.autor
 
-  const dispatch = useDispatch();
-
-  const dispatchProcess = (encrypt, msg, cipher) => {
-    dispatch(process(encrypt, msg, cipher));
-  };
 
   useEffect(() => {
+    getChat(idAnuncio).then(chat => {
+      setMessages(chat.results[0].mensajes)
+    })
     socket.on("message", (data) => {
-      //decypt
-      // const ans = to_Decrypt(data.text, data.username);
-      dispatchProcess(false, data.text, data.text);
-      // console.log(ans);
-      let temp = messages;
-      temp.push({
-        userId: data.userId,
-        username: data.username,
-        text: data.text,
-      });
-      setMessages([...temp]);
+      setMessages((prevState) => ([
+        ...prevState,
+        {
+          username: data.username,
+          text: data.text
+        }
+      ]));
     });
-  }, [socket]);
+  }, [socket, idAnuncio]);
 
   const sendData = () => {
     if (text !== "") {
@@ -54,8 +52,9 @@ function Chat({ username, roomname, socket }) {
       <div className="chats">
         <div className="user-name">
           <h2>
-            {username} <span style={{ fontSize: "0.7rem" }}>in {roomname}</span>
+            {roomname}
           </h2>
+          <span style={{ fontSize: "1rem" }}>Para {autor}</span>
         </div>
         <div className="chats-message">
           {messages.map((i) => {
@@ -79,7 +78,7 @@ function Chat({ username, roomname, socket }) {
         </div>
         <div className="send">
           <input
-            placeholder="enter your message"
+            placeholder="Escribe tu mensaje"
             value={text}
             onChange={(e) => setText(e.target.value)}
             onKeyPress={(e) => {
@@ -88,7 +87,7 @@ function Chat({ username, roomname, socket }) {
               }
             }}
           ></input>
-          <button onClick={sendData}>Send</button>
+          <button onClick={sendData}>Enviar</button>
         </div>
       </div>
     </Layout>
