@@ -1,6 +1,6 @@
 import "./chat.css";
 // import { to_Decrypt, to_Encrypt } from "../../aes";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useLayoutEffect } from "react";
 import Layout from "../../components/layout/layout";
 import { getChat, updateChat } from "../service";
 import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
@@ -13,6 +13,18 @@ function Chat({ username, roomname, socket }) {
   const idAnuncio = location.state?.idAnuncio
   const autor = location.state?.autor
 
+  // let prova;
+  // if (prova)
+  //   let prova =
+  //   {
+  //     "mensajes": messages
+  //   }
+  // console.log(prova)
+  // // chat.append("mensajes", JSON.stringify(prova));
+  // // console.log(chat + "chatForm")
+  // updateChat(idAnuncio, prova);
+
+  const firstUpdate = useRef(true);
 
   useEffect(() => {
     getChat(idAnuncio).then(chat => {
@@ -30,12 +42,10 @@ function Chat({ username, roomname, socket }) {
     });
   }, [socket, idAnuncio]);
 
-  const sendData = async () => {
-    if (text !== "") {
-      //encrypt here
-      const ans = text;
-      socket.emit("chat", ans);
-      setText("");
+  useLayoutEffect(() => {
+    if (firstUpdate.current) {
+      firstUpdate.current = false;
+    } else {
       try {
         let prova =
         {
@@ -44,10 +54,32 @@ function Chat({ username, roomname, socket }) {
         console.log(prova)
         // chat.append("mensajes", JSON.stringify(prova));
         // console.log(chat + "chatForm")
-        await updateChat(idAnuncio, prova);
+        updateChat(idAnuncio, prova);
       } catch (error) {
         console.log(error);
       }
+    }
+  })
+
+
+  const sendData = async () => {
+    if (text !== "") {
+      //encrypt here
+      const ans = text;
+      socket.emit("chat", ans);
+      setText("");
+      // try {
+      //   let prova =
+      //   {
+      //     "mensajes": messages
+      //   }
+      //   console.log(prova)
+      //   // chat.append("mensajes", JSON.stringify(prova));
+      //   // console.log(chat + "chatForm")
+      //   await updateChat(idAnuncio, prova);
+      // } catch (error) {
+      //   console.log(error);
+      // }
     }
   };
   const messagesEndRef = useRef(null);
