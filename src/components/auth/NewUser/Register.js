@@ -99,7 +99,7 @@ function RegisterPage({history}) {
 	name="password"
 	value={value.password}
 	onChange={ handleChange}/>
-		</div>
+	</div>						
 	<button className="banderas" onClick={changeToSpanish} ><img src={es} alt='bandera-españa'/></button> 
     <button className="banderas" onClick={changeToEnglish} ><img src={uk} alt='bandera-UK'/></button>      				
 	<div className="form-group d-md-flex">
