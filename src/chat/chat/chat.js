@@ -2,7 +2,7 @@ import "./chat.css";
 // import { to_Decrypt, to_Encrypt } from "../../aes";
 import React, { useState, useEffect, useRef, useLayoutEffect } from "react";
 import Layout from "../../components/layout/layout";
-import { getChat, updateChat } from "../service";
+import { getChat, updateChat, createChat } from "../service";
 import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
 
 function Chat({ username, roomname, socket }) {
@@ -14,7 +14,14 @@ function Chat({ username, roomname, socket }) {
   const autor = location.state?.autor
   const firstUpdate = useRef(true);
 
+
   useEffect(() => {
+    const chatToCreate = {
+      idAnuncio: idAnuncio,
+      vendedor: autor,
+      nombreAnuncio: roomname,
+      comprador: username
+    }
     if (username && roomname) {
       socket.emit("joinRoom", { username, roomname });
     } else {
@@ -22,8 +29,14 @@ function Chat({ username, roomname, socket }) {
       window.location.reload();
     }
     getChat(idAnuncio).then(chat => {
-      setMessages(chat.results[0].mensajes)
+      if (chat.results === null) {
+        createChat(chatToCreate)
+      }
+      else {
+        setMessages(chat.results[0].mensajes)
+      }
     })
+
     // cuando renderiza añade al estado todos los elementos que devuelve el socket
     socket.on("message", (data) => {
       setMessages((prevState) => ([
@@ -34,7 +47,7 @@ function Chat({ username, roomname, socket }) {
         }
       ]));
     });
-  }, [socket, idAnuncio, username, roomname]);
+  }, [socket, idAnuncio, username, roomname, autor]);
 
   useLayoutEffect(() => {
     if (firstUpdate.current) {
