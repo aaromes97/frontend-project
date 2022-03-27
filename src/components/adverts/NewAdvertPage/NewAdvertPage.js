@@ -4,13 +4,17 @@ import CreatableSelect from "react-select/creatable";
 import Button from "../../common/Button";
 import Layout from "../../layout/layout";
 import { createAd } from "../service";
+import { useTranslation } from "react-i18next"
 import storage from "../../../utils/storage";
 
 const components = {
   DropdownIndicator: null,
 };
 
+
+
 function NewAdvertPage() {
+  const {t}= useTranslation("common")
   const history = useHistory();
   const [error, setError] = useState(null);
   const autor = storage.get("name");
@@ -86,7 +90,7 @@ function NewAdvertPage() {
               type="text"
               name="nombre"
               label="Nombre"
-              placeholder="Nombre del producto"
+              placeholder={t("newAdvert.nombre-producto")}
               className="loginForm-field"
               value={value.nombre}
               onChange={handleChange}
@@ -94,6 +98,8 @@ function NewAdvertPage() {
               autofocus
             ></input>
             <br></br>
+            <label for="descripcion">{t("newAdvert.descripcion")}</label>
+
             <textarea
               placeholder="Descripcion del producto"
               id="descripcion"
@@ -113,8 +119,8 @@ function NewAdvertPage() {
               onChange={handleChange}
             >
               <option value="">--</option>
-              <option value="true">Venta</option>
-              <option value="false"> Compra </option>
+              <option value="true">{t("newAdvert.venta")}</option>
+              <option value="false">{t("newAdvert.compra")} </option>
             </select>
             <br></br>
             <br></br>
@@ -123,7 +129,7 @@ function NewAdvertPage() {
               name="precio"
               min="0"
               label="Precio"
-              placeholder="Precio del producto"
+              placeholder={t("newAdvert.precio-producto")}
               className="loginForm-field"
               value={value.precio}
               onChange={handleChange}
@@ -159,7 +165,7 @@ function NewAdvertPage() {
                 className="newAdPage-submit"
                 variant="primary"
               >
-                Crear Anuncio
+                {t("newAdvert.crear-anuncio")}
               </Button>
             </div>
           </form>

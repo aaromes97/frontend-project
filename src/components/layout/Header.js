@@ -1,45 +1,52 @@
 import { ReactComponent as Icon } from "../../assets/clone.svg";
 import "../../bootstrap/style.css";
-import React, { Component, useContext } from "react";
+import React, { Component, useContext, useEffect } from "react";
 import AuthContext from "../auth/context";
 import { Link, NavLink } from "react-router-dom";
 import storage from "../../utils/storage";
 import './styles.css'
+import { useTranslation } from "react-i18next";
+import i18next from "i18next";
+import es from './../../img/bandera-spain.png'
+import uk from './../../img/united-kingdom.png'
 
-function Header() {
-	const { isLogged, handleLogout } = useContext(AuthContext);
-	const name = storage.get("name");
+function Header({history, ...props}) {
+  const [t, i18n] = useTranslation("common");
+  const { isLogged, handleLogout } = useContext(AuthContext);
+  const name = storage.get("name");
+  
+  useEffect(() => {
+	  if (localStorage.getItem("i18nextLng")?.length > 2) {
+		  i18next.changeLanguage("es")
+	  }
+  }, []);
+	
+	const changeToEnglish = event => {
+	i18n.changeLanguage('en');
+	localStorage.getItem("i18nextLng")
+    event.preventDefault()
+  }
+  const changeToSpanish = event => {
+	i18n.changeLanguage('es');
+	localStorage.getItem("i18nextLng")
+    event.preventDefault();
+  }
+	
+
+
+
+
 	return (
 		<nav className="navbar navbar-expand-lg navbar-light bg-light">
 		<div className="container px-4 px-lg-5">
 		<a href="/adverts">
 		<div className="navbar-brand">
 		<Icon width="32" height="42" />
-		</div>
-		</a>
-		<form className="form-inline">
-		<input
-		className="form-control mr-1"
-		type="search"
-		placeholder="Search"
-		aria-label="Search"
-		/>
-		<button className="btn btn-outline-success my-2 mr-1" type="submit">
-		Buscar
-		</button>
-		</form>
-		<button
-		className="navbar-toggler"
-		type="button"
-		data-bs-toggle="collapse"
-		data-bs-target="#navbarSupportedContent"
-		aria-controls="navbarSupportedContent"
-		aria-expanded="false"
-		aria-label="Toggle navigation"
-		>
-		<span className="navbar-toggler-icon"></span>
-		</button>
 
+    </div>
+		<button className="banderas" onClick={changeToSpanish} ><img src={es} alt='bandera-españa'/></button> 
+    	<button className="banderas" onClick={changeToEnglish} ><img src={uk} alt='bandera-UK'/></button>      
+		</a>
 		<div className="collapse navbar-collapse" id="navbarSupportedContent">
 		<ul className="navbar-nav ml-auto mb-2 mb-lg-0 ms-lg-4">
 		<li className="nav-item">
@@ -48,12 +55,15 @@ function Header() {
 		aria-current="page"
 		href="/adverts/new"
 		>
-		Subir producto
+		{t("header.subir-producto")}
+
 		</a>
 		</li>
 		<li className="nav-item">
 		<a className="nav-link" href="#!">
-		Mensajes
+
+		{t("header.mensaje")}
+
 		</a>
 		</li>
 		{isLogged ? (
@@ -71,12 +81,16 @@ function Header() {
 			<ul className="dropdown-menu" aria-labelledby="navbarDropdown">
 			<li>
 			<a className="dropdown-item" href="#!">
-			Mis Anuncios
+
+			{t("header.mis-anuncios")}
+
 			</a>
 			</li>
 			<li>
 			<a className="dropdown-item" href="#!">
-			Mis Favoritos
+
+			{t("header.mis-favoritos")}
+
 			</a>
 			</li>
 			<li>
@@ -84,7 +98,7 @@ function Header() {
 			</li>
 			<li>
 			<a className="dropdown-item" href="/profile">
-			Mi Cuenta
+
 			</a>
 			</li>
 			<li>
@@ -92,7 +106,9 @@ function Header() {
 			</li>
 			<li>
 			<a className="deleteUser dropdown-item" href="/deleteUser">
-			Eliminar Cuenta
+
+			{t("header.eliminar-cuenta")}
+
 			</a>
 			</li>
 			</ul>
@@ -100,7 +116,7 @@ function Header() {
 		) : (
 			<div></div>
 		)}
-		</ul>
+
 		<form className="d-flex">
 		{isLogged ? (
 			<button className="btn btn-outline-dark" onClick={handleLogout}>
@@ -116,6 +132,7 @@ function Header() {
 			</Link>
 		)}
 		</form>
+		</ul>
 		</div>
 		</div>
 		</nav>

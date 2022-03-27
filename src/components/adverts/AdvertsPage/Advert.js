@@ -1,6 +1,7 @@
 import React from "react";
 import T from "prop-types";
 import "../../../bootstrap/style.css";
+import {useTranslation} from "react-i18next"
 
 const Advert = ({
   venta,
@@ -12,6 +13,11 @@ const Advert = ({
   vendido,
   reservado,
 }) => {
+
+  
+  const { t } = useTranslation("common")
+  
+
   return (
     <div className="col mb-5">
       <div className="card h-100">
@@ -36,13 +42,16 @@ const Advert = ({
         {vendido === true ? (
           <div className="badge position-absolute bg-selled fav-position">
             <div className="fav-container">
-              <p> Vendido </p>
+
+              <p> {t("advert.vendido") }</p>
+
             </div>
           </div>
         ) : reservado === true ? (
           <div className="badge position-absolute bg-selled fav-position">
             <div className="fav-container">
-              <p> Reservado </p>
+              <p> {t("advert.reservado") }</p>
+
             </div>
           </div>
         ) : null}
@@ -52,7 +61,7 @@ const Advert = ({
           <div className="text-center">
             <h5 className="fw-bolder">{name}</h5>
             <div className="d-flex justify-content-center text-dark ">
-              <span>{venta === true ? <p> Venta </p> : <p> Busco </p>}</span>
+              <span>{venta === true ? <p> {t("advert.venta") }</p> : <p> {t("advert.busco") } </p>}</span>
             </div>
             <div
               style={{ overflow: "hidden", height: "4rem" }}

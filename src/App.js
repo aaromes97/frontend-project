@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { Suspense } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -6,14 +7,13 @@ import {
   Redirect,
 } from "react-router-dom";
 import "./App.css";
-
 import AdvertsPage from "./components/adverts/AdvertsPage";
 import LoginPage from "./components/auth/LoginPage/LoginPage";
 import PrivateRoute from "./components/auth/PrivateRoute";
 import NewAdvertPage from "./components/adverts/NewAdvertPage";
 import { logout } from "./components/auth/LoginPage/service";
 import DetailAdvertPage from "./components/adverts/DetailPage/DetailAdvertPage";
-import { AuthContextProvider } from "./components/auth/context";
+import AuthContext, { AuthContextProvider } from "./components/auth/context";
 import RegisterPage from "./components/auth/NewUser/Register";
 import ForgotPasswordSendEmailPage from "./components/auth/ForgotPassword/SendEmailPage/SendEmailPage";
 import ForgotPasswordResetPage from "./components/auth/ForgotPassword/ResetPage/ResetPage";
@@ -40,19 +40,27 @@ function Appmain(props) {
   );
 }
 
+
+
 function App({ isInitiallyLogged, history }) {
   const [isLogged, setIsLogged] = useState(isInitiallyLogged);
-
   const handleLogin = () => setIsLogged(true);
+  const [adverts, setAdverts] = useState('')
 
   const handleLogout = () => {
     logout().then(() => setIsLogged(false));
   };
 
   return (
+
+    <Suspense fallback={null}>
+
     <Router>
-      <AuthContextProvider value={{ isLogged, handleLogout, handleLogin }}>
-        <div className="App">
+
+      <AuthContextProvider value={{ isLogged, handleLogout, handleLogin, adverts }}>
+
+        <div className="App" >
+
           <Switch>
             <Route path="/login">
               {({ history, location }) => (
@@ -101,6 +109,9 @@ function App({ isInitiallyLogged, history }) {
         </div>
       </AuthContextProvider>
     </Router>
+
+    </Suspense>
+
   );
 }
 

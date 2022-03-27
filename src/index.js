@@ -7,6 +7,11 @@ import storage from './utils/storage';
 import rootReducers from "./store/reducer/index";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
+import { I18nextProvider } from "react-i18next";
+import i18next from "i18next";
+import "./utils/i18n";
+
+
 
 const accessToken = storage.get('auth');
 setAuthorizationHeader(accessToken)
@@ -14,12 +19,20 @@ setAuthorizationHeader(accessToken)
 const store = createStore(rootReducers);
 
 ReactDOM.render(
+
   <Provider store={store}>
-    <React.StrictMode>
-      <App isInitiallyLogged={!!accessToken} />
-    </React.StrictMode>
+  <React.StrictMode>
+    <I18nextProvider i18n={i18next}>
+      <App isInitiallyLogged = {!!accessToken} />
+
+    </I18nextProvider>
+    </React.StrictMode>,
   </Provider>,
-  document.getElementById('root')
+    
+    
+    document.getElementById('root')
+
+
 );
 
 // If you want to start measuring performance in your app, pass a function
