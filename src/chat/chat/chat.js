@@ -13,7 +13,7 @@ function Chat({ username, roomname, socket }) {
   const idAnuncio = location.state?.idAnuncio
   const autor = location.state?.autor
   const firstUpdate = useRef(true);
-
+  const comprador = "pepe"
 
   useEffect(() => {
     const chatToCreate = {
@@ -28,7 +28,7 @@ function Chat({ username, roomname, socket }) {
       alert("username and roomname are must !");
       window.location.reload();
     }
-    getChat(idAnuncio).then(chat => {
+    getChat(idAnuncio, username || comprador).then(chat => {
       if (chat.results === null) {
         createChat(chatToCreate)
       }
