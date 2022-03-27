@@ -5,7 +5,8 @@
         "mis-anuncios": "My Listings",
          "mis-favoritos": "My Favorites",
          "mi-cuenta": "My Account",
-         "eliminar-cuenta": "Delete Account"
+         "eliminar-cuenta": "Delete Account",
+         "perfil": "Profile"
     },
     "filter":{
         "buscar-producto": "Search Product",
@@ -24,7 +25,11 @@
         "precio-producto":"Product Price",
         "seleccionar-archivo":"Select file",
         "archivo-seleccionado": "No file selected",
-        "crear-anuncio": "Create Ad"
+        "crear-anuncio": "Create Ad",
+        "alta-producto": "high product",
+        "estado": "Condition:",
+        "tags":"Write the Tags...",
+        "descripcion-producto": "Product description"
         
     },
 
@@ -43,12 +48,21 @@
         "contraseña-perdida": "Have you lost your password?"
 
     },
+
     "register":{
         "nuevo-usuario":"New User",
         "usuario": "User",
         "contraseña": "Password",
         "email": "E-mail",
         "registrar":"Register"
+    },
+
+      "profile":{
+        "title": "Profile",
+        "usuario": "User",
+        "contraseña": "Password",
+        "nueva-contraseña":"New Password",
+        "actualizar": "Update"
     }
 
 }

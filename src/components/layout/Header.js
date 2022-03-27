@@ -98,7 +98,7 @@ function Header({history, ...props}) {
 			</li>
 			<li>
 			<a className="dropdown-item" href="/profile">
-
+			{t("header.perfil")}
 			</a>
 			</li>
 			<li>

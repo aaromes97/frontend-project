@@ -84,7 +84,7 @@ function NewAdvertPage() {
       <div className="newAdvertPage bordered ">
         <div className="formNew">
           <form onSubmit={handleSubmit}>
-            <h1 className="formTitle">&bull; Alta de producto &bull;</h1>
+            <h1 className="formTitle">&bull; {t("newAdvert.alta-producto")} &bull;</h1>
             <br></br>
             <input
               type="text"
@@ -101,7 +101,7 @@ function NewAdvertPage() {
             <label for="descripcion">{t("newAdvert.descripcion")}</label>
 
             <textarea
-              placeholder="Descripcion del producto"
+              placeholder={t("newAdvert.descripcion-producto")}
               id="descripcion"
               name="descripcion"
               rows="3"
@@ -110,7 +110,7 @@ function NewAdvertPage() {
               onChange={handleChange}
             ></textarea>{" "}
             <br></br>
-            <label for="venta">Estado:</label>
+            <label for="venta">{t("newAdvert.estado")}</label>
             <br></br>
             <select
               name="venta"
@@ -141,7 +141,7 @@ function NewAdvertPage() {
               isMulti
               onChange={handleSelect}
               components={components}
-              placeholder="Escribe los Tags..."
+              placeholder={t("newAdvert.tags")}
             />
             <br></br>
             <div className="advertPhoto">

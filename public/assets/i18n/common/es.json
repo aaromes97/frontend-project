@@ -5,7 +5,8 @@
         "mis-anuncios": "Mis Anuncios",
         "mis-favoritos": "Mis Favoritos",
         "mi-cuenta": "Mi Cuenta",
-        "eliminar-cuenta": "Eliminar Cuenta"
+        "eliminar-cuenta": "Eliminar Cuenta",
+        "perfil": "Perfil"
     },
     "filter":{
         "buscar-producto": "Buscar Producto",
@@ -25,7 +26,11 @@
         "precio-producto":"Precio del producto",
         "seleccionar-archivo":"Seleccionar archivo",
         "archivo-seleccionado": "Ningun archivo seleccionado",
-        "crear-anuncio": "Crear Anuncio"
+        "crear-anuncio": "Crear Anuncio",
+        "alta-producto": "Alta de Productos",
+        "estado": "Estado:",
+        "tags":"Escribe los Tags...",
+        "descripcion-producto": "Descripcion del producto"
         
     },
      "advert":{
@@ -51,6 +56,14 @@
         "contraseña": "Contraseña",
         "email": "E-mail",
         "registrar":"Registrar"
+    },
+
+    "profile":{
+        "title": "Perfil",
+        "usuario": "Usuario",
+        "contraseña": "Contraseña",
+        "nueva-contraseña":"Nueva Contraseña",
+        "actualizar": "Actualizar"
     }
 
 }
