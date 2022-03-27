@@ -11,13 +11,11 @@ function MessagePage() {
   const vendedor = storage.get("name");
   const [chat, setChat] = useState([]);
   const [error, setError] = useState([]);
-
   useEffect(() => {
     getUserChats(vendedor)
       .then((chats) => setChat(chats.results))
       .catch((error) => setError(error));
   }, [vendedor]);
-
   if (error?.status === 404) {
     return <Redirect to="/404" />;
   }
@@ -29,15 +27,23 @@ function MessagePage() {
           <div>
             <h4 className="titleMensaje">Mensajes</h4>
             <div>
-              {chat.map(({ idAnuncio, nombre, ...chat }) => (
+              {chat.map(({ idAnuncio, nombreAnuncio, comprador, ...chat }) => (
                 <Link
                   to={{
-                    pathname: `/chat/${nombre}/${vendedor}`,
-                    state: { idAnuncio: idAnuncio, autor: vendedor },
+                    pathname: `/chat/${nombreAnuncio}/${vendedor}`,
+                    state: {
+                      idAnuncio: idAnuncio,
+                      autor: vendedor,
+                      comprador: comprador,
+                    },
                   }}
                 >
                   <div key={idAnuncio}>
-                    <Mensaje {...chat} />
+                    <Mensaje
+                      {...chat}
+                      nombreAnuncio={nombreAnuncio}
+                      comprador={comprador}
+                    />
                   </div>
                 </Link>
               ))}
