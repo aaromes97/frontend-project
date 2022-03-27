@@ -5,17 +5,18 @@ import { useEffect, useState } from "react";
 import { Redirect, useParams } from "react-router";
 import { EmptyList } from "../adverts/AdvertsPage/EmptyList";
 import Mensaje from "./Mensaje";
+import { Link } from "react-router-dom";
 
 function MessagePage() {
-  const vendor = storage.get("name");
+  const vendedor = storage.get("name");
   const [chat, setChat] = useState([]);
   const [error, setError] = useState([]);
 
   useEffect(() => {
-    getUserChats(vendor)
+    getUserChats(vendedor)
       .then((chats) => setChat(chats.results))
       .catch((error) => setError(error));
-  }, [vendor]);
+  }, [vendedor]);
 
   if (error?.status === 404) {
     return <Redirect to="/404" />;
@@ -28,10 +29,17 @@ function MessagePage() {
           <div>
             <h4 className="titleMensaje">Mensajes</h4>
             <div>
-              {chat.map(({ _id, ...chat }) => (
-                <div key={_id}>
-                  <Mensaje {...chat} />
-                </div>
+              {chat.map(({ idAnuncio, nombre, ...chat }) => (
+                <Link
+                  to={{
+                    pathname: `/chat/${nombre}/${vendedor}`,
+                    state: { idAnuncio: idAnuncio, autor: vendedor },
+                  }}
+                >
+                  <div key={idAnuncio}>
+                    <Mensaje {...chat} />
+                  </div>
+                </Link>
               ))}
             </div>
           </div>
