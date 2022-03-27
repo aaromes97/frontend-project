@@ -45,16 +45,12 @@ function Chat({ username, roomname, socket }) {
         {
           "mensajes": messages
         }
-        console.log(prova)
-        // chat.append("mensajes", JSON.stringify(prova));
-        // console.log(chat + "chatForm")
         updateChat(idAnuncio, prova);
       } catch (error) {
         console.log(error);
       }
     }
   })
-
 
   const sendData = async () => {
     if (text !== "") {
@@ -77,9 +73,7 @@ function Chat({ username, roomname, socket }) {
     <Layout>
       <div className="chats">
         <div className="user-name">
-          <h2>
-            {roomname}
-          </h2>
+          <h2>{roomname}</h2>
           <span style={{ fontSize: "1rem" }}>Para {autor}</span>
         </div>
         <div className="chats-message">
