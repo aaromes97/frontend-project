@@ -12,21 +12,15 @@ function Chat({ username, roomname, socket }) {
   const location = useLocation()
   const idAnuncio = location.state?.idAnuncio
   const autor = location.state?.autor
-
-  // let prova;
-  // if (prova)
-  //   let prova =
-  //   {
-  //     "mensajes": messages
-  //   }
-  // console.log(prova)
-  // // chat.append("mensajes", JSON.stringify(prova));
-  // // console.log(chat + "chatForm")
-  // updateChat(idAnuncio, prova);
-
   const firstUpdate = useRef(true);
 
   useEffect(() => {
+    if (username && roomname) {
+      socket.emit("joinRoom", { username, roomname });
+    } else {
+      alert("username and roomname are must !");
+      window.location.reload();
+    }
     getChat(idAnuncio).then(chat => {
       setMessages(chat.results[0].mensajes)
     })
@@ -40,7 +34,7 @@ function Chat({ username, roomname, socket }) {
         }
       ]));
     });
-  }, [socket, idAnuncio]);
+  }, [socket, idAnuncio, username, roomname]);
 
   useLayoutEffect(() => {
     if (firstUpdate.current) {
@@ -64,22 +58,9 @@ function Chat({ username, roomname, socket }) {
 
   const sendData = async () => {
     if (text !== "") {
-      //encrypt here
       const ans = text;
       socket.emit("chat", ans);
       setText("");
-      // try {
-      //   let prova =
-      //   {
-      //     "mensajes": messages
-      //   }
-      //   console.log(prova)
-      //   // chat.append("mensajes", JSON.stringify(prova));
-      //   // console.log(chat + "chatForm")
-      //   await updateChat(idAnuncio, prova);
-      // } catch (error) {
-      //   console.log(error);
-      // }
     }
   };
   const messagesEndRef = useRef(null);

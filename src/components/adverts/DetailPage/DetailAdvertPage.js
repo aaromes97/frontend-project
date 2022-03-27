@@ -112,14 +112,14 @@ function DetailAdvertPage({ socket }) {
     history.replace("/");
   };
 
-  const sendData = () => {
-    if (username && roomname) {
-      socket.emit("joinRoom", { username, roomname });
-    } else {
-      alert("username and roomname are must !");
-      window.location.reload();
-    }
-  };
+  // const sendData = () => {
+  //   if (username && roomname) {
+  //     socket.emit("joinRoom", { username, roomname });
+  //   } else {
+  //     alert("username and roomname are must !");
+  //     window.location.reload();
+  //   }
+  // };
 
   // const buttonDisabled = useMemo(() => isLoading[isLoading]);
 
@@ -387,7 +387,7 @@ function DetailAdvertPage({ socket }) {
                   <Link to={{
                     pathname: `/chat/${roomname}/${username}`, state: { idAnuncio: _id, autor: advert[0].autor },
                   }}>
-                    <button className="chat" onClick={sendData}>
+                    <button className="chat">
                       Chat
                     </button>
                   </Link>
