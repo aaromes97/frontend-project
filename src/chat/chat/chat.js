@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef, useLayoutEffect } from "react";
 import Layout from "../../components/layout/layout";
 import { getChat, updateChat, createChat } from "../service";
 import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
+import storage from "../../utils/storage";
 
 function Chat({ username, roomname, socket }) {
   const [text, setText] = useState("");
@@ -12,6 +13,7 @@ function Chat({ username, roomname, socket }) {
   const idAnuncio = location.state?.idAnuncio;
   const autor = location.state?.autor;
   const firstUpdate = useRef(true);
+  const myUser = storage.get("name")
 
   useEffect(() => {
     const chatToCreate = {
@@ -64,7 +66,7 @@ function Chat({ username, roomname, socket }) {
   const sendData = async () => {
     if (text !== "") {
       const ans = text;
-      socket.emit("chat", ans);
+      socket.emit("chat", ans, myUser);
       setText("");
     }
   };
@@ -83,11 +85,11 @@ function Chat({ username, roomname, socket }) {
       <div className="chats">
         <div className="user-name">
           <h2>{roomname}</h2>
-          <span style={{ fontSize: "1rem" }}>Para {autor}</span>
+          <span style={{ fontSize: "1rem" }}>Propietario {autor}</span>
         </div>
         <div className="chats-message">
           {messages.map((i) => {
-            if (i.username === username) {
+            if (i.username === myUser) {
               return (
                 <div className="message">
                   <p>{i.text}</p>
