@@ -346,7 +346,7 @@ function DetailAdvertPage({ socket }) {
                       <ReactSimpleTooltip>
                         <button
                           className="editar-button btn-grp"
-                        // onClick={handleEditar}
+                          // onClick={handleEditar}
                         >
                           <div>
                             <img src={editar} alt="editIcon"></img>
@@ -384,12 +384,13 @@ function DetailAdvertPage({ socket }) {
                     </ReactSimpleTooltip>
                   </div>
                 ) : (
-                  <Link to={{
-                    pathname: `/chat/${roomname}/${username}`, state: { idAnuncio: _id, autor: advert[0].autor },
-                  }}>
-                    <button className="chat">
-                      Chat
-                    </button>
+                  <Link
+                    to={{
+                      pathname: `/chat/${roomname}/${username}`,
+                      state: { idAnuncio: _id, autor: advert[0].autor },
+                    }}
+                  >
+                    <button className="chat">Chat</button>
                   </Link>
                 )}
               </div>

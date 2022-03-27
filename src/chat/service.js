@@ -1,20 +1,24 @@
 import client from "../api/client";
 
-const adsBaseUrl = "/api/chats";
-
+const chatsBaseUrl = "/api/chats";
+const chatByVendedorUrl = "/api/messages";
 export const getChats = async () => {
-    const url = `${adsBaseUrl}`;
-    return await client.get(url);
+  const url = `${chatsBaseUrl}`;
+  return await client.get(url);
 };
 export const getChat = (advertId) => {
-    const url = `${adsBaseUrl}/${advertId}`;
-    return client.get(url);
+  const url = `${chatsBaseUrl}/${advertId}`;
+  return client.get(url);
+};
+export const getUserChats = (vendor) => {
+  const url = `${chatByVendedorUrl}/${vendor}`;
+  return client.get(url);
 };
 export const createChat = async (chat) => {
-    const url = `${adsBaseUrl}`;
-    return client.post(url, chat);
+  const url = `${chatsBaseUrl}`;
+  return client.post(url, chat);
 };
 export const updateChat = async (advertId, chat) => {
-    const url = `${adsBaseUrl}/${advertId}`;
-    return client.put(url, chat);
+  const url = `${chatsBaseUrl}/${advertId}`;
+  return client.put(url, chat);
 };
