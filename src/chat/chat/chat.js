@@ -1,5 +1,4 @@
 import "./chat.css";
-// import { to_Decrypt, to_Encrypt } from "../../aes";
 import React, { useState, useEffect, useRef, useLayoutEffect } from "react";
 import Layout from "../../components/layout/layout";
 import { getChat, updateChat, createChat } from "../service";
@@ -9,43 +8,41 @@ function Chat({ username, roomname, socket }) {
   const [text, setText] = useState("");
   const [messages, setMessages] = useState([]);
   // Obtenemos la Id del anuncio del cual queremos recuperar el chat
-  const location = useLocation()
-  const idAnuncio = location.state?.idAnuncio
-  const autor = location.state?.autor
+  const location = useLocation();
+  const idAnuncio = location.state?.idAnuncio;
+  const autor = location.state?.autor;
   const firstUpdate = useRef(true);
-  const comprador = "pepe"
 
   useEffect(() => {
     const chatToCreate = {
       idAnuncio: idAnuncio,
       vendedor: autor,
       nombreAnuncio: roomname,
-      comprador: username
-    }
+      comprador: username,
+    };
     if (username && roomname) {
       socket.emit("joinRoom", { username, roomname });
     } else {
       alert("username and roomname are must !");
       window.location.reload();
     }
-    getChat(idAnuncio, username || comprador).then(chat => {
+    getChat(idAnuncio, username).then(chat => {
       if (chat.results === null) {
-        createChat(chatToCreate)
+        createChat(chatToCreate);
+      } else {
+        setMessages(chat.results[0].mensajes);
       }
-      else {
-        setMessages(chat.results[0].mensajes)
-      }
-    })
+    });
 
     // cuando renderiza añade al estado todos los elementos que devuelve el socket
     socket.on("message", (data) => {
-      setMessages((prevState) => ([
+      setMessages((prevState) => [
         ...prevState,
         {
           username: data.username,
-          text: data.text
-        }
-      ]));
+          text: data.text,
+        },
+      ]);
     });
   }, [socket, idAnuncio, username, roomname, autor]);
 
@@ -54,16 +51,15 @@ function Chat({ username, roomname, socket }) {
       firstUpdate.current = false;
     } else {
       try {
-        let prova =
-        {
-          "mensajes": messages
-        }
-        updateChat(idAnuncio, prova);
+        let prova = {
+          mensajes: messages,
+        };
+        updateChat(idAnuncio, username, prova);
       } catch (error) {
         console.log(error);
       }
     }
-  })
+  });
 
   const sendData = async () => {
     if (text !== "") {

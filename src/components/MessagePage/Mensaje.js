@@ -2,19 +2,19 @@ import React from "react";
 import T from "prop-types";
 import "../../bootstrap/style.css";
 
-const Mensaje = ({ comprador, nombre }) => {
+const Mensaje = ({ comprador, nombreAnuncio }) => {
   return (
     <div className="cardDetail">
       <div className="detailContainer">
         <div>Tienes mensajes de {comprador}</div>
-        <div>Para el anuncio {nombre}</div>
+        <div>Para el anuncio {nombreAnuncio}</div>
       </div>
     </div>
   );
 };
 
 export const mensajeType = {
-  nombre: T.string,
+  nombreAnuncio: T.string,
   comprador: T.string,
 };
 
