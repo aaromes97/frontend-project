@@ -12,10 +12,8 @@ import {
   TelegramIcon,
   WhatsappIcon,
 } from "react-share";
-import { FacebookShareCount } from "react-share";
-
-import { useEffect, useState, useMemo } from "react";
-import { Redirect, useLocation, useParams } from "react-router";
+import { useEffect, useState } from "react";
+import { Redirect, useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import Layout from "../../layout/layout";
@@ -114,14 +112,14 @@ function DetailAdvertPage({ socket }) {
     history.replace("/");
   };
 
-  const sendData = () => {
-    if (username && roomname) {
-      socket.emit("joinRoom", { username, roomname });
-    } else {
-      alert("username and roomname are must !");
-      window.location.reload();
-    }
-  };
+  // const sendData = () => {
+  //   if (username && roomname) {
+  //     socket.emit("joinRoom", { username, roomname });
+  //   } else {
+  //     alert("username and roomname are must !");
+  //     window.location.reload();
+  //   }
+  // };
 
   // const buttonDisabled = useMemo(() => isLoading[isLoading]);
 
@@ -351,7 +349,7 @@ function DetailAdvertPage({ socket }) {
                           // onClick={handleEditar}
                         >
                           <div>
-                            <img src={editar}></img>
+                            <img src={editar} alt="editIcon"></img>
                           </div>
                         </button>
                       </ReactSimpleTooltip>
@@ -386,10 +384,13 @@ function DetailAdvertPage({ socket }) {
                     </ReactSimpleTooltip>
                   </div>
                 ) : (
-                  <Link to={`/chat/${roomname}/${username}`}>
-                    <button className="chat" onClick={sendData}>
-                      Chat
-                    </button>
+                  <Link
+                    to={{
+                      pathname: `/chat/${roomname}/${username}`,
+                      state: { idAnuncio: _id, autor: advert[0].autor },
+                    }}
+                  >
+                    <button className="chat">Chat</button>
                   </Link>
                 )}
               </div>

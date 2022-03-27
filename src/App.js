@@ -23,6 +23,7 @@ import DeleteUserPage from "./components/auth/DeleteUserPage/DeleteUserPage";
 import Chat from "./chat/chat/chat";
 
 import io from "socket.io-client";
+import MessagePage from "./components/MessagePage/messages";
 
 const socket = io.connect("/");
 
@@ -80,6 +81,9 @@ function App({ isInitiallyLogged, history }) {
             </PrivateRouteForgotPassword>
             <PrivateRoute exact path="/adverts/new">
               <NewAdvertPage />
+            </PrivateRoute>
+            <PrivateRoute exact path="/messages">
+              <MessagePage />
             </PrivateRoute>
             <Route path="/adverts/:advertId">
               {(routeProps) => (
