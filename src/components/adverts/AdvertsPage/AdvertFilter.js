@@ -76,8 +76,6 @@ function AdvertFilter(props) {
   return (
 
 
-
-
     <form noValidate onSubmit={handleFilter} className="flex-items">
 
       <div className=" search" >
