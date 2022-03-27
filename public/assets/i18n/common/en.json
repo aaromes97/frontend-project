@@ -32,6 +32,15 @@
         "descripcion-producto": "Product description"
         
     },
+    "restablece":{
+        "restablecer": "Reset password",
+        "enviar": "Send"
+    },
+
+      "mensaje":{
+        "mensajes": "You have messages from",
+        "para": "For the ad"
+    },
 
     "advert":{
         "vendido": "sold",
@@ -49,6 +58,13 @@
 
     },
 
+    "delete_user":{
+        "eliminar-cuenta": "Delete account",
+        "desea-eliminar": "Do you want to delete the account?",
+        "cancelar": "Cancel",
+        "eliminar": "Delete"
+    },
+
     "register":{
         "nuevo-usuario":"New User",
         "usuario": "User",
@@ -64,5 +80,6 @@
         "nueva-contraseña":"New Password",
         "actualizar": "Update"
     }
+
 
 }

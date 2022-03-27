@@ -39,6 +39,10 @@
         "venta": "Venta",
         "busco": "Busco"
     },
+       "restablece":{
+        "restablecer": "Restablecer contraseña",
+        "enviar": "Enviar"
+    },
     
 
     "login":{
@@ -49,6 +53,12 @@
         "contraseña-perdida": "Has perdido tu contraseña?"
 
     },
+      "delete_user":{
+        "eliminar-cuenta": "Eliminar Cuenta",
+        "desea-eliminar": "Desea eliminar la cuenta?",
+        "cancelar": "Cancelar",
+        "eliminar": "Eliminar"
+    },
     
     "register":{
         "nuevo-usuario":"Nuevo Usuario",
@@ -56,6 +66,11 @@
         "contraseña": "Contraseña",
         "email": "E-mail",
         "registrar":"Registrar"
+    },
+
+    "mensaje":{
+        "mensajes": "Tienes mensajes de",
+        "para": "Para el anuncio"
     },
 
     "profile":{

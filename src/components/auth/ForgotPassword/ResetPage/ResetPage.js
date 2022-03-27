@@ -4,7 +4,7 @@ import '../../auth.css';
 import logo from '../../LoginPage/img/login.png';
 import {login} from "../ResetPage/service";
 import { useLocation } from "react-router-dom";
-
+import { useTranslation } from "react-i18next";
 
 
 
@@ -17,7 +17,7 @@ function ForgotPasswordResetPage({history}) {
 	const [error, setError] = useState(null)
 	//para implementar Spinner de Loading 
 	const [isLoading, setIsLoading] = useState(false)
-
+	  const [t, i18n] = useTranslation("common");
 
 	//reseteamos error 
 	const resetError = () => setError(null)
@@ -61,7 +61,7 @@ function ForgotPasswordResetPage({history}) {
 		<div className="icon d-flex align-items-center justify-content-center">
 		<img className="logoLogin" src={logo} alt="logo"></img>
 		</div>
-		<h3 className="text-center mb-4">Reestablecer Contraseña</h3>
+		<h3 className="text-center mb-4">{t("restablece.restablecer")}</h3>
 		<form className="login-form" onSubmit={handleSubmit}>
 		<div className="form-group">	
 
@@ -75,7 +75,7 @@ function ForgotPasswordResetPage({history}) {
 		<div className="form-group d-md-flex">
 		<button className="btn btn-primary rounded submit p-3 px-5"
 	type="submit"
-	disabled={ isLoading || !value.password }>Enviar</button>
+	disabled={ isLoading || !value.password }>{t("restablece.enviar")}</button>
 		</div>
 		</form>
 		</div>

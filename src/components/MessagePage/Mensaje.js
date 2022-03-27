@@ -2,13 +2,19 @@ import React from "react";
 import T from "prop-types";
 import "../../bootstrap/style.css";
 import { red } from "@material-ui/core/colors";
+import { useTranslation } from "react-i18next";
 
 const Mensaje = ({ comprador, nombreAnuncio }) => {
+  const [t, i18n] = useTranslation("common");
+
+  
+
+
   return (
     <div className="cardDetail" >
       <div className="detailContainer mb-3" style={{ borderBottom: "1px solid red" }}>
-        <div>Tienes mensajes de {comprador}</div>
-        <div>Para el anuncio {nombreAnuncio}</div>
+        <div>{t("mensaje.mensajes")} {comprador}</div>
+        <div>{t("mensaje.para")} {nombreAnuncio}</div>
       </div>
     </div>
   );
