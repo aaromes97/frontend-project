@@ -21,7 +21,7 @@ client.interceptors.response.use(
 //añadimos las claves
 
 export const setAuthorizationHeader = (token, name) => {
-  client.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+  client.defaults.headers.common["Authorization"] = `${token}`;
 };
 
 //borramos las claves
