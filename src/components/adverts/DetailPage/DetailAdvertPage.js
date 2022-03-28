@@ -12,7 +12,7 @@ import {
   TelegramIcon,
   WhatsappIcon,
 } from "react-share";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Redirect, useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
@@ -24,6 +24,7 @@ import borrar from "../../../assets/eliminar.png";
 import vender from "../../../assets/apreton-de-manos.png";
 import reservar from "../../../assets/guardar-instagram.png";
 import editar from "../../../assets/editar.png";
+import AuthContext from "../../auth/context";
 
 function DetailAdvertPage({ socket }) {
   const history = useHistory();
@@ -33,6 +34,7 @@ function DetailAdvertPage({ socket }) {
   // const [isLoading, setIsLoading] = useState(false);
   const [displayDelete, setDisplayDelete] = useState(false);
   const [displaySell, setDisplaySell] = useState(false);
+  const { isLogged } = useContext(AuthContext);
 
   const name = storage.get("name");
   // const [estadoVenta, setEstadoVenta] = useState(false);
@@ -384,14 +386,22 @@ function DetailAdvertPage({ socket }) {
                     </ReactSimpleTooltip>
                   </div>
                 ) : (
-                  <Link
-                    to={{
-                      pathname: `/chat/${roomname}/${username}`,
-                      state: { idAnuncio: _id, autor: advert[0].autor },
-                    }}
-                  >
-                    <button className="chat">Chat</button>
-                  </Link>
+                  <div>
+                    {isLogged ? (
+                      <Link
+                        to={{
+                          pathname: `/chat/${roomname}/${username}`,
+                          state: { idAnuncio: _id, autor: advert[0].autor },
+                        }}
+                      >
+                        <button className="chat">Chat</button>
+                      </Link>
+                    ) : (
+                      <a className="chat" href="/login">
+                        Chat
+                      </a>
+                    )}
+                  </div>
                 )}
               </div>
 
