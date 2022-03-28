@@ -23,7 +23,7 @@ import DeleteUserPage from "./components/auth/DeleteUserPage/DeleteUserPage";
 import Chat from "./chat/chat/chat";
 
 import io from "socket.io-client";
-import MessagePage from "./components/MessagePage/messages";
+import MessagePage from "./components/MessagePage/Messages";
 
 const socket = io.connect("/");
 
@@ -41,8 +41,6 @@ function Appmain(props) {
   );
 }
 
-
-
 function App({ isInitiallyLogged, history }) {
   const [isLogged, setIsLogged] = useState(isInitiallyLogged);
   const handleLogin = () => setIsLogged(true);
@@ -56,63 +54,63 @@ function App({ isInitiallyLogged, history }) {
 
     <Suspense fallback={null}>
 
-    <Router>
+      <Router>
 
-      <AuthContextProvider value={{ isLogged, handleLogout, handleLogin, adverts }}>
+        <AuthContextProvider value={{ isLogged, handleLogout, handleLogin, adverts }}>
 
-        <div className="App" >
+          <div className="App" >
 
-          <Switch>
-            <Route path="/login">
-              {({ history, location }) => (
-                <LoginPage history={history} location={location} />
-              )}
-            </Route>
-            <Route path="/register">
-              {({ history }) => <RegisterPage history={history} />}
-            </Route>
-            <Route exact path="/forgot-password">
-              {({ history }) => (
-                <ForgotPasswordSendEmailPage history={history} />
-              )}
-            </Route>
-            <PrivateRouteForgotPassword exact path="/forgot-password/check">
-              {({ history }) => <ForgotPasswordResetPage history={history} />}
-            </PrivateRouteForgotPassword>
-            <PrivateRoute exact path="/adverts/new">
-              <NewAdvertPage />
-            </PrivateRoute>
-            <PrivateRoute exact path="/messages">
-              <MessagePage />
-            </PrivateRoute>
-            <Route path="/adverts/:advertId">
-              {(routeProps) => (
-                <DetailAdvertPage {...routeProps} socket={socket} />
-              )}
-            </Route>
-            <Route path="/chat/:roomname/:username" component={Appmain} />
-            <PrivateRoute path="/profile">
-              {(history) => <ProfilePage {...history} />}
-            </PrivateRoute>
-            <PrivateRoute path="/deleteUser">
-              {(history) => <DeleteUserPage {...history} />}
-            </PrivateRoute>
-            <Route exact path="/adverts" component={AdvertsPage} />
-            <Route exact path="/">
-              <Redirect to="/adverts" component={AdvertsPage} />
-            </Route>
-            <Route path="/404">
-              <div>404 | Not Found Page</div>
-            </Route>
-            <Route>
-              <Redirect to="/404" />
-            </Route>
-          </Switch>
+            <Switch>
+              <Route path="/login">
+                {({ history, location }) => (
+                  <LoginPage history={history} location={location} />
+                )}
+              </Route>
+              <Route path="/register">
+                {({ history }) => <RegisterPage history={history} />}
+              </Route>
+              <Route exact path="/forgot-password">
+                {({ history }) => (
+                  <ForgotPasswordSendEmailPage history={history} />
+                )}
+              </Route>
+              <PrivateRouteForgotPassword exact path="/forgot-password/check">
+                {({ history }) => <ForgotPasswordResetPage history={history} />}
+              </PrivateRouteForgotPassword>
+              <PrivateRoute exact path="/adverts/new">
+                <NewAdvertPage />
+              </PrivateRoute>
+              <PrivateRoute exact path="/messages">
+                <MessagePage />
+              </PrivateRoute>
+              <Route path="/adverts/:advertId">
+                {(routeProps) => (
+                  <DetailAdvertPage {...routeProps} socket={socket} />
+                )}
+              </Route>
+              <Route path="/chat/:roomname/:username" component={Appmain} />
+              <PrivateRoute path="/profile">
+                {(history) => <ProfilePage {...history} />}
+              </PrivateRoute>
+              <PrivateRoute path="/deleteUser">
+                {(history) => <DeleteUserPage {...history} />}
+              </PrivateRoute>
+              <Route exact path="/adverts" component={AdvertsPage} />
+              <Route exact path="/">
+                <Redirect to="/adverts" component={AdvertsPage} />
+              </Route>
+              <Route path="/404">
+                <div>404 | Not Found Page</div>
+              </Route>
+              <Route>
+                <Redirect to="/404" />
+              </Route>
+            </Switch>
 
-          {/* {isLogged ? <AdvertsPage /> : <LoginPage/>}  */}
-        </div>
-      </AuthContextProvider>
-    </Router>
+            {/* {isLogged ? <AdvertsPage /> : <LoginPage/>}  */}
+          </div>
+        </AuthContextProvider>
+      </Router>
 
     </Suspense>
 
