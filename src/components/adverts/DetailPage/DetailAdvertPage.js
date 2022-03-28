@@ -1,17 +1,7 @@
 import React from "react";
 import ReactSimpleTooltip from "react-simple-tooltip";
-import {
-  FacebookShareButton,
-  TwitterShareButton,
-  TelegramShareButton,
-  WhatsappShareButton,
-} from "react-share";
-import {
-  FacebookIcon,
-  TwitterIcon,
-  TelegramIcon,
-  WhatsappIcon,
-} from "react-share";
+import { FacebookShareButton, TwitterShareButton, TelegramShareButton, WhatsappShareButton, } from "react-share";
+import { FacebookIcon, TwitterIcon, TelegramIcon, WhatsappIcon, } from "react-share";
 import { useEffect, useState, useContext } from "react";
 import { Redirect, useParams } from "react-router";
 import { Link } from "react-router-dom";
@@ -25,20 +15,18 @@ import vender from "../../../assets/apreton-de-manos.png";
 import reservar from "../../../assets/guardar-instagram.png";
 import editar from "../../../assets/editar.png";
 import AuthContext from "../../auth/context";
+import { useTranslation } from "react-i18next";
 
 function DetailAdvertPage({ socket }) {
   const history = useHistory();
   const { advertId } = useParams();
   const [advert, setAdvert] = useState(null);
   const [error, setError] = useState([]);
-  // const [isLoading, setIsLoading] = useState(false);
   const [displayDelete, setDisplayDelete] = useState(false);
   const [displaySell, setDisplaySell] = useState(false);
   const { isLogged } = useContext(AuthContext);
-
   const name = storage.get("name");
-  // const [estadoVenta, setEstadoVenta] = useState(false);
-
+  const [t] = useTranslation("common");
   const part = advertId.split("-");
   const _id = part[1];
   const advertName = part[0];
@@ -113,17 +101,6 @@ function DetailAdvertPage({ socket }) {
     await deleteAd(_id);
     history.replace("/");
   };
-
-  // const sendData = () => {
-  //   if (username && roomname) {
-  //     socket.emit("joinRoom", { username, roomname });
-  //   } else {
-  //     alert("username and roomname are must !");
-  //     window.location.reload();
-  //   }
-  // };
-
-  // const buttonDisabled = useMemo(() => isLoading[isLoading]);
 
   if (error?.status === 404) {
     return <Redirect to="/404" />;
@@ -348,7 +325,7 @@ function DetailAdvertPage({ socket }) {
                       <ReactSimpleTooltip>
                         <button
                           className="editar-button btn-grp"
-                          // onClick={handleEditar}
+                        // onClick={handleEditar}
                         >
                           <div>
                             <img src={editar} alt="editIcon"></img>
@@ -414,7 +391,7 @@ function DetailAdvertPage({ socket }) {
               <p className="nombreDetail">{advert[0].nombre}</p>
               <div className="d-flex text-dark ventaDetail">
                 <span>
-                  {advert[0].venta === true ? <p> Venta </p> : <p> Busco </p>}
+                  {advert[0].venta === true ? <p> {t("advert.venta")} </p> : <p> {t("advert.busco")} </p>}
                 </span>
               </div>
 

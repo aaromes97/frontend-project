@@ -1,21 +1,25 @@
 import Layout from "../layout/layout";
 import storage from "../../utils/storage";
-import { getUserChats, updateChat } from "../../chat/service";
+import { getUserChats } from "../../chat/service";
 import { useEffect, useState } from "react";
-import { Redirect, useParams } from "react-router";
-import { EmptyList } from "../adverts/AdvertsPage/EmptyList";
+import { Redirect, } from "react-router";
 import Mensaje from "./Mensaje";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 function MessagePage() {
-  const vendedor = storage.get("name");
+  const [t] = useTranslation("common");
+  const myUser = storage.get("name");
   const [chat, setChat] = useState([]);
   const [error, setError] = useState([]);
   useEffect(() => {
-    getUserChats(vendedor)
+    getUserChats(myUser)
       .then((chats) => setChat(chats.results))
       .catch((error) => setError(error));
-  }, [vendedor]);
+  }, [myUser]);
+
+  console.log(chat)
+
   if (error?.status === 404) {
     return <Redirect to="/404" />;
   }
@@ -25,7 +29,7 @@ function MessagePage() {
       <Layout>
         {chat.length ? (
           <div>
-            <h4 className="titleMensaje">Mensajes</h4>
+            <h4 className="titleMensaje">{t("mensaje.mensaje")}</h4>
             <div>
               {chat.map(({ idAnuncio, nombreAnuncio, comprador, ...chat }) => (
                 <Link
@@ -33,7 +37,7 @@ function MessagePage() {
                     pathname: `/chat/${nombreAnuncio}/${comprador}`,
                     state: {
                       idAnuncio: idAnuncio,
-                      autor: vendedor,
+                      autor: myUser,
                     },
                   }}
                   style={{ textDecoration: "none", color: "black" }}
@@ -50,7 +54,7 @@ function MessagePage() {
             </div>
           </div>
         ) : (
-          <h4>No tienes conversaciones abiertas</h4>
+          <h4>{t("mensaje.conversaciones")}</h4>
         )}
       </Layout>
     </>

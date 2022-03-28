@@ -4,6 +4,8 @@ import Layout from "../../components/layout/layout";
 import { getChat, updateChat, createChat } from "../service";
 import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
 import storage from "../../utils/storage";
+import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 function Chat({ username, roomname, socket }) {
   const [text, setText] = useState("");
@@ -14,6 +16,7 @@ function Chat({ username, roomname, socket }) {
   const autor = location.state?.autor;
   const firstUpdate = useRef(true);
   const myUser = storage.get("name")
+  const [t] = useTranslation("common");
 
   useEffect(() => {
     const chatToCreate = {
@@ -84,8 +87,12 @@ function Chat({ username, roomname, socket }) {
     <Layout>
       <div className="chats">
         <div className="user-name">
-          <h2>{roomname}</h2>
-          <span style={{ fontSize: "1rem" }}>Propietario {autor}</span>
+          <Link
+            to={`/adverts/${roomname}-${idAnuncio}`}
+            style={{ textDecoration: "none", color: "black" }}>
+            <h2>{roomname}</h2>
+          </Link>
+          <span style={{ fontSize: "1rem" }}>{t("mensaje.propietario")} {autor}</span>
         </div>
         <div className="chats-message">
           {messages.map((i) => {
@@ -109,7 +116,7 @@ function Chat({ username, roomname, socket }) {
         </div>
         <div className="send">
           <input
-            placeholder="Escribe tu mensaje"
+            placeholder={t("mensaje.escribe")}
             value={text}
             onChange={(e) => setText(e.target.value)}
             onKeyPress={(e) => {
@@ -118,7 +125,7 @@ function Chat({ username, roomname, socket }) {
               }
             }}
           ></input>
-          <button onClick={sendData}>Enviar</button>
+          <button onClick={sendData}>{t("restablece.enviar")}</button>
         </div>
       </div>
     </Layout>

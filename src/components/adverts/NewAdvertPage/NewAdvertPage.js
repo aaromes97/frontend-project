@@ -96,8 +96,7 @@ function NewAdvertPage() {
               autoFocus
             ></input>
             <br></br>
-            <label for="descripcion">{t("newAdvert.descripcion")}</label>
-
+            <label htmlFor="descripcion">{t("newAdvert.descripcion")}</label>
             <textarea
               placeholder={t("newAdvert.descripcion-producto")}
               id="descripcion"

@@ -1,85 +1,80 @@
 {
-    "header":{
+    "header": {
         "mensaje": "Messages",
         "subir-producto": "Upload Product",
         "mis-anuncios": "My Listings",
-         "mis-favoritos": "My Favorites",
-         "mi-cuenta": "My Account",
-         "eliminar-cuenta": "Delete Account",
-         "perfil": "Profile"
+        "mis-favoritos": "My Favorites",
+        "mi-cuenta": "My Account",
+        "eliminar-cuenta": "Delete Account",
+        "perfil": "Profile"
     },
-    "filter":{
+    "filter": {
         "buscar-producto": "Search Product",
-         "precio-minimo": "Minimum Price",
-         "precio-maximo": "Maximun Price",
-         "compra-venta": "Buy-Shell",
-         "compra": "Buy",
-         "venta":"Shell",
-         "buscar": "SEARCH"
+        "precio-minimo": "Minimum Price",
+        "precio-maximo": "Maximun Price",
+        "compra-venta": "Buy-Sell",
+        "compra": "Buy",
+        "venta": "Sell",
+        "buscar": "SEARCH"
     },
-     "newAdvert":{
-        "nombre-producto":"Name of Product",
+    "newAdvert": {
+        "nombre-producto": "Name of Product",
         "descripcion": "Description:",
         "compra": "Buy",
-        "venta": "Shell",
-        "precio-producto":"Product Price",
-        "seleccionar-archivo":"Select file",
+        "venta": "Sell",
+        "precio-producto": "Product Price",
+        "seleccionar-archivo": "Select file",
         "archivo-seleccionado": "No file selected",
         "crear-anuncio": "Create Ad",
         "alta-producto": "high product",
         "estado": "Condition:",
-        "tags":"Write the Tags...",
+        "tags": "Write the Tags...",
         "descripcion-producto": "Product description"
-        
     },
-    "restablece":{
+    "restablece": {
         "restablecer": "Reset password",
         "enviar": "Send"
     },
-
-      "mensaje":{
+    "mensaje": {
+        "mensaje": "Messages",
         "mensajes": "You have messages from",
-        "para": "For the ad"
+        "conversaciones": "You do not have pending chats",
+        "para-comprar": "To buy the ad",
+        "para-vender": "To sell the ad",
+        "propietario": "Owner",
+        "escribe": "Write your message"
     },
-
-    "advert":{
+    "advert": {
         "vendido": "sold",
         "reservado": "reserved",
-        "venta": "Shell",
+        "venta": "Sell",
         "busco": "Buy"
     },
-
-    "login":{
+    "login": {
         "inicia-sesion": "Start Session",
         "usuario": "User",
         "contraseña": "Password",
         "crear-usuario": "Create User",
         "contraseña-perdida": "Have you lost your password?"
-
     },
-
-    "delete_user":{
+    "delete_user": {
         "eliminar-cuenta": "Delete account",
         "desea-eliminar": "Do you want to delete the account?",
         "cancelar": "Cancel",
         "eliminar": "Delete"
     },
-
-    "register":{
-        "nuevo-usuario":"New User",
+    "register": {
+        "nuevo-usuario": "New User",
         "usuario": "User",
         "contraseña": "Password",
         "email": "E-mail",
-        "registrar":"Register"
+        "registrar": "Register"
     },
-
-      "profile":{
+    "profile": {
         "title": "Profile",
         "usuario": "User",
         "contraseña": "Password",
-        "nueva-contraseña":"New Password",
+        "nueva-contraseña": "New Password",
         "actualizar": "Update"
     }
-
-
 }

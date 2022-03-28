@@ -1,5 +1,5 @@
 {
-    "header":{
+    "header": {
         "mensaje": "Mensajes",
         "subir-producto": "Subir Producto",
         "mis-anuncios": "Mis Anuncios",
@@ -8,77 +8,73 @@
         "eliminar-cuenta": "Eliminar Cuenta",
         "perfil": "Perfil"
     },
-    "filter":{
+    "filter": {
         "buscar-producto": "Buscar Producto",
         "precio-minimo": "Precio mínimo",
         "precio-maximo": "Precio máximo",
         "compra-venta": "Compra-Venta",
         "buscar": "BUSCAR",
         "venta": "Venta",
-        "compra":"Compra"
-        
+        "compra": "Compra"
     },
-    "newAdvert":{
-        "nombre-producto":"Nombre del Producto",
+    "newAdvert": {
+        "nombre-producto": "Nombre del Producto",
         "descripcion": "Descripcion:",
         "compra": "Compra",
         "venta": "Venta",
-        "precio-producto":"Precio del producto",
-        "seleccionar-archivo":"Seleccionar archivo",
+        "precio-producto": "Precio del producto",
+        "seleccionar-archivo": "Seleccionar archivo",
         "archivo-seleccionado": "Ningun archivo seleccionado",
         "crear-anuncio": "Crear Anuncio",
         "alta-producto": "Alta de Productos",
         "estado": "Estado:",
-        "tags":"Escribe los Tags...",
+        "tags": "Escribe los Tags...",
         "descripcion-producto": "Descripcion del producto"
-        
     },
-     "advert":{
+    "advert": {
         "vendido": "Vendido",
         "reservado": "Reservado",
         "venta": "Venta",
         "busco": "Busco"
     },
-       "restablece":{
+    "restablece": {
         "restablecer": "Restablecer contraseña",
         "enviar": "Enviar"
     },
-    
-
-    "login":{
+    "login": {
         "inicia-sesion": "Inicia Sesión",
         "usuario": "Usuario",
         "contraseña": "Contraseña",
         "crear-usuario": "Crear Usuario",
         "contraseña-perdida": "Has perdido tu contraseña?"
-
     },
-      "delete_user":{
+    "delete_user": {
         "eliminar-cuenta": "Eliminar Cuenta",
         "desea-eliminar": "Desea eliminar la cuenta?",
         "cancelar": "Cancelar",
         "eliminar": "Eliminar"
     },
-    
-    "register":{
-        "nuevo-usuario":"Nuevo Usuario",
+    "register": {
+        "nuevo-usuario": "Nuevo Usuario",
         "usuario": "Usuario",
         "contraseña": "Contraseña",
         "email": "E-mail",
-        "registrar":"Registrar"
+        "registrar": "Registrar"
     },
-
-    "mensaje":{
+    "mensaje": {
+        "mensaje": "Mensajes",
         "mensajes": "Tienes mensajes de",
-        "para": "Para el anuncio"
+        "conversaciones": "No tienes conversaciones pendientes",
+        "para-comprar": "Para comprar el anuncio",
+        "para-vender": "Para vender el anuncio",
+        "propietario": "Propietario",
+        "escribe": "Escribe tu mensaje"
     },
-
-    "profile":{
+    "profile": {
         "title": "Perfil",
         "usuario": "Usuario",
         "contraseña": "Contraseña",
-        "nueva-contraseña":"Nueva Contraseña",
+        "nueva-contraseña": "Nueva Contraseña",
         "actualizar": "Actualizar"
     }
-
 }

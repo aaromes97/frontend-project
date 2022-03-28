@@ -1,4 +1,4 @@
-import { EmptyList } from "./EmptyList";
+import { EmptyList } from "../../common/EmptyList";
 import Layout from "../../layout/layout";
 import Advert from "./Advert";
 import "../../../bootstrap/style.css";
@@ -11,8 +11,6 @@ function AdvertsPage({ history, t, ...props }) {
   const [ads, setAds] = useState([]);
   useEffect(() => {
     getLatestAds().then((adverts) => {
-      console.log(adverts, 'desde AdvertsPAge')
-      console.log(t, 't')
       setAds(adverts.results.reverse());
     });
   }, []);
@@ -36,7 +34,7 @@ function AdvertsPage({ history, t, ...props }) {
             ))}
           </div>
         ) : (
-          <EmptyList />
+          <EmptyList></EmptyList>
         )}
       </Layout>
     </>
