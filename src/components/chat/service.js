@@ -1,4 +1,4 @@
-import client from "../api/client";
+import client from "../../api/client";
 
 const chatsBaseUrl = "/api/chats";
 const chatByVendedorUrl = "/api/messages";

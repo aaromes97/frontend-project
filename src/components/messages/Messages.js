@@ -1,6 +1,6 @@
 import Layout from "../layout/layout";
 import storage from "../../utils/storage";
-import { getUserChats } from "../../chat/service";
+import { getUserChats } from "../chat/service";
 import { useEffect, useState } from "react";
 import { Redirect, } from "react-router";
 import Mensaje from "./Mensaje";

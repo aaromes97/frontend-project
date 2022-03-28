@@ -20,10 +20,10 @@ import ForgotPasswordResetPage from "./components/auth/ForgotPassword/ResetPage/
 import PrivateRouteForgotPassword from "./components/auth/PrivateRouteForgotPassword";
 import ProfilePage from "./components/auth/ProfilePage/ProfilePage";
 import DeleteUserPage from "./components/auth/DeleteUserPage/DeleteUserPage";
-import Chat from "./chat/chat/chat";
+import Chat from "./components/chat/ChatPage";
 
 import io from "socket.io-client";
-import MessagePage from "./components/MessagePage/Messages";
+import MessagePage from "./components/messages/Messages";
 
 const socket = io.connect("/");
 

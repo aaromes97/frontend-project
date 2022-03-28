@@ -1,7 +1,7 @@
 import "./chat.css";
 import React, { useState, useEffect, useRef, useLayoutEffect } from "react";
-import Layout from "../../components/layout/layout";
-import { getChat, updateChat, createChat } from "../service";
+import Layout from "../layout/layout";
+import { getChat, updateChat, createChat } from "./service";
 import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
 import storage from "../../utils/storage";
 import { Link } from "react-router-dom";
