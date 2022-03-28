@@ -89,8 +89,10 @@ function Chat({ username, roomname, socket }) {
         <div className="user-name">
           <Link
             to={`/adverts/${roomname}-${idAnuncio}`}
-            style={{ textDecoration: "none", color: "black" }}>
-            <h2>{roomname}</h2>
+            style={{ textDecoration: "none", color: "White" }}>
+            <div className="link-name">
+              <span>{roomname}</span>
+            </div>
           </Link>
           <span style={{ fontSize: "1rem" }}>{t("mensaje.propietario")} {autor}</span>
         </div>
