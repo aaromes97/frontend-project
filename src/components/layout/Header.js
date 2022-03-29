@@ -88,11 +88,6 @@ function Header({ history, ...props }) {
                     </a>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#!">
-                      {t("header.mis-favoritos")}
-                    </a>
-                  </li>
-                  <li>
                     <hr className="dropdown-divider" />
                   </li>
                   <li>

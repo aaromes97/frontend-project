@@ -18,8 +18,6 @@ function MessagePage() {
       .catch((error) => setError(error));
   }, [myUser]);
 
-  console.log(chat)
-
   if (error?.status === 404) {
     return <Redirect to="/404" />;
   }
@@ -41,6 +39,7 @@ function MessagePage() {
                     },
                   }}
                   style={{ textDecoration: "none", color: "black" }}
+                  key={idAnuncio}
                 >
                   <div key={idAnuncio}>
                     <Mensaje

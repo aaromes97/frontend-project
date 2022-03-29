@@ -14,7 +14,6 @@ const components = {
 function NewAdvertPage() {
   const { t } = useTranslation("common")
   const history = useHistory();
-  const [error, setError] = useState(null);
   const autor = storage.get("name");
   const [value, setValue] = useState({
     nombre: "",
@@ -27,8 +26,6 @@ function NewAdvertPage() {
     reservado: false,
     vendido: false,
   });
-
-  const [createdAdvertId, setCreatedAdvertId] = useState("");
 
   const handleSelect = (newValue, actionMeta) => {
     console.group("Value Changed");
@@ -63,20 +60,15 @@ function NewAdvertPage() {
       newAdvert.append("reservado", value.reservado);
       newAdvert.append("vendido", value.vendido);
       const createdAdvert = await createAd(newAdvert);
-      setCreatedAdvertId(createdAdvert.result._id);
-
-      history.push("/");
+      history.push(`/adverts/${createdAdvert.result.nombre}-${createdAdvert.result._id}`);
     } catch (error) {
       console.log(error);
       if (error.status === 401) {
         return history.push("/login");
       }
-      setError(error);
     }
   };
-  // if (createdAdvertId) {
-  //   return <Redirect to={`/`} />;
-  // }
+
   return (
     <Layout title="Creación de un nuevo anuncio h1">
       <div className="newAdvertPage bordered ">
@@ -103,6 +95,7 @@ function NewAdvertPage() {
               name="descripcion"
               rows="3"
               cols="25"
+              value={value.descripcion}
               required
               onChange={handleChange}
             ></textarea>{" "}

@@ -9,7 +9,7 @@ const Mensaje = ({ comprador, nombreAnuncio, vendedor }) => {
   const myUser = storage.get("name")
 
   return (
-    <div className="cardDetail" >
+    <div className="cardDetail">
       <div className="detailContainer mb-3" style={{ border: "1px solid gray" }}>
         {myUser === comprador ? (
           <>

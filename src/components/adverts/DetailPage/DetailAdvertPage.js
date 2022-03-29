@@ -395,7 +395,7 @@ function DetailAdvertPage({ socket }) {
                 </span>
               </div>
 
-              <div className="descripcionDetail">
+              <div className="descripcionDetail mb-2">
                 <span className="descripcion">{advert[0].descripcion}</span>
               </div>
               <div className="bodyDetail">
