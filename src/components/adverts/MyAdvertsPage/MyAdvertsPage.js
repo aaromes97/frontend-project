@@ -11,7 +11,7 @@ function MyAdvertsPage(props) {
     const [ads, setAds] = useState([]);
     const name = storage.get("name");
 
-    const [filter, setFilter] = useState({
+    const [filter] = useState({
         autor: name,
     });
 

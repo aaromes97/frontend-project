@@ -13,7 +13,7 @@ function ForgotPasswordSendEmailPage({ history }) {
 	const [error, setError] = useState(null)
 	//para implementar Spinner de Loading 
 	const [isLoading, setIsLoading] = useState(false)
- 	const [t, i18n] = useTranslation("common");
+	const [t] = useTranslation("common");
 
 	//reseteamos error 
 	const resetError = () => setError(null)

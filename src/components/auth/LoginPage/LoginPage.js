@@ -1,5 +1,5 @@
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import '../../../bootstrap/style.css';
 import './login.css';
 import logo from './img/login.png';
@@ -10,8 +10,6 @@ import Loading from "../../Loading";
 import es from "./../../../img/bandera-spain.png";
 import uk from "./../../../img/united-kingdom.png"
 import { useTranslation } from "react-i18next";
-import i18next from "i18next";
-
 
 function LoginPage({ onLogin, history, location }) {
 	const [value, setValue] = useState({ name: "", password: "" });

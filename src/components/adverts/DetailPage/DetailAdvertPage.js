@@ -37,8 +37,8 @@ function DetailAdvertPage({ socket }) {
       .catch((error) => setError(error));
   }, [_id]);
 
-  const [username, setusername] = useState(name);
-  const [roomname, setroomname] = useState(advertName);
+  const [username] = useState(name);
+  const [roomname] = useState(advertName);
 
   const handleConfirmDelete = async (event) => {
     event.preventDefault();

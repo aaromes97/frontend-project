@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Suspense } from "react";
 import {
   BrowserRouter as Router,
@@ -13,7 +13,7 @@ import PrivateRoute from "./components/auth/PrivateRoute";
 import NewAdvertPage from "./components/adverts/NewAdvertPage";
 import { logout } from "./components/auth/LoginPage/service";
 import DetailAdvertPage from "./components/adverts/DetailPage/DetailAdvertPage";
-import AuthContext, { AuthContextProvider } from "./components/auth/context";
+import { AuthContextProvider } from "./components/auth/context";
 import RegisterPage from "./components/auth/NewUser/Register";
 import ForgotPasswordSendEmailPage from "./components/auth/ForgotPassword/SendEmailPage/SendEmailPage";
 import ForgotPasswordResetPage from "./components/auth/ForgotPassword/ResetPage/ResetPage";
@@ -45,7 +45,7 @@ function Appmain(props) {
 function App({ isInitiallyLogged, history }) {
   const [isLogged, setIsLogged] = useState(isInitiallyLogged);
   const handleLogin = () => setIsLogged(true);
-  const [adverts, setAdverts] = useState('')
+  const [adverts] = useState('')
 
   const handleLogout = () => {
     logout().then(() => setIsLogged(false));
