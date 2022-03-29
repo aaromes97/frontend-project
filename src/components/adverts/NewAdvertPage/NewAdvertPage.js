@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { useHistory } from "react-router";
 import CreatableSelect from "react-select/creatable";
 import Button from "../../common/Button";
@@ -15,6 +15,7 @@ function NewAdvertPage() {
   const { t } = useTranslation("common")
   const history = useHistory();
   const autor = storage.get("name");
+  const [isLoading, setIsLoading] = useState(false);
   const [value, setValue] = useState({
     nombre: "",
     descripcion: "",
@@ -46,8 +47,15 @@ function NewAdvertPage() {
     }));
   };
 
+  // no peritimos el envio submit hasta que este todo completo, menos la foto que no es requerida
+  const elementDisabled = useMemo(
+    () => isLoading,
+    [isLoading],
+  );
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setIsLoading(true);
     try {
       let newAdvert = new FormData();
       newAdvert.append("nombre", value.nombre);
@@ -60,9 +68,11 @@ function NewAdvertPage() {
       newAdvert.append("reservado", value.reservado);
       newAdvert.append("vendido", value.vendido);
       const createdAdvert = await createAd(newAdvert);
+      setIsLoading(false);
       history.push(`/adverts/${createdAdvert.result.nombre}-${createdAdvert.result._id}`);
     } catch (error) {
       console.log(error);
+      setIsLoading(false);
       if (error.status === 401) {
         return history.push("/login");
       }
@@ -154,6 +164,7 @@ function NewAdvertPage() {
                 type="submit"
                 className="newAdPage-submit"
                 variant="primary"
+                disabled={elementDisabled}
               >
                 {t("newAdvert.crear-anuncio")}
               </Button>
