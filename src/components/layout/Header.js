@@ -83,7 +83,7 @@ function Header({ history, ...props }) {
                 </a>
                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li>
-                    <a className="dropdown-item" href="#!">
+                    <a className="dropdown-item" href="/myadverts">
                       {t("header.mis-anuncios")}
                     </a>
                   </li>

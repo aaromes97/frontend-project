@@ -24,6 +24,7 @@ import Chat from "./components/chat/ChatPage";
 
 import io from "socket.io-client";
 import MessagePage from "./components/messages/Messages";
+import MyAdvertsPage from "./components/adverts/MyAdvertsPage/MyAdvertsPage";
 
 const socket = io.connect("/");
 
@@ -94,6 +95,9 @@ function App({ isInitiallyLogged, history }) {
               </PrivateRoute>
               <PrivateRoute path="/deleteUser">
                 {(history) => <DeleteUserPage {...history} />}
+              </PrivateRoute>
+              <PrivateRoute path="/myadverts">
+                {<MyAdvertsPage />}
               </PrivateRoute>
               <Route exact path="/adverts" component={AdvertsPage} />
               <Route exact path="/">

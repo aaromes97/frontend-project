@@ -33,6 +33,7 @@ export const getFilteredAds = (filter) => {
     precioMin: filter.precioMin,
     precioMax: filter.precioMax,
     venta: filter.sale,
+    autor: filter.autor
   };
 
   const formatFilter = (filter) => {
