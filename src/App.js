@@ -13,6 +13,8 @@ import PrivateRoute from "./components/auth/PrivateRoute";
 import NewAdvertPage from "./components/adverts/NewAdvertPage";
 import { logout } from "./components/auth/LoginPage/service";
 import DetailAdvertPage from "./components/adverts/DetailPage/DetailAdvertPage";
+import EditDetailAdvertPage from "./components/adverts/EditDetailAdvertPage/EditDetailAdvertPage";
+
 import AuthContext, { AuthContextProvider } from "./components/auth/context";
 import RegisterPage from "./components/auth/NewUser/Register";
 import ForgotPasswordSendEmailPage from "./components/auth/ForgotPassword/SendEmailPage/SendEmailPage";
@@ -93,6 +95,9 @@ function App({ isInitiallyLogged, history }) {
             <Route path="/chat/:roomname/:username" component={Appmain} />
             <PrivateRoute path="/profile">
               {(history) => <ProfilePage {...history} />}
+            </PrivateRoute>
+            <PrivateRoute path="/editDetailedAd">
+              {(history) => <EditDetailAdvertPage {...history} />}
             </PrivateRoute>
             <PrivateRoute path="/deleteUser">
               {(history) => <DeleteUserPage {...history} />}
