@@ -115,17 +115,6 @@ function DetailAdvertPage({ socket }) {
     history.replace("/");
   };
 
-  // const sendData = () => {
-  //   if (username && roomname) {
-  //     socket.emit("joinRoom", { username, roomname });
-  //   } else {
-  //     alert("username and roomname are must !");
-  //     window.location.reload();
-  //   }
-  // };
-
-  // const buttonDisabled = useMemo(() => isLoading[isLoading]);
-
   if (error?.status === 404) {
     return <Redirect to="/404" />;
   }
@@ -157,15 +146,12 @@ function DetailAdvertPage({ socket }) {
                           padding={5}
                           placement="top"
                           radius={0}
-                          zIndex={1}
-                        >
-                          <ReactSimpleTooltip>
-                            <button className="vender-button btn-grp vendido">
-                              <div>
-                                <img src={vender} alt="vender"></img>
-                              </div>
-                            </button>
-                          </ReactSimpleTooltip>
+                          zIndex={1}>
+                          <button className="vender-button btn-grp vendido">
+                            <div>
+                              <img src={vender} alt="vender"></img>
+                            </div>
+                          </button>
                         </ReactSimpleTooltip>
                       </div>
                     ) : (
@@ -184,18 +170,15 @@ function DetailAdvertPage({ socket }) {
                         padding={5}
                         placement="top"
                         radius={0}
-                        zIndex={1}
-                      >
-                        <ReactSimpleTooltip>
-                          <button
-                            className="vender-button btn-grp"
-                            onClick={handleConfirmSell}
-                          >
-                            <div>
-                              <img src={vender} alt="vender"></img>
-                            </div>
-                          </button>
-                        </ReactSimpleTooltip>
+                        zIndex={1}>
+                        <button
+                          className="vender-button btn-grp"
+                          onClick={handleConfirmSell}
+                        >
+                          <div>
+                            <img src={vender} alt="vender"></img>
+                          </div>
+                        </button>
                       </ReactSimpleTooltip>
                     )}
                     {advert[0].vendido === true ? (
@@ -216,18 +199,15 @@ function DetailAdvertPage({ socket }) {
                             padding={5}
                             placement="top"
                             radius={0}
-                            zIndex={1}
-                          >
-                            <ReactSimpleTooltip>
-                              <button
-                                className="guardar-button btn-grp"
-                                disabled
-                              >
-                                <div>
-                                  <img src={reservar} alt="reservar"></img>
-                                </div>
-                              </button>
-                            </ReactSimpleTooltip>
+                            zIndex={1}>
+                            <button
+                              className="guardar-button btn-grp"
+                              disabled
+                            >
+                              <div>
+                                <img src={reservar} alt="reservar"></img>
+                              </div>
+                            </button>
                           </ReactSimpleTooltip>
                         ) : (
                           <ReactSimpleTooltip
@@ -245,18 +225,15 @@ function DetailAdvertPage({ socket }) {
                             padding={5}
                             placement="top"
                             radius={0}
-                            zIndex={1}
-                          >
-                            <ReactSimpleTooltip>
-                              <button
-                                className="guardar-button btn-grp"
-                                disabled
-                              >
-                                <div>
-                                  <img src={reservar} alt="reservar"></img>
-                                </div>
-                              </button>
-                            </ReactSimpleTooltip>
+                            zIndex={1}>
+                            <button
+                              className="guardar-button btn-grp"
+                              disabled
+                            >
+                              <div>
+                                <img src={reservar} alt="reservar"></img>
+                              </div>
+                            </button>
                           </ReactSimpleTooltip>
                         )}
                       </div>
@@ -278,21 +255,18 @@ function DetailAdvertPage({ socket }) {
                             padding={5}
                             placement="top"
                             radius={0}
-                            zIndex={1}
-                          >
-                            <ReactSimpleTooltip>
-                              <button
-                                className="guardar-button btn-grp reservado"
-                                onClick={handleLiberarReserva}
-                              >
-                                <div>
-                                  <img
-                                    src={reservar}
-                                    alt="boton reservar"
-                                  ></img>
-                                </div>
-                              </button>
-                            </ReactSimpleTooltip>
+                            zIndex={1}>
+                            <button
+                              className="guardar-button btn-grp reservado"
+                              onClick={handleLiberarReserva}
+                            >
+                              <div>
+                                <img
+                                  src={reservar}
+                                  alt="boton reservar"
+                                ></img>
+                              </div>
+                            </button>
                           </ReactSimpleTooltip>
                         ) : (
                           <ReactSimpleTooltip
@@ -310,43 +284,39 @@ function DetailAdvertPage({ socket }) {
                             padding={5}
                             placement="top"
                             radius={0}
-                            zIndex={1}
-                          >
-                            <ReactSimpleTooltip>
-                              <button
-                                className="guardar-button btn-grp"
-                                onClick={handleReserva}
-                              >
-                                <div>
-                                  <img
-                                    src={reservar}
-                                    alt="imagen reserva"
-                                  ></img>
-                                </div>
-                              </button>
-                            </ReactSimpleTooltip>
+                            zIndex={1}>
+                            <button
+                              className="guardar-button btn-grp"
+                              onClick={handleReserva}
+                            >
+                              <div>
+                                <img
+                                  src={reservar}
+                                  alt="imagen reserva"
+                                ></img>
+                              </div>
+                            </button>
                           </ReactSimpleTooltip>
                         )}
                       </div>
                     )}
-                    <ReactSimpleTooltip
-                      arrow={15}
-                      background="#000"
-                      border="#000"
-                      color="#fff"
-                      content="Editar"
-                      fadeDuration={0}
-                      fadeEasing="linear"
-                      fixed={false}
-                      fontFamily="inherit"
-                      fontSize="12px"
-                      offset={0}
-                      padding={5}
-                      placement="top"
-                      radius={0}
-                      zIndex={1}
-                    >
-                      <ReactSimpleTooltip>
+                    {advert[0].vendido === false && (
+                      <ReactSimpleTooltip
+                        arrow={15}
+                        background="#000"
+                        border="#000"
+                        color="#fff"
+                        content="Editar"
+                        fadeDuration={0}
+                        fadeEasing="linear"
+                        fixed={false}
+                        fontFamily="inherit"
+                        fontSize="12px"
+                        offset={0}
+                        padding={5}
+                        placement="top"
+                        radius={0}
+                        zIndex={1}>
                         <button
                           className="editar-button btn-grp"
                           onClick={handleEditar}
@@ -356,7 +326,7 @@ function DetailAdvertPage({ socket }) {
                           </div>
                         </button>
                       </ReactSimpleTooltip>
-                    </ReactSimpleTooltip>
+                    )}
                     <ReactSimpleTooltip
                       arrow={15}
                       background="#000"
@@ -372,29 +342,34 @@ function DetailAdvertPage({ socket }) {
                       padding={5}
                       placement="top"
                       radius={0}
-                      zIndex={1}
-                    >
-                      <ReactSimpleTooltip>
-                        <button
-                          className="borrar-button btn-grp"
-                          onClick={handleConfirmDelete}
-                        >
-                          <div>
-                            <img src={borrar} alt="imagen borrar"></img>
-                          </div>
-                        </button>
-                      </ReactSimpleTooltip>
+                      zIndex={1}>
+                      <button
+                        className="borrar-button btn-grp"
+                        onClick={handleConfirmDelete}
+                      >
+                        <div>
+                          <img src={borrar} alt="imagen borrar"></img>
+                        </div>
+                      </button>
                     </ReactSimpleTooltip>
                   </div>
                 ) : (
-                  <Link
-                    to={{
-                      pathname: `/chat/${roomname}/${username}`,
-                      state: { idAnuncio: _id, autor: advert[0].autor },
-                    }}
-                  >
-                    <button className="chat">Chat</button>
-                  </Link>
+                  <div>
+                    {isLogged ? (
+                      <Link
+                        to={{
+                          pathname: `/chat/${roomname}/${username}`,
+                          state: { idAnuncio: _id, autor: advert[0].autor },
+                        }}
+                      >
+                        <button className="chat">Chat</button>
+                      </Link>
+                    ) : (
+                      <a className="chat" href="/login">
+                        Chat
+                      </a>
+                    )}
+                  </div>
                 )}
               </div>
 
@@ -455,8 +430,9 @@ function DetailAdvertPage({ socket }) {
             </Confirmation>
           )}
         </Layout>
-      )}
-    </div>
+      )
+      }
+    </div >
   );
 }
 
