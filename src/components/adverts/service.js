@@ -11,6 +11,11 @@ export const createAd = async (ad) => {
   return client.post(url, ad);
 };
 
+export const editDetailedAdd = (advertId) => {
+  const url = `${adsBaseUrl}/${advertId}`;
+  return client.put(url, advertId);
+};
+
 export const getAd = (advertId) => {
   const url = `${adsBaseUrl}/${advertId}`;
   return client.get(url);

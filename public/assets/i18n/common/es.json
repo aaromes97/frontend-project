@@ -17,6 +17,10 @@
         "venta": "Venta",
         "compra": "Compra"
     },
+    "editAdvert": {
+        "editar-producto": "Editar anuncio",
+        "info": "Edita solo los elementos que quieras cambiar, los que no edites no sufriran cambios"
+    },
     "newAdvert": {
         "nombre-producto": "Nombre del Producto",
         "descripcion": "Descripcion:",

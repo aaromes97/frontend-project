@@ -13,7 +13,9 @@ import PrivateRoute from "./components/auth/PrivateRoute";
 import NewAdvertPage from "./components/adverts/NewAdvertPage";
 import { logout } from "./components/auth/LoginPage/service";
 import DetailAdvertPage from "./components/adverts/DetailPage/DetailAdvertPage";
-import { AuthContextProvider } from "./components/auth/context";
+import EditDetailAdvertPage from "./components/adverts/EditDetailAdvertPage/EditDetailAdvertPage";
+
+import AuthContext, { AuthContextProvider } from "./components/auth/context";
 import RegisterPage from "./components/auth/NewUser/Register";
 import ForgotPasswordSendEmailPage from "./components/auth/ForgotPassword/SendEmailPage/SendEmailPage";
 import ForgotPasswordResetPage from "./components/auth/ForgotPassword/ResetPage/ResetPage";
@@ -99,6 +101,9 @@ function App({ isInitiallyLogged, history }) {
               <PrivateRoute path="/myadverts">
                 {<MyAdvertsPage />}
               </PrivateRoute>
+              <PrivateRoute path="/editDetailedAd">
+                {(history) => <EditDetailAdvertPage {...history} />}
+              </PrivateRoute>
               <Route exact path="/adverts" component={AdvertsPage} />
               <Route exact path="/">
                 <Redirect to="/adverts" component={AdvertsPage} />
@@ -116,7 +121,7 @@ function App({ isInitiallyLogged, history }) {
         </AuthContextProvider>
       </Router>
 
-    </Suspense>
+    </Suspense >
 
   );
 }

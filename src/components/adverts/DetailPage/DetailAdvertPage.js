@@ -45,6 +45,19 @@ function DetailAdvertPage({ socket }) {
     setDisplayDelete(true);
   };
 
+  const handleEditar = async (event) => {
+    event.preventDefault();
+    try {
+      return history.push("/editDetailedAd", _id);
+    } catch (error) {
+      console.log(error);
+      if (error.status === 401) {
+        return history.push("/login");
+      }
+      setError(error);
+    }
+  };
+
   const handleConfirmSell = async (event) => {
     event.preventDefault();
     setDisplaySell(true);
@@ -101,6 +114,17 @@ function DetailAdvertPage({ socket }) {
     await deleteAd(_id);
     history.replace("/");
   };
+
+  // const sendData = () => {
+  //   if (username && roomname) {
+  //     socket.emit("joinRoom", { username, roomname });
+  //   } else {
+  //     alert("username and roomname are must !");
+  //     window.location.reload();
+  //   }
+  // };
+
+  // const buttonDisabled = useMemo(() => isLoading[isLoading]);
 
   if (error?.status === 404) {
     return <Redirect to="/404" />;
@@ -325,7 +349,7 @@ function DetailAdvertPage({ socket }) {
                       <ReactSimpleTooltip>
                         <button
                           className="editar-button btn-grp"
-                        // onClick={handleEditar}
+                          onClick={handleEditar}
                         >
                           <div>
                             <img src={editar} alt="editIcon"></img>
@@ -363,22 +387,14 @@ function DetailAdvertPage({ socket }) {
                     </ReactSimpleTooltip>
                   </div>
                 ) : (
-                  <div>
-                    {isLogged ? (
-                      <Link
-                        to={{
-                          pathname: `/chat/${roomname}/${username}`,
-                          state: { idAnuncio: _id, autor: advert[0].autor },
-                        }}
-                      >
-                        <button className="chat">Chat</button>
-                      </Link>
-                    ) : (
-                      <a className="chat" href="/login">
-                        Chat
-                      </a>
-                    )}
-                  </div>
+                  <Link
+                    to={{
+                      pathname: `/chat/${roomname}/${username}`,
+                      state: { idAnuncio: _id, autor: advert[0].autor },
+                    }}
+                  >
+                    <button className="chat">Chat</button>
+                  </Link>
                 )}
               </div>
 
@@ -391,14 +407,14 @@ function DetailAdvertPage({ socket }) {
               <p className="nombreDetail">{advert[0].nombre}</p>
               <div className="d-flex text-dark ventaDetail">
                 <span>
-                  {advert[0].venta === true ? <p> {t("advert.venta")} </p> : <p> {t("advert.busco")} </p>}
+                  {advert[0].venta === true ? <p> Venta </p> : <p> Busco </p>}
                 </span>
               </div>
 
-              <div className="descripcionDetail mb-2">
+              <div className="descripcionDetail">
                 <span className="descripcion">{advert[0].descripcion}</span>
               </div>
-              <div className="bodyDetail">
+              <div className="bodyDetail mb-2 mt-1">
                 {advert[0].tags.map((tag) => (
                   <div className="tagsDetail">{tag}</div>
                 ))}

@@ -17,6 +17,10 @@
         "venta": "Sell",
         "buscar": "SEARCH"
     },
+    "editAdvert": {
+        "editar-producto": "Edit advert",
+        "info": "Edit only the elements you want to change, no edited data will no be changed"
+    },
     "newAdvert": {
         "nombre-producto": "Name of Product",
         "descripcion": "Description:",
@@ -26,7 +30,7 @@
         "seleccionar-archivo": "Select file",
         "archivo-seleccionado": "No file selected",
         "crear-anuncio": "Create Ad",
-        "alta-producto": "high product",
+        "alta-producto": "New product",
         "estado": "Condition:",
         "tags": "Write the Tags...",
         "descripcion-producto": "Product description"
