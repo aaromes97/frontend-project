@@ -435,5 +435,4 @@ function DetailAdvertPage({ socket }) {
     </div >
   );
 }
-
 export default DetailAdvertPage;
