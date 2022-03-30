@@ -112,7 +112,7 @@ function EditDetailAdvertPage(props) {
 				<div className="newAdvertPage bordered ">
 					<div className="formNew">
 						<form onSubmit={handleSubmit}>
-							<h1 className="formTitle">&bull; {t("editAdvert.editar-producto")} &bull;</h1>
+							<h1 className="formTitle">{t("editAdvert.editar-producto")}</h1>
 							<br></br>
 							<input
 								type="text"
